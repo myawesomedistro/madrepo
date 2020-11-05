@@ -1,0 +1,6 @@
+Origin: myawesomedistro.github.io
+Codename: core
+Architectures: amd64 i386
+Components: main
+SignWith: yes
+Pull: core

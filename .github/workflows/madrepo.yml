@@ -1,0 +1,34 @@
+name: MAD Repo
+on:
+  push:
+    branches: 
+      - master
+  schedule:
+  - cron: "0 0,6,12,18 * * *"
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Verificação de saída do repositório git
+        uses: actions/checkout@v1
+      
+      - name: Compilação do repositório apt do MAD Linux
+        run: |
+          sudo apt update
+          sudo apt install -y sshpass
+          wget -q ${{ secrets.GPG_SEC }}
+          gpg --batch --allow-secret-key-import --import madlinux_sec.gpg
+          bash build-packages.sh
+          bash build-repo.sh
+
+#      - name: Upload do repositório apt do MAD Linux para a página do GitHub
+#        uses: peaceiris/actions-gh-pages@v3
+#        with:
+#          github_token: ${{ secrets.GH_PAGES_TOKEN }}
+#          publish_dir: repo
+#          publish_branch: gh-pages
+#          user_name: 'Raul Dipeas'
+#          user_email: 'rauldipeas@mail.com'
+
+      - name: Upload do repositório apt do MAD Linux para o SourceForge
+        run: sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- rsync -avP -e 'ssh -o StrictHostKeyChecking=no' repo rauldipeas@web.sourceforge.net:/home/project-web/madlinux/htdocs
