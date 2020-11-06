@@ -3,11 +3,11 @@ pool:
 trigger:
   branches:
     include: [ master ]
-  schedules:
-    - cron: "0 0 * * *"
-      displayName: Compilação recorrente do repositório apt do MAD Linux
-      branches:
-        include: [ master ]
+schedules:
+  - cron: "0 0,6,12,18 * * *"
+    displayName: Compilação recorrente do repositório apt do MAD Linux
+    branches:
+      include: [ master ]
 variables:
   - group: Tokens
 steps:
