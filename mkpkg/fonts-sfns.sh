@@ -13,7 +13,7 @@ Homepage: https://github.com/supermarin/YosemiteSanFranciscoFont
 Description: The font is adapted from San Francisco – Apple’s new typeface for the Apple Watch. This project was inspired by jenskutilek’s Fira System Font Replacement. The fonts were generated using dtinth's Yosemite System Font Patcher."|tee fonts-sfns/DEBIAN/control
 mkdir -pv fonts-sfns/usr/share/fonts/YosemiteSanFranciscoFont/
 mv YosemiteSanFranciscoFont/*.ttf fonts-sfns/usr/share/fonts/YosemiteSanFranciscoFont/
-rm -rfv YosemiteSanFranciscoFont
+rm -rf YosemiteSanFranciscoFont
 dpkg-deb -b fonts-sfns .
 rm fonts-sfns
 cp fonts-sfns*.deb tmp/packages

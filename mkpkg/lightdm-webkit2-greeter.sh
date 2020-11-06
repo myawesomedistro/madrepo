@@ -15,5 +15,5 @@ echo sed -i 's/#greeter-session=lightdm-/greeter-session=lightdm-/g' /etc/lightd
 chmod +x -v lightdm-webkit2-greeter/DEBIAN/post*
 sed -i "s/2.2.5-1+15.31/2.2.5-1+15.31-glorious-$GLORIOUS_TAG/g" lightdm-webkit2-greeter/DEBIAN/control
 dpkg-deb -b lightdm-webkit2-greeter .
-rm -rfv lightdm-webkit2-greeter
+rm -rf lightdm-webkit2-greeter
 cp lightdm-webkit2-greeter*.deb tmp/packages

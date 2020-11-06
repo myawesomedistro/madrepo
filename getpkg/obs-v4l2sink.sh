@@ -1,2 +1,2 @@
 #!/bin/bash
-cp -rfv ../../packages/obs-v4l2sink/*.deb .
+cp -rf ../../packages/obs-v4l2sink/*.deb .
