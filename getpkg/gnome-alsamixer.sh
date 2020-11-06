@@ -1,2 +1,2 @@
 #!/bin/bash
-cp -rf ../../packages/gnome-alsamixer/*.deb .
+cp -rf packages/gnome-alsamixer/*.deb tmp/packages
