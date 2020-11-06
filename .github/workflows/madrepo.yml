@@ -14,12 +14,9 @@ jobs:
       
       - name: Compilação do repositório apt do MAD Linux
         run: |
-          sudo apt update
-          sudo apt install -y sshpass
           wget -q ${{ secrets.GPG_SEC }}
           gpg --batch --allow-secret-key-import --import madlinux_sec.gpg
-          bash build-packages.sh
-          bash build-repo.sh
+          bash build.sh
 
       - name: Upload do repositório apt do MAD Linux para o SourceForge
         run: sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- rsync -avP -e 'ssh -o StrictHostKeyChecking=no' repo rauldipeas@web.sourceforge.net:/home/project-web/madlinux/htdocs
