@@ -1,0 +1,24 @@
+pool:
+  vmImage: 'ubuntu-20.04'
+trigger:
+  branches:
+    include: [ master ]
+  schedules:
+    - cron: "0 0,6,12,18 * * *"
+      displayName: Compilação recorrente do repositório apt do MAD Linux
+      branches:
+        include: [ master ]
+      always: true
+variables:
+  - group: Tokens
+steps:
+  - script: |
+      sudo apt update
+      sudo apt install -y sshpass
+      wget -q $GPG_SEC
+      gpg --batch --allow-secret-key-import --import madlinux_sec.gpg
+      bash build-packages.sh
+      bash build-repo.sh
+    displayName: Compilação do repositório apt do MAD Linux
+  - script: sshpass -p $SOURCEFORGE_PASS -- rsync -avP -e 'ssh -o StrictHostKeyChecking=no' repo rauldipeas@web.sourceforge.net:/home/project-web/madlinux/htdocs
+    displayName: Upload do repositório apt do MAD Linux para o SourceForge
