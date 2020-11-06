@@ -5,10 +5,10 @@ trigger:
     include: [ master ]
   schedules:
     - cron: "0 */6 * * *"
-      displayName: Compilação recorrente do repositório apt do MAD Linux
       branches:
         include: [ master ]
       always: true
+      displayName: Compilação recorrente do repositório apt do MAD Linux
 variables:
   - group: Tokens
 steps:
