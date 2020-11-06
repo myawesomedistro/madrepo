@@ -5,27 +5,27 @@ cd tmp/packages
 # App Grid
 apt download aptdaemon aptdaemon-data python3-aptdaemon python3-aptdaemon.gtk3widgets app-install-data
 # AppImageLauncher
-wget -q $(wget -qO- https://api.github.com/repos/TheAssassin/AppImageLauncher/releases|grep browser_download_url|grep download/v|grep amd64.deb|head -n1|cut -d \" -f4)
+wget -q $(wget -qO- https://api.github.com/repos/TheAssassin/AppImageLauncher/releases|grep browser_download_url|grep download/v|grep amd64.deb|head -n1|cut -d '"' -f4)
 # EmojiOne
 apt download fonts-emojione
 # Crow translate
-wget -q $(wget -qO- https://api.github.com/repos/crow-translate/crow-translate/releases|grep browser_download_url|grep amd64.deb|head -n1|cut -d \" -f4)
+wget -q $(wget -qO- https://api.github.com/repos/crow-translate/crow-translate/releases|grep browser_download_url|grep amd64.deb|head -n1|cut -d '"' -f4)
 # Gitify
-wget -q $(wget -qO- https://api.github.com/repos/manosim/gitify/releases|grep browser_download_url|grep amd64.deb|head -n1|cut -d \" -f4)
+wget -q $(wget -qO- https://api.github.com/repos/manosim/gitify/releases|grep browser_download_url|grep amd64.deb|head -n1|cut -d '"' -f4)
 # GNOME ALSA Mixer
 cp -rfv ../../packages/gnome-alsamixer/*.deb .
 # LinVst
-wget -q $(wget -qO- https://api.github.com/repos/osxmidi/LinVst/releases|grep browser_download_url|grep .deb|head -n1|cut -d \" -f4)
+wget -q $(wget -qO- https://api.github.com/repos/osxmidi/LinVst/releases|grep browser_download_url|grep .deb|head -n1|cut -d '"' -f4)
 # MEGAsync Buster deps
 wget -q http://ftp.us.debian.org/debian/pool/main/libr/libraw/$(wget -qO- http://ftp.us.debian.org/debian/pool/main/libr/libraw/|grep amd64.deb|grep libraw19|head -n1|cut -d '"' -f8)
 # NoMachine
-wget -q $(wget -qO- 'https://www.nomachine.com/download/download&id=2'|grep amd64.deb|head -n1|cut -d \' -f4)
+wget -q $(wget -qO- 'https://www.nomachine.com/download/download&id=2'|grep amd64.deb|head -n1|cut -d "'" -f4)
 # OBS studio V4L2Sink plugin
 cp -rfv ../../packages/obs-v4l2sink/*.deb .
 # PB for Desktop
-wget -q $(wget -qO- https://api.github.com/repos/sidneys/pb-for-desktop/releases|grep browser_download_url|grep amd64.deb|head -n1|cut -d \" -f4)
+wget -q $(wget -qO- https://api.github.com/repos/sidneys/pb-for-desktop/releases|grep browser_download_url|grep amd64.deb|head -n1|cut -d '"' -f4)
 # RcloneTray
-wget -q $(wget -qO- https://api.github.com/repos/dimitrov-adrian/RcloneTray/releases|grep browser_download_url|grep amd64.deb|head -n1|cut -d \" -f4)
+wget -q $(wget -qO- https://api.github.com/repos/dimitrov-adrian/RcloneTray/releases|grep browser_download_url|grep amd64.deb|head -n1|cut -d '"' -f4)
 # Stremio
 wget -q https://dl.strem.io/linux/v4.4.106/stremio_4.4.106-1_amd64.deb
 # ToneLib Zoom

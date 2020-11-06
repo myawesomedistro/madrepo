@@ -21,6 +21,9 @@ jobs:
           bash build-packages.sh
           bash build-repo.sh
 
+      - name: Upload do repositório apt do MAD Linux para o SourceForge
+        run: sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- rsync -avP -e 'ssh -o StrictHostKeyChecking=no' repo rauldipeas@web.sourceforge.net:/home/project-web/madlinux/htdocs
+
 #      - name: Upload do repositório apt do MAD Linux para a página do GitHub
 #        uses: peaceiris/actions-gh-pages@v3
 #        with:
@@ -29,6 +32,3 @@ jobs:
 #          publish_branch: gh-pages
 #          user_name: 'Raul Dipeas'
 #          user_email: 'rauldipeas@mail.com'
-
-      - name: Upload do repositório apt do MAD Linux para o SourceForge
-        run: sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- rsync -avP -e 'ssh -o StrictHostKeyChecking=no' repo rauldipeas@web.sourceforge.net:/home/project-web/madlinux/htdocs
