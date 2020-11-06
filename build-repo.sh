@@ -60,6 +60,10 @@ echo 'deb https://dl.winehq.org/wine-builds/debian/ bullseye main' | sudo tee /e
 wget -qO- https://dl.winehq.org/wine-builds/winehq.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/winehq.gpg
 sudo apt update
 grep ^Package /var/lib/apt/lists/*wine*_Packages|awk '{print $2}'|sort -u|xargs apt download
+# APT Fast
+sudo add-apt-repository ppa:apt-fast/stable
+sudo apt update
+grep ^Package /var/lib/apt/lists/*apt-fast*_Packages|awk '{print $2}'|sort -u|xargs apt download
 # DockBarX
 sudo add-apt-repository ppa:xuzhen666/dockbarx
 sudo apt update
