@@ -2,13 +2,13 @@
 sudo apt install -y checkinstall dpkg-sig reprepro sshpass
 sudo dpkg --add-architecture i386
 mkdir -pv tmp/packages
-for f in mkpkg/*.sh
+for script in mkpkg/*.sh
 do
- bash $f
+ bash $script
 done
-for f in getpkg/*.sh
+for script in getpkg/*.sh
 do
- bash $f
+ bash $script
 done
 mv *.deb tmp/packages
 find tmp/packages -name '*.deb' -type f|xargs dpkg-sig --sign builder
