@@ -1,5 +1,6 @@
 #!/bin/bash
-sudo apt install -y checkinstall dpkg-sig reprepro sshpass
+sudo sed -i 's/_APTMGR=apt-get/_APTMGR=apt/g' /etc/apt-fast.conf
+sudo apt-fast install -y checkinstall dpkg-sig reprepro sshpass
 sudo dpkg --add-architecture i386
 mkdir -pv tmp/packages
 for script in mkpkg/*.sh
