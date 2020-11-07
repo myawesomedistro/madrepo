@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo apt install -y checkinstall dpkg-sig reprepro sshpass
-dpkg --add-architecture i386
+sudo dpkg --add-architecture i386
 mkdir -pv tmp/packages
 for f in mkpkg/*.sh
 do
