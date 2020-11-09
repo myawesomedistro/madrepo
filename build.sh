@@ -13,5 +13,5 @@ done
 
 mv *.deb tmp/packages
 
-find tmp/packages -name '*.deb' -type f|xargs dpkg-sig --sign builder
+#find tmp/packages -name '*.deb' -type f|xargs dpkg-sig --sign builder
 find tmp/packages -name '*.deb' -type f|xargs reprepro -P --ask-passphrase -Vb repo includedeb core
