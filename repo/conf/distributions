@@ -1,6 +1,5 @@
-Origin: myawesomedistro.github.io
+Origin: madlinux.sourceforge.io
 Codename: core
 Architectures: amd64 i386
 Components: main
-SignWith: yes
-Pull: core
+SignWith: E55D4F85
