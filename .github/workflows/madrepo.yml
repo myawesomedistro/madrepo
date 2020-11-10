@@ -19,7 +19,7 @@ jobs:
       
       - name: Instalação da chave GPG
         run: |
-          aria2c $GPG_SEC
+          aria2c ${{ secrets.GPG_SEC }}
           gpg --batch --allow-secret-key-import --import madlinux_sec.gpg
       
       - name: Instalação de dependências
