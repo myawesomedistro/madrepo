@@ -12,13 +12,23 @@ jobs:
       - name: Verificação de saída do repositório git
         uses: actions/checkout@v1
       
-      - name: Compilação do repositório apt do MAD Linux
+      - name: Configuração do host
         run: |
-          wget -q ${{ secrets.GPG_SEC }}
+          sudo sed -i 's/_APTMGR=apt-get/_APTMGR=apt/g' /etc/apt-fast.conf
+          sudo dpkg --add-architecture i386
+      
+      - name: Instalação da chave GPG
+        run: |
+          aria2c $GPG_SEC
           gpg --batch --allow-secret-key-import --import madlinux_sec.gpg
-          bash build.sh
+      
+      - name: Instalação de dependências
+        run: sudo apt-fast install -y checkinstall dpkg-sig reprepro sshpass
 
-      - name: Upload do repositório apt do MAD Linux para o SourceForge
+      - name: Compilação do repositório apt
+        run: bash build.sh
+
+      - name: Upload do repositório apt para o SourceForge
         run: sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- rsync -avP -e 'ssh -o StrictHostKeyChecking=no' repo rauldipeas@web.sourceforge.net:/home/project-web/madlinux/htdocs
 
 #      - name: Upload do repositório apt do MAD Linux para a página do GitHub
