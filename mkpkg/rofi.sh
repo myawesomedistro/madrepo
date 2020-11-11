@@ -71,6 +71,7 @@ make
 sudo checkinstall -D -y \
     --maintainer libcheck@github.com \
     --pkgversion $CHECK_TAG
+cd ..
 ./configure
 make
 sudo checkinstall -D -y \
