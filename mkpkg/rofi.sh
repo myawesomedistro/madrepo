@@ -72,7 +72,7 @@ sudo checkinstall -D -y \
     --maintainer libcheck@github.com \
     --pkgversion $CHECK_TAG
 cd ..
-./configure
+./configure --prefix=/usr
 make
 sudo checkinstall -D -y \
     --install=no \
