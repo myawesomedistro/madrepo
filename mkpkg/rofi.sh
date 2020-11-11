@@ -1,4 +1,5 @@
 #!/bin/bash
+CHECK_TAG=$(wget -qO- https://api.github.com/repos/libcheck/check/releases|grep tag|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/libcheck\/check\/releases\/tag\///g')
 ROFI_TAG=$(wget -qO- https://api.github.com/repos/davatorium/rofi/releases|grep tag|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/davatorium\/rofi\/releases\/tag\///g')
 sudo apt install -y \
     bison \
@@ -57,6 +58,19 @@ git clone https://github.com/davatorium/rofi
 cd rofi
 git submodule update --init
 autoreconf -i
+sudo apt install -y \
+    autoconf \
+    automake \
+    libtool \
+    texinfo
+git clone https://github.com/libcheck/check
+cd check
+autoreconf -i
+./configure
+make
+sudo checkinstall -D -y \
+    --maintainer libcheck@github.com \
+    --pkgversion $CHECK_TAG
 ./configure
 make
 sudo checkinstall -D -y \
