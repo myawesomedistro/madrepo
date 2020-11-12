@@ -31,5 +31,4 @@ StartupNotify=true
 Type=Application
 Categories=Settings;DesktopSettings;'|tee linux-notification-center/etc/xdg/autostart/linux-notification-center.desktop
 dpkg-deb -b linux-notification-center .
-rm -rf linux-notification-center
 cp linux-notification-center*.deb tmp/packages

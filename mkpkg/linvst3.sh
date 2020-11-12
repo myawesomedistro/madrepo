@@ -15,7 +15,5 @@ Priority: optional
 Architecture: amd64
 Maintainer: abc@def.com
 Description: Linux Wrapper for 64 bit windows VST3 plugins. See Readme in /usr/share/LinVst."|tee linvst3/DEBIAN/control
-rm -rf LinVst3*
 dpkg-deb -b linvst3 .
-rm -rf linvst3
 cp linvst3*.deb tmp/packages

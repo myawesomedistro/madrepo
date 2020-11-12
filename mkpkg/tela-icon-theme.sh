@@ -34,5 +34,4 @@ fi'|tee tela-icon-theme/DEBIAN/postrm
 chmod +x -v tela-icon-theme/DEBIAN/post*
 cp -rf /usr/share/icons/Tela* tela-icon-theme/usr/share/icons/
 dpkg-deb -b tela-icon-theme .
-rm -rf tela-icon-theme
 cp tela-icon-theme*.deb tmp/packages

@@ -15,5 +15,4 @@ mkdir -pv fonts-sfns/usr/share/fonts/YosemiteSanFranciscoFont/
 mv YosemiteSanFranciscoFont/*.ttf fonts-sfns/usr/share/fonts/YosemiteSanFranciscoFont/
 rm -rf YosemiteSanFranciscoFont
 dpkg-deb -b fonts-sfns .
-rm fonts-sfns
 cp fonts-sfns*.deb tmp/packages

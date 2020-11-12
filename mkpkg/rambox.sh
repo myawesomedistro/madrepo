@@ -23,6 +23,5 @@ echo '
 }' >> app-rambox/resources/Rambox-all.css
 npx asar p app-rambox app.asar
 cp -rf app.asar rambox/opt/Rambox/resources/app.asar
-rm -rf app app.asar app-rambox
 dpkg-deb -b rambox .
 cp rambox*.deb tmp/packages

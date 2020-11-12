@@ -52,7 +52,6 @@ find /usr/share/ -name *cockos-reaper* -delete
 find /usr/share/ -name *x-reaper* -delete' |tee cockos-reaper/DEBIAN/prerm
 chmod +x cockos-reaper/DEBIAN/prerm
 dpkg-deb -b cockos-reaper .
-rm -rfv cockos-reaper
 cp cockos-reaper*.deb tmp/packages
 
 #aria2c https://sws-extension.org/download/pre-release/$(wget -qO- http://sws-extension.org/download/pre-release/|grep Linux-x86_64|head -n1|cut -d '"' -f4)

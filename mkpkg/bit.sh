@@ -15,5 +15,4 @@ Depends: git
 Homepage: https://github.com/vinceliuice/Tela-icon-theme
 Description: Bit is an experimental modernized git CLI built on top of git that provides happy defaults and other niceties"|tee bit-package/DEBIAN/control
 dpkg-deb -b bit-package .
-rm -rf bit bit-package* bit*.tar.gz LICENSE README.md
 cp bit*.deb tmp/packages
