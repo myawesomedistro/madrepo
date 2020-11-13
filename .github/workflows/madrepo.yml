@@ -5,6 +5,7 @@ on:
       - master
   schedule:
   - cron: "0 0,6,12,18 * * *"
+
 jobs:
   build:
     runs-on: ubuntu-20.04
@@ -29,7 +30,7 @@ jobs:
         run: bash build.sh
 
       - name: Upload do repositório apt para o SourceForge
-        run: sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- rsync -avP -e 'ssh -o StrictHostKeyChecking=no' repo rauldipeas@web.sourceforge.net:/home/project-web/madlinux/htdocs
+        run: sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' repo rauldipeas@web.sourceforge.net:/home/project-web/madlinux/htdocs
 
 #      - name: Upload do repositório apt do MAD Linux para a página do GitHub
 #        uses: peaceiris/actions-gh-pages@v3
