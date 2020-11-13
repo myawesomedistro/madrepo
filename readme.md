@@ -1,8 +1,8 @@
-Esse é o repositório `apt` do **MAD Linux**, no _indicador_ abaixo, você pode saber o status do repositório.
+Este é o repositório `apt` do **MAD Linux**, no _indicador_ abaixo, você pode saber o status do repositório.
 
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fmyawesomedistro%2Fmadrepo%2Fbadge&style=for-the-badge&label=MAD%20Repo)](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)
 
-Esse repositório reune pacotes de vários outros repositórios, além de pacotes que não estão disponíveis em nenhum outro repositório e também compilações próprias, feitas diretamente do código fonte.
+Este repositório reune pacotes de vários outros repositórios, além de pacotes que não estão disponíveis em nenhum outro repositório e também compilações próprias, feitas diretamente do código fonte.
 
 Segue a lista:
 ## Espelhos
@@ -126,4 +126,4 @@ wget -qO- https://madlinux.sourceforge.io/repo/madlinux.key | gpg --dearmor | su
 sudo apt update
 ```
 
-É recomendado instalar o [`apt-fast`](https://github.com/ilikenwf/apt-fast) para ter mais velocidade ao instalar pacotes desse repositório, visto que ele está hospedado gratuitamente no [**SourceForge**](https://sourceforge.net), que já é conhecido por ter uma certa _lentidão_ no **Brasil**.
+É recomendado instalar o [`apt-fast`](https://github.com/ilikenwf/apt-fast) para ter mais velocidade ao instalar pacotes deste repositório, visto que ele está hospedado gratuitamente no [**SourceForge**](https://sourceforge.net), que já é conhecido por ter uma certa _lentidão_ no **Brasil**.
