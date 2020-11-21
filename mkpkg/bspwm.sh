@@ -17,7 +17,7 @@ sudo checkinstall -y \
 	--maintainer rauldipeas@mail.com \
 	--pkgname 'bspwm' \
 	--pkgversion `cat VERSION` \
-  --pkgrelease '4' \
+  	--pkgrelease '4' \
 	--requires 'libxcb-ewmh2, libxcb-util1' \
 	--provides 'bspwm'
 cd ..
