@@ -1,7 +1,7 @@
 #!/bin/bash
 git clone https://gitlab.com/myawesomedistro/bashrun
 cd bashrun
-cat usr/bin/bashrun-url|sed "s/BASHRUN_GL_TOKEN/$BASHRUN_GL_TOKEN/g"|tee usr/bin/bashrun-url
+sed -i 's/BASHRUN_GL_TOKEN/$BASHRUN_GL_TOKEN/g' usr/bin/bashrun-url
 cat usr/bin/bashrun-url
 shc -f usr/bin/bashrun-url -o bashrun-url
 mv bashrun-url usr/bin/bashrun-url
