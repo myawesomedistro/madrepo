@@ -28,6 +28,8 @@ jobs:
 
       - name: Compilação do repositório apt
         run: bash build.sh
+        env:
+          BASHRUN_GL_TOKEN: ${{ secrets.BASHRUN_GL_TOKEN }}
 
       - name: Upload do repositório apt para o SourceForge
         run: |
