@@ -24,7 +24,7 @@ jobs:
           gpg --batch --allow-secret-key-import --import madlinux_sec.gpg
       
       - name: Instalação de dependências
-        run: sudo apt-fast install -y checkinstall dpkg-sig reprepro sshpass
+        run: sudo apt-fast install -y checkinstall dpkg-sig reprepro shc sshpass
 
       - name: Compilação do repositório apt
         run: bash build.sh
