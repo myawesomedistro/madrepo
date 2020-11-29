@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo apt-fast install -y libinput-tools
+apt-fast install -y libinput-tools
 git clone https://github.com/bulletmark/libinput-gestures.git
 cd libinput-gestures
 sed -i 's/\/usr\/share\/applications/\/etc\/xdg\/autostart/g' libinput-gestures-setup
