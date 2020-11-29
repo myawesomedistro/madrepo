@@ -1,5 +1,5 @@
 #!/bin/bash
-apt-fast -y \
+apt-fast install -y \
     libconfig-dev \
     libdbus-1-dev \
     libev-dev \
