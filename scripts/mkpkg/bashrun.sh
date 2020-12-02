@@ -10,4 +10,5 @@
 #rm -rf .git
 #cd ..
 #dpkg-deb -b bashrun .
-cp packages/bashrun/bashrun*.deb tmp/packages
+aria2c -o bashrun.deb http://my.opendesktop.org/s/KRQ9izGPxtsjMMs/download
+mv bashrun*.deb tmp/packages
