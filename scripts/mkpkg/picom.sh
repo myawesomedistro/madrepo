@@ -24,7 +24,7 @@ apt-fast install -y \
     libxext-dev \
     meson \
     uthash-dev
-git clone https://github.com/yshui/picom
+git clone https://github.com/jonaburg/picom
 cd picom
 git submodule update --init --recursive
 meson --buildtype=release . build
