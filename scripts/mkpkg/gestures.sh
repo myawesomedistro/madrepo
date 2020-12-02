@@ -9,7 +9,7 @@ sudo checkinstall -D -y \
     --install=no \
     --maintainer bulletmark@github.com \
     --pkgname libinput-gestures \
-    --pkgversion `./list-version-hashes | tail -1 | awk '{print $1}'` \
+    --pkgversion `./list-version-hashes|tail -1|awk '{print $1}'` \
     --provides libinput-gestures
 cd ..
 cp libinput-gestures/libinput-gestures*.deb tmp/packages

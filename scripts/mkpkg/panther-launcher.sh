@@ -19,7 +19,7 @@ Comment=Lançador de aplicativos
 Exec=panther_launcher -s
 Icon=/usr/share/pixmaps/start.png
 Terminal=false
-StartupNotify=false' | tee panther-launcher/etc/xdg/autostart/panther-launcher.desktop
+StartupNotify=false'|tee panther-launcher/etc/xdg/autostart/panther-launcher.desktop
 dpkg-deb -e panther-launcher-sid_1.12.0-debian1_amd64.deb panther-launcher/DEBIAN
 rm -rf panther-launcher*.deb
 dpkg-deb -b panther-launcher .

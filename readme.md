@@ -117,10 +117,10 @@ Zoom (http)
 
 Para adicionar o repositório ao seu sistema, utilize os comandos abaixo:
 ```
-echo 'deb https://madlinux.sourceforge.io/repo' | sudo tee /etc/apt/sources.list.d/madlinux.list
+echo 'deb https://madlinux.sourceforge.io/repo'|sudo tee /etc/apt/sources.list.d/madlinux.list
 ```
 ```
-wget -qO- https://madlinux.sourceforge.io/repo/madlinux.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/madlinux.gpg
+wget -qO- https://madlinux.sourceforge.io/repo/madlinux.key|gpg --dearmor|sudo tee /etc/apt/trusted.gpg.d/madlinux.gpg
 ```
 ```
 sudo apt update

@@ -12,7 +12,7 @@ Section: audio
 Priority: optional
 Homepage: https://reaper.fm
 Description: REAPER is a complete digital audio production application for Windows and OS X, offering a full multitrack audio and MIDI recording, editing, processing, mixing and mastering toolset, REAPER supports a vast range of hardware, digital formats and plugins, and can be comprehensively extended, scripted and modified."|tee cockos-reaper/DEBIAN/control
-cat <<EOF |tee cockos-reaper/DEBIAN/preinst
+cat <<EOF|tee cockos-reaper/DEBIAN/preinst
 cd /tmp
 aria2c http://reaper.fm/$(wget -qO- http://reaper.fm/download.php|grep _linux_x86_64.tar.xz|cut -d '"' -f2)
 tar xf reaper*_linux_x86_64.tar.xz -C /tmp
