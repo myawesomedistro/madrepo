@@ -7,8 +7,8 @@ apt-fast install -y \
 	libxcb-ewmh-dev \
 	libxcb-keysyms1-dev \
 	libxcb-shape0-dev
-#git clone https://github.com/baskerville/bspwm
-git clone https://github.com/j-james/bspwm-rounded-corners
+git clone https://github.com/baskerville/bspwm
+#git clone https://github.com/j-james/bspwm-rounded-corners
 cd bspwm-rounded-corners
 sed -i 's/usr\/local/usr/g' Makefile
 make
