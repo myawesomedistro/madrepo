@@ -28,7 +28,7 @@ echo "Package: sonobus
 Version: $SONOBUS_TAG-$SONOBUS_VER
 Architecture: amd64
 Maintainer: Jesse Chappell <essej@github.com>
-Depends: libasound2, libopus
+Depends: libasound2, libopus0
 Section: audio
 Priority: optional
 Homepage: https://github.com/essej/sonobus
