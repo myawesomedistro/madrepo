@@ -14,7 +14,11 @@ sudo apt-fast install -y \
 git clone https://github.com/essej/sonobus
 cd sonobus/Builds/LinuxMakefile
 ./build.sh
-mkdir -pv sonobus/DEBIAN sonobus/usr/bin sonobus/usr/share/applications sonobus/usr/share/pixmaps
+mkdir -pv \
+    sonobus/DEBIAN \
+    sonobus/usr/bin \
+    sonobus/usr/share/applications \
+    sonobus/usr/share/pixmaps
 cp build/SonoBus sonobus/usr/bin/sonobus
 echo '[Desktop Entry]
 Type=Application
@@ -33,7 +37,7 @@ Depends: libasound2, libopus0
 Section: audio
 Priority: optional
 Homepage: https://github.com/essej/sonobus
-Description: Source code for SonoBus, a real-time network audio streaming collaboration tool."|tee sonobus/DEBIAN/control
+Description: SonoBus is a real-time network audio streaming collaboration tool."|tee sonobus/DEBIAN/control
 dpkg-deb -b sonobus .
 cd ../../..
 cp sonobus/Builds/LinuxMakefile/sonobus*.deb tmp/packages
