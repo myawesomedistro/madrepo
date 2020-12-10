@@ -7,10 +7,10 @@ apt-fast install -y \
 	libxcb-ewmh-dev \
 	libxcb-keysyms1-dev \
 	libxcb-shape0-dev
-#git clone https://github.com/j-james/bspwm-rounded-corners
-#cd bspwm-rounded-corners
-git clone https://github.com/baskerville/bspwm
-cd bspwm
+git clone https://github.com/j-james/bspwm-rounded-corners
+cd bspwm-rounded-corners
+#git clone https://github.com/baskerville/bspwm
+#cd bspwm
 sed -i 's/usr\/local/usr/g' Makefile
 make
 sudo checkinstall -y \
@@ -22,7 +22,7 @@ sudo checkinstall -y \
 	--requires 'libxcb-ewmh2, libxcb-util1' \
 	--provides 'bspwm'
 cd ..
-#cp bspwm-rounded-corners/bspwm*.deb tmp/packages
-cp bspwm/bspwm*.deb tmp/packages
+cp bspwm-rounded-corners/bspwm*.deb tmp/packages
+#cp bspwm/bspwm*.deb tmp/packages
 aria2c http://mirrors.kernel.org/ubuntu/pool/main/x/xcb-util/$(wget -qO- http://mirrors.kernel.org/ubuntu/pool/main/x/xcb-util/|grep amd64.deb|grep libxcb-util1|head -n1|cut -d \" -f2)
 cp libxcb-util*.deb tmp/packages
