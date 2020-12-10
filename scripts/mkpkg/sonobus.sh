@@ -13,6 +13,7 @@ sudo apt-fast install -y \
     libxrandr-dev
 git clone https://github.com/essej/sonobus
 cd sonobus/Builds/LinuxMakefile
+mkdir -pv ~/.vst3
 ./build.sh
 mkdir -pv \
     sonobus/DEBIAN \
