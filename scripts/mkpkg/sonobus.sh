@@ -1,5 +1,6 @@
 #!/bin/bash
-sudo apt-fast install -y \
+sudo apt-fast update
+sudo apt-fast install -y --fix-missing \
     libasound2-dev \
     libcurl4-gnutls-dev \
     libfreetype-dev \
