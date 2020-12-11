@@ -1,5 +1,6 @@
 #!/bin/bash
 sudo apt-fast update
+sudo apt-fast -fy
 sudo apt-fast install -y --fix-missing \
     libasound2-dev \
     libcurl4-gnutls-dev \
