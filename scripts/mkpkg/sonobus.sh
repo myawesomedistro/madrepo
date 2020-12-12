@@ -19,7 +19,7 @@ cd sonobus/Builds/LinuxMakefile
 ./build.sh
 mkdir -pv \
     sonobus/DEBIAN \
-    sonobus/lib/lxvst
+    sonobus/lib/lxvst \
     sonobus/usr/bin \
     sonobus/usr/share/applications \
     sonobus/usr/share/pixmaps
