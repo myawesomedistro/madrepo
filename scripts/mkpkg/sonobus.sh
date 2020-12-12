@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo apt-fast install \
+sudo apt-fast install -y \
     libasound2-dev \
     libcurl4-openssl-dev \
     libfreetype-dev \
