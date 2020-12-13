@@ -7,7 +7,7 @@ mkdir -pv linvst3/DEBIAN linvst3/usr/bin linvst3/usr/share/LinVst/64bit-32bit
 rm -rf LinVst3*/convert/ReadMe
 cp -rf LinVst3*/convert/* linvst3/usr/bin/
 mv -v LinVst3*/embedded/linvst3.so linvst3/usr/share/LinVst/64bit-32bit/
-cp -rf LinVst3-2.15/embedded/* linvst3/usr/bin/
+cp -rf LinVst3*/embedded/* linvst3/usr/bin/
 echo "Package: linvst3-64bit
 Version: $LINVST_TAG
 Section: audio
