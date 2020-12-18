@@ -22,7 +22,7 @@ make docs
 sudo checkinstall -D -y \
   --install=no \
   --maintainer tryone144@github.com \
-  --pkgversion `echo $(git describe --always --dirty)-$(git log -1 --date=short --pretty=format:%cd)|sed 's/v//g'|sed 's/_/-/g'` \
+  --pkgversion 1-`echo $(git describe --always --dirty)-$(git log -1 --date=short --pretty=format:%cd)|sed 's/v//g'|sed 's/_/-/g'` \
   --requires libconfig9
 mkdir -pv \
     compton/DEBIAN \
