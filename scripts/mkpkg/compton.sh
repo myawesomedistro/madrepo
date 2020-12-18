@@ -22,15 +22,14 @@ make docs
 sudo checkinstall -D -y \
   --install=no \
   --maintainer tryone144@github.com \
-  --pkgversion 1-`echo $(git describe --always --dirty)-$(git log -1 --date=short --pretty=format:%cd)|sed 's/v//g'|sed 's/_/-/g'` \
+  --pkgversion 2-`echo $(git describe --always --dirty)-$(git log -1 --date=short --pretty=format:%cd)|sed 's/v//g'|sed 's/_/-/g'` \
   --requires libconfig9
+cd ..
 mkdir -pv \
     compton/DEBIAN \
     compton/etc/xdg
-dpkg-deb -xv compton*.deb compton
-dpkg-deb -e compton*.deb compton/DEBIAN
-cp ../assets/compton.conf compton/etc/xdg/compton.conf
-rm -rf compton*.deb
+dpkg-deb -xv compton/compton*.deb compton
+dpkg-deb -e compton/compton*.deb compton/DEBIAN
+cp assets/compton.conf compton/etc/xdg/compton.conf
 dpkg-deb -b compton .
-cd ..
-cp compton/compton*.deb tmp/packages
+cp compton*.deb tmp/packages
