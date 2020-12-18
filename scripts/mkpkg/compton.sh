@@ -24,5 +24,13 @@ sudo checkinstall -D -y \
   --maintainer tryone144@github.com \
   --pkgversion `echo $(git describe --always --dirty)-$(git log -1 --date=short --pretty=format:%cd)|sed 's/v//g'|sed 's/_/-/g'` \
   --requires libconfig9
+mkdir -pv \
+    compton/DEBIAN \
+    compton/etc/xdg
+dpkg-deb -xv compton*.deb compton
+dpkg-deb -e compton*.deb compton/DEBIAN
+cp ../assets/compton.conf compton/etc/xdg/compton.conf
+rm -rf compton*.deb
+dpkg-deb -b compton .
 cd ..
 cp compton/compton*.deb tmp/packages
