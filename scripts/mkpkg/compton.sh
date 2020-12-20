@@ -26,10 +26,10 @@ sudo checkinstall -D -y \
   --requires libconfig9
 cd ..
 mkdir -pv \
-    compton/DEBIAN \
-    compton/etc/xdg
-dpkg-deb -xv compton/compton*.deb compton
-dpkg-deb -e compton/compton*.deb compton/DEBIAN
-cp assets/compton.conf compton/etc/xdg/compton.conf
-dpkg-deb -b compton .
+    compton-deb/DEBIAN \
+    compton-deb/etc/xdg
+dpkg-deb -xv compton/compton*.deb compton-deb
+dpkg-deb -e compton/compton*.deb compton-deb/DEBIAN
+cp assets/compton.conf compton-deb/etc/xdg/compton.conf
+dpkg-deb -b compton-deb .
 cp compton*.deb tmp/packages
