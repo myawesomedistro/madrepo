@@ -24,7 +24,7 @@ mkdir -pv \
     sonobus/usr/share/applications \
     sonobus/usr/share/pixmaps
 cp -rf build/SonoBus sonobus/usr/bin/SonoBus
-cp -rf build/SonoBus.vst3 sonobus/usr/lib/lxvst/SonoBus
+cp -rf build/SonoBus.vst3 sonobus/usr/lib/lxvst/
 cp sonobus.desktop sonobus/usr/share/applications/sonobus.desktop
 cp ../../images/SonoBus-Icon.svg sonobus/usr/share/pixmaps/sonobus.svg
 SONOBUS_TAG=`echo $(wget -qO- https://api.github.com/repos/essej/sonobus/releases|grep tag|grep -v Next|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/essej\/sonobus\/releases\/tag\///g'|sed 's/v//g')`
