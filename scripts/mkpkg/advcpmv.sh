@@ -30,4 +30,4 @@ Homepage: https://github.com/jarun/advcpmv
 Description: Advanced Copy is a mod for the GNU cp and GNU mv tools which adds a progress bar and provides some info on what's going on. It was written by Florian Zwicke and released under the GPL."|tee advcpmv/DEBIAN/control
 dpkg-deb -b advcpmv .
 cd ..
-cp coreutils/advcpmv*.deb tmp/packages
+cp coreutils*/advcpmv*.deb tmp/packages
