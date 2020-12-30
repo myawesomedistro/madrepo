@@ -16,9 +16,9 @@ mkdir -pv advcpmv/DEBIAN advcpmv/usr/bin advcpmv/usr/local/bin
 cp src/cp advcpmv/usr/bin/advcp
 cp src/mv advcpmv/usr/bin/advmv
 echo '#!/bin/bash
-advcp -g $@'|tee advcpmv/usr/local/bin/cp
+advcp -g "$@"'|tee advcpmv/usr/local/bin/cp
 echo '#!/bin/bash
-advmv -g $@'|tee advcpmv/usr/local/bin/mv
+advmv -g "$@"'|tee advcpmv/usr/local/bin/mv
 chmod +x advcpmv/usr/local/bin/cp advcpmv/usr/local/bin/mv
 echo "Package: advcpmv
 Version: $ADVCPMV_TAG
