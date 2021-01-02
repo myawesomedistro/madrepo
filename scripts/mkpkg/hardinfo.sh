@@ -3,6 +3,7 @@ sudo apt-fast install -y \
     cmake \
     libgtk2.0-dev \
     libjson-glib-dev \
+    libsensors4-dev \
     libsoup2.4-dev \
     libx11-dev
 git clone https://github.com/lpereira/hardinfo
