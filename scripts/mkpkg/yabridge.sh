@@ -1,9 +1,9 @@
 #!/bin/bash
 mkdir -p yabridge/DEBIAN yabridge/usr/bin yabridge/opt yabridge/etc/xdg/autostart
-cp assets/yabridge/yabridgectl/yabridgectl yabridgectl/usr/bin/yabridgectl
-cp assets/yabridge/yabridge yabridge/opt/
+cp assets/yabridge/yabridgectl/yabridgectl yabridge/usr/bin/yabridgectl
+cp -r assets/yabridge/yabridge yabridge/opt/
 echo '[Desktop Entry]
-Name=YABridge
+Name=yabridge
 Icon=preferences-plugin
 Exec=bash /opt/yabridge/user-data.sh
 Terminal=false
