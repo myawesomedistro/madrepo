@@ -12,10 +12,11 @@ StartupNotify=false'|tee yabridge/etc/xdg/autostart/yabridge.desktop
 echo '#!/bin/bash
 cp -r /opt/yabridge $HOME/.local/share/'|tee yabridge/opt/yabridge/user-data.sh
 chmod +x yabridge/opt/yabridge/user-data.sh
-YABRIDGE_TAG=`echo $(wget -qO- https://api.github.com/repos/robbert-vdh/yabridge/releases|grep tag|grep -v Next|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/robbert-vdh\/yabridge\/releases\/tag\///g')`
-YABRIDGE_VER=`echo $(wget -qO- https://api.github.com/repos/robbert-vdh/yabridge/commits/master|grep date|head -n 1|cut -d \" -f4|cut -d \: -f1|cut -d \T -f1)`
+#YABRIDGE_TAG=`echo $(wget -qO- https://api.github.com/repos/robbert-vdh/yabridge/releases|grep tag|grep -v Next|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/robbert-vdh\/yabridge\/releases\/tag\///g')`
+#YABRIDGE_VER=`echo $(wget -qO- https://api.github.com/repos/robbert-vdh/yabridge/commits/master|grep date|head -n1|cut -d \" -f4|cut -d \: -f1|cut -d \T -f1)`
+YABRIDGE_VER=$(ls assets/yabridge/yabridge-*.zip|sed 's/yabridge-//g'|sed 's/.tar.gz.zip//g')
 echo "Package: yabridge
-Version: $YABRIDGE_TAG_$YABRIDGE_VER
+Version: $YABRIDGE_VER
 Section: audio
 Priority: optional
 Architecture: amd64
