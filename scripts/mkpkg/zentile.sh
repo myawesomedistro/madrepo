@@ -1,5 +1,5 @@
 #!/bin/bash
-ZENTILE_TAG=$(wget -qO- https://api.github.com/repos/blrsn/zentile/releases|grep tag|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/blrsn\/zentile\/releases\/tag\///g')
+ZENTILE_TAG=$(wget -qO- https://api.github.com/repos/blrsn/zentile/releases|grep tag|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/blrsn\/zentile\/releases\/tag\/v//g')
 mkdir -pv zentile/DEBIAN zentile/etc/xdg/autostart zentile/usr/bin zentile/usr/share/applications
 wget -qO zentile/usr/bin/zentile $(wget -qO- https://api.github.com/repos/blrsn/zentile/releases|grep browser_download_url|grep amd64|head -n1|cut -d \" -f4)
 chmod +x -v zentile/usr/bin/zentile
