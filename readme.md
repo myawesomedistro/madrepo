@@ -15,6 +15,8 @@ AppImageLauncher (GitHub)
 
 Apt-fast (PPA)
 
+Bat (GitHub)
+
 Crown translate (GitHub)
 
 DockbarX (PPA)
@@ -23,7 +25,13 @@ Etcher (Apt)
 
 Flat-remix (PPA)
 
+Font Manager (PPA)
+
 Fonts Emojione (Ubuntu Focal)
+
+FreeTube (GitHub)
+
+GameHub (GitHub)
 
 Giara (PPA)
 
@@ -31,19 +39,27 @@ Gitify (GitHub)
 
 GNOME ALSA mixer (Debian Stretch)
 
+Haguichi (PPA)
+
 Hardcode-tray (OBS)
+
+Heroic/Legendary (GitHub)
 
 KXStudio (Apt) (PPA)
 
-LinVst (GitHub)
+LazPaint (GitHub)
+
+LinVST (GitHub)
 
 Mailspring (GitHub)
 
-MEGAsync (Debian Buster)
+MEGAsync (Debian Buster deps)
 
 MellowPlayer (OBS)
 
 Meteo (PPA)
+
+Min (GitHub)
 
 NoMachine (http)
 
@@ -57,6 +73,8 @@ Pb-for-desktop (GitHub)
 
 PDFsam (GitHub)
 
+Persepolis (PPA)
+
 QOwnNotes (PPA)
 
 qView (PPA)
@@ -67,21 +85,33 @@ RCloneTray (GitHub)
 
 RStudio (http)
 
+Simplenote (GitHub)
+
+SonoBus (Apt)
+
+Steam (http)
+
 Stremio (http)
 
 superProductivity (GitHub)
 
 Syncthing (Apt)
 
+Tartube (GitHub)
+
 ToneLib Zoom (http)
 
 Ubuntu Make (PPA)
+
+UNetbootin (PPA)
 
 WINE (Apt)
 
 Zoom (http)
 
 ## Compilações
+
+[Advanced copy](https://github.com/jarun/advcpmv)
 
 [Bashrun](https://gitlab.com/myawesomedistro/bashrun)
 
@@ -95,6 +125,8 @@ Zoom (http)
 
 [Gestures](https://github.com/bulletmark/libinput-gestures)
 
+[Go disk usage](https://github.com/dundee/gdu)
+
 [LightDM webkit2 greeter](https://github.com/Antergos/web-greeter/issues/) (OBS) (Repack) [Tema Glorious](https://github.com/manilarome/lightdm-webkit2-theme-glorious)
 
 [Linux notification center](https://github.com/phuhl/linux_notification_center)
@@ -104,6 +136,10 @@ Zoom (http)
 [MAD Welcome](https://gitlab.com/myawesomedistro/madwelcome)
 
 [Panther launcher](https://gitlab.com/rastersoft/panther_launcher) (http) (Repack)
+
+[Picom](https://github.com/jonaburg/picom)
+
+[PowerKit](https://github.com/rodlie/powerkit)
 
 [Rambox](https://github.com/ramboxapp/community-edition) (GitHub) (Repack)
 
@@ -115,7 +151,11 @@ Zoom (http)
 
 [XFCE4 panel profiles](https://docs.xfce.org/apps/xfce4-panel-profiles/start) (Ubuntu focal) (Repack)
 
-Para adicionar o repositório ao seu sistema, utilize os comandos abaixo:
+[yabridge](https://github.com/robbert-vdh/yabridge)
+
+[zentile](https://github.com/blrsn/zentile)
+
+Para adicionar este repositório ao seu sistema, utilize os comandos abaixo:
 ```
 echo 'deb https://madlinux.sourceforge.io/repo'|sudo tee /etc/apt/sources.list.d/madlinux.list
 ```
