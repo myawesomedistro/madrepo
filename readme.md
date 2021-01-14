@@ -85,6 +85,8 @@ RCloneTray (GitHub)
 
 RStudio (http)
 
+Signal (Apt)
+
 Simplenote (GitHub)
 
 SonoBus (Apt)
