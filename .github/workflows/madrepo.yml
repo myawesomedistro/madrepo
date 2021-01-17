@@ -40,4 +40,4 @@ jobs:
           repo rauldipeas@web.sourceforge.net:/home/project-web/madlinux/htdocs
           sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- \
           rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
-          repo rauldipeas@frs.sourceforge.net:/home/frs/madlinux
+          repo rauldipeas@frs.sourceforge.net:/home/frs/project/madlinux
