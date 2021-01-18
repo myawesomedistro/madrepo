@@ -35,6 +35,8 @@ GameHub (GitHub)
 
 Giara (PPA)
 
+GitHub Desktop (Apt)
+
 Gitify (GitHub)
 
 GNOME ALSA mixer (Debian Stretch)
