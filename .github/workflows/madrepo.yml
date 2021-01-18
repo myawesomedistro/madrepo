@@ -54,4 +54,4 @@ jobs:
           echo 'def password_eval():
               return ""
           accounts=[{ "server":"https://matrix.org", "username":"raul_dipeas", "passeval":password_eval }]'|tee ~/.config/matrixcli/config.py
-          matrixcli -u raul_dipeas -p ${{ secrets.MATRIX_PASS }} send -r '!knBRYnXnZPjrUESyac:matrix.org' 'GitHub Actions ${{ job }} with commit ${{ github.sha }} build with ${{ job.status }}'
+          matrixcli -u raul_dipeas -p ${{ secrets.MATRIX_PASS }} send -r '!knBRYnXnZPjrUESyac:matrix.org' 'GitHub Actions ${{ job }} with commit ${{ github.sha }} build with ${{ job.status }} https://gitlab.com/myawesomedistro/madrepo'
