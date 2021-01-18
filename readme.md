@@ -115,6 +115,8 @@ UNetbootin (PPA)
 
 WINE (Apt)
 
+ZeroTier (Apt)
+
 Zoom (http)
 
 ## Compilações
