@@ -53,8 +53,6 @@ jobs:
           sudo ./install.sh
           mkdir -pv ~/.config/matrixcli
           echo 'def password_eval():
-          return "12345"
-          accounts=[{ "server":"https://matrix.org",
-                      "username":"raul_dipeas",
-                      "passeval":password_eval }]'|tee ~/.config/matrixcli/config.py
+              return ""
+          accounts=[{ "server":"https://matrix.org", "username":"raul_dipeas", "passeval":password_eval }]'|tee ~/.config/matrixcli/config.py
           matrixcli -u raul_dipeas -p ${{ secrets.MATRIX_PASS }} send -r '!knBRYnXnZPjrUESyac:matrix.org' ${{ job.status }}
