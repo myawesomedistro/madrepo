@@ -51,4 +51,4 @@ jobs:
           cd matrixcli
           sudo apt install -y python3-setuptools
           sudo ./install.sh
-          matrixcli -u raul_dipeas -p ${{ secrets.MATRIX_PASS }} send -r '!knBRYnXnZPjrUESyac:matrix.org' ${{ job.status }}
+          matrixcli -s matrix.org -u raul_dipeas -p ${{ secrets.MATRIX_PASS }} send -r '!knBRYnXnZPjrUESyac:matrix.org' ${{ job.status }}
