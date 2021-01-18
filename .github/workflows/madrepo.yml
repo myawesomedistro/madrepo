@@ -41,3 +41,12 @@ jobs:
           sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- \
           rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
           repo rauldipeas@frs.sourceforge.net:/home/frs/project/madlinux
+
+      - name: Notificação para o Element
+        uses: Numericas/matrix-action@v1
+        with:
+          server: matrix.org
+          room-id: madlinux
+          user: raul_dipeas
+          password: ${{ secrets.MATRIX_PASSWORD }}
+          status: ${{ job.status }}
