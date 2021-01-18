@@ -46,10 +46,9 @@ jobs:
           repo rauldipeas@frs.sourceforge.net:/home/frs/project/madlinux
 
       - name: Notificação para o Element
-        uses: Numericas/matrix-action@v1
-        with:
-          server: matrix.org
-          room-id: '!knBRYnXnZPjrUESyac'
-          user: raul_dipeas
-          password: ${{ secrets.MATRIX_PASSWORD }}
-          status: ${{ job.status }}
+        run: |
+          git clone https://github.com/saadnpq/matrixcli
+          cd matrixcli
+          sudo apt install -y python3-setuptools
+          sudo ./install.sh
+          matrixcli send -u raul_dipeas -p ${{ secrets.MATRIX_PASS }} -r '!knBRYnXnZPjrUESyac:matrix.org' ${{ job.status }}
