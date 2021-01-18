@@ -11,7 +11,7 @@ for VST2 plugins and quick startup times. Its modern concurrent architecture and
 focus on transparency allows yabridge to be both fast and highly compatible,
 while also staying easy to debug and maintain.
 
-_VST3 support is currently experimental and only available on the master branch. Yabridge 3.0 will ship with full VST3 support._
+_VST3 support is currently experimental and only available on the master branch. Yabridge 3.0 will ship with full VST 3.7.1 support._
 _See [this document](https://github.com/robbert-vdh/yabridge/blob/master/src/common/serialization/vst3/README.md) for all currently implemented interfaces._
 
 ![yabridge screenshot](https://raw.githubusercontent.com/robbert-vdh/yabridge/master/screenshot.png)
@@ -109,10 +109,12 @@ this you can use yabridgectl's `add`, `rm` and `list` commands. You can also use
 `yabridgectl status` to get an overview of the current settings and the
 installation status of all of your plugins. To add the most common VST2 plugin
 directory, use
-`yabridgectl add "$HOME/.wine/drive_c/Program Files/Steinberg/VstPlugins"`. VST3
-plugins under Windows are always installed to the same directory, and you can
-use `yabridgectl add "$HOME/.wine/drive_c/Program Files/Common Files/VST3"` to
-add that one.
+`yabridgectl add "$HOME/.wine/drive_c/Program Files/Steinberg/VstPlugins"`. The
+directory may be capitalized as `VSTPlugins` on your system, and some plugins
+may install themselves to a similar directory directly inside of Program Files.
+VST3 plugins under Windows are always installed to the same directory, and you
+can use `yabridgectl add "$HOME/.wine/drive_c/Program Files/Common Files/VST3"`
+to add that one.
 
 Finally, you can run `yabridgectl sync` to finish setting up yabridge for all of
 your plugins. For VST2 plugins this will create `.so` files alongside the
@@ -150,6 +152,14 @@ configuration and tell it to search for VST2 plugins under
 you've added in yabridgectl. That way it will automatically pick up all of your
 Windows VST2 plugins. For VST3 plugins no additional DAW configuration is
 needed, as those plugins will be set up under `~/.vst3/yabridge`.
+
+If you're using a DAW that does not have an easy way to configure VST2 plugin
+paths, such as Renoise, then you may want to consider using the following to
+just symlink the plugin directories to their default search locations:
+
+```shell
+ln -s "$HOME/.wine/drive_c/Program Files/Steinberg/" ~/.vst/yabridge-steinberg
+```
 
 ### Bitbridge
 
@@ -192,6 +202,15 @@ shell's `PATH` environment variable. If you're unsure what your login shell is,
 then you can open a terminal and run `echo $SHELL` to find out. For the below
 examples I'll assume you're using the default installation location at
 `~/.local/share/yabridge`.
+
+- First if all, if you're using GDM, LightDM or LXDM as your display manager
+  (for instance if you're using GNOME, XFCE or LXDE), then your display manager
+  won't respect your login shell and it will always use `/bin/sh` instead. In
+  that case you will need to add the following line to `~/.profile`:
+
+  ```shell
+  export PATH="$HOME/.local/share/yabridge:$PATH"
+  ```
 
 - If you are using the default **Bash** shell, then you will want to add the
   following line to `~/.bash_profile` (or `~/.profile` if it does not exist):
@@ -272,6 +291,8 @@ plugin._
 | `cache_time_info`     | `{true,false}` | Compatibility option for plugins that call `audioMasterGetTime()` multiple times during a single processing cycle. With this option subsequent calls during a single audio processing cycle will reuse the value returned by the first call to this function. This is a bug in the plugin, and this option serves as a temporary workaround until the plugin fixes the issue.                                                                                                             |
 | `editor_double_embed` | `{true,false}` | Compatibility option for plugins that rely on the absolute screen coordinates of the window they're embedded in. Since the Wine window gets embedded inside of a window provided by your DAW, these coordinates won't match up and the plugin would end up drawing in the wrong location without this option. Currently the only known plugins that require this option are _PSPaudioware_ plugins with expandable GUIs, such as E27. Defaults to `false`.                                |
 | `editor_xembed`       | `{true,false}` | Use Wine's XEmbed implementation instead of yabridge's normal window embedding method. Some plugins will have redrawing issues when using XEmbed and editor resizing won't always work properly with it, but it could be useful in certain setups. You may need to use [this Wine patch](https://github.com/psycha0s/airwave/blob/master/fix-xembed-wine-windows.patch) if you're getting blank editor windows. Defaults to `false`. _This option is only availble on the master branch._ |
+| `frame_rate`          | `<number>`     | The rate at which Win32 events are being handled and usually also the refresh rate of a plugin's editor GUI. When using plugin groups all plugins share the same event handling loop, so in those the last loaded plugin will set the refresh rate. Defaults to `60`. _This option is only available on the master branch._                                                                                                                                                               |
+| `vst3_no_scaling`     | `{true,false}` | Disable HiDPI scaling for VST3 plugins. Wine currently does not have proper fractional HiDPI support, so you might have to enable this option if you're using a HiDPI display. In most cases setting the font DPI in `winecfg`'s graphics tab to 192 will cause plugins to scale correctly at 200% size. Defaults to `false`. _This option is only available on the master branch._                                                                                                       |
 
 These options are workarounds for issues mentioned in the [known
 issues](#runtime-dependencies-and-known-issues) section. Depending on the hosts
@@ -305,6 +326,9 @@ editor_xembed = true
 ["SWAM Cello 64bit.so"]
 cache_time_info = true
 
+["sforzando VST_x64.so"]
+frame_rate = 24
+
 # Simple glob patterns can be used to avoid unneeded repetition
 ["iZotope*/Neutron *"]
 group = "izotope"
@@ -334,11 +358,15 @@ deep within in, like this:
 
 ["FabFilter*.vst3"]
 group = "fabfilter"
+vst3_no_scaling = true
 
 ["Misstortion2.vst3"]
-# This option is not needed and also not recommended, but an example config file
-# without any options looks weird
-editor_xembed = true
+vst3_no_scaling = true
+
+# These options would be applied to all plugins that do not already have their
+# own configuration set
+["*"]
+vst3_no_scaling = true
 ```
 
 ## Troubleshooting common issues
@@ -423,22 +451,25 @@ these negative side effects:
   priorities. Note that on Arch and Manjaro this does not necessarily require a
   realtime kernel as they include the `PREEMPT` patch set in their regular
   kernels. You can verify that this is workign correctly by running
-  `chrt -f 10 whoami`, which should print your username.
+  `chrt -f 10 date`, which should print the current date and time. You can also
+  try enabling the `threadirqs` kernel parameter which can in some situations
+  help with xruns.
 
-- The other even more important thing you can do is to use a build of Wine with
-  Proton's fsync patches. This can improve performance significantly, especially
-  when using a lot of plugins at the same time. If you're running Arch or
-  Manjaro, then you can use the
-  [wine-nspa](https://github.com/nine7nine/pkgbuilds_nspa/tree/master/wine-nspa)
-  PKGBUILD for an audio production optimized version of Wine Staging 5.9, or
-  [wine-tkg](https://github.com/Frogging-Family/wine-tkg-git) for a more up to
-  date version with a different patch set. Aside from a patched copy of Wine
-  you'll also need a supported kernel for this to work. Manjaro's kernel
+- Make sure you're using the performance frequency scaling governor, as changing
+  clock speeds in the middle of a real time workload can cause latency spikes.
+
+- The last but probably even more important thing you can do is to use a build
+  of Wine with Proton's fsync patches. This can improve performance
+  significantly, especially when using a lot of plugins at the same time. If
+  you're running Arch or Manjaro, then you can use [Tk-Glitch's Wine
+  fork](https://github.com/Frogging-Family/wine-tkg-git) for a customizable
+  version of Wine with the fsync patches included. Aside from a patched copy of
+  Wine you'll also need a supported kernel for this to work. Manjaro's kernel
   supports fsync out of the box, and on Arch you can use the `linux-zen` kernel.
   Finally you'll have to set the `WINEFSYNC` environment variable to `1` to
   enable fsync. See the [search path setup](#search-path-setup) section for more
-  information on where to do this. You can use the following command to check if
-  this is set correctly:
+  information on where to set this environment variable. You can use the
+  following command to check if this is set correctly:
 
   ```shell
   env -i HOME="$HOME" $SHELL -l -c 'echo $WINEFSYNC'
@@ -490,15 +521,18 @@ include:
 - **PSPaudioware** plugins with expandable GUIs, such as E27, may have their GUI
   appear in the wrong location after the GUI has been expanded. You can enable
   an alternative [editor hosting mode](#compatibility-options) to fix this.
-- **SWAM Cello** has a bug where it asks the host for the current buffer's time
-  and tempo information for every sample it processes instead of doing it only
-  once per buffer, resulting in very bad performance. You can enable the time
-  info cache [compatibility option](#compatibility-options) to work around this
-  until this is fixed on the plugin's side.
-- Plugins like **FabFilter Pro-Q 3** that can share data between different
+- The VST2 version of **SWAM Cello** has a bug where it asks the host for the
+  current buffer's time and tempo information for every sample it processes
+  instead of doing it only once per buffer, resulting in very bad performance.
+  You can enable the time info cache [compatibility
+  option](#compatibility-options) to work around this until this is fixed on the
+  plugin's side.
+- VST2 plugins like **FabFilter Pro-Q 3** that can share data between different
   instances of the same plugin plugins have to be hosted within a single process
   for that functionality to work. See the [plugin groups](#plugin-groups)
-  section for instructions on how to set this up.
+  section for instructions on how to set this up. This is not necessary for VST3
+  plugins, as multiple instances of those plugins will always be hosted in a
+  single process by design.
 - **Drag-and-drop** from applications running under Wine to X11 does not yet
   work, so you won't be able to drag samples and MIDI files from a plugin to the
   host. At least, not directly. Because Windows applications have to create
@@ -517,22 +551,29 @@ Aside from that, these are some known caveats:
 - Most recent **iZotope** plugins don't have a functional GUI in a typical out
   of the box Wine setup because of missing dependencies. Please let me know if
   you know which dependencies are needed for these plugins to render correctly.
-- MIDI key labels (commonly used for drum machines and multisamplers) will not
-  be updated after the host first asks for them since VST 2.4 has no way to let
-  the host know that those labels have been updated. Deactivating and
-  reactivating the plugin will cause these labels to be updated again for the
-  current patch.
+- MIDI key labels for VST2 plugins (commonly used for drum machines and
+  multisamplers) will not be updated after the host first asks for them since
+  VST 2.4 has no way to let the host know that those labels have been updated.
+  Deactivating and reactivating the plugin will cause these labels to be updated
+  again for the current patch.
 
-There are also some VST2.X extension features that have not been implemented yet
-because I haven't seen them used. Let me know if you need any of these features
-for a certain plugin or VST host:
+There are also some extension features for both VST2.4 and VST3 that have not
+been implemented yet because I either haven't seen them used or because we don't
+have permission to do so yet. Examples of this are:
 
-- SysEx messages. In addition to MIDI, VST 2.4 also supports SysEx. I don't know
-  of any hosts or plugins that use this, but please let me know if this is
-  needed for something.
-- Vendor specific extension (for instance, for
+- SysEx messages for VST2 plugins. In addition to MIDI, VST 2.4 also supports
+  SysEx. I don't know of any hosts or plugins that use this, but please let me
+  know if this is needed for something.
+- Vendor specific VST2.4 extensions (for instance, for
   [REAPER](https://www.reaper.fm/sdk/vst/vst_ext.php), though most of these
   extension functions will work out of the box without any modifications).
+- The [Presonus extensions](https://presonussoftware.com/en_US/developer) to teh
+  VST3 interfaces. All of these extensions have been superseded by official VST3
+  interfaces in later versions of the VST3 SDK.
+- VST3 plugin support for
+  [ARA](https://www.celemony.com/en/service1/about-celemony/technologies). These
+  interfaces are currently closed source so we cannot yet implement them, but
+  this may chance soon.
 
 ## Building
 
@@ -561,7 +602,7 @@ disable unity builds completely by getting rid of `--unity=on` at the cost of
 slightly longer build times.
 
 ```shell
-meson setup --buildtype=release --cross-file cross-wine.conf --unity=on --unity-size=1000 build
+meson setup --buildtype=release --cross-file=cross-wine.conf --unity=on --unity-size=1000 build
 ninja -C build
 ```
 

@@ -30,6 +30,19 @@ TODO: Add an updated screenshot with some fancy VST3-only plugins to the readme
   Wine's XEmbed implementation instead of yabridge's normal window embedding
   method. Some plugins have will have redrawing issues when using XEmbed or the
   editor might not show up at all, so your mileage may very much vary.
+- Added a frame rate
+  [option](https://github.com/robbert-vdh/yabridge#compatibility-options) to
+  change the rate at which events are being handled. This usually also controls
+  the refresh rate of a plugin's editor GUI. The default 60 updates per second
+  may be too high if your computer's cannot keep up, or if you're using a host
+  that never closes the editor such as Ardour.
+- Added a [compatibility
+  option](https://github.com/robbert-vdh/yabridge#compatibility-options) to
+  disable HiDPI scaling for VST3 plugins. At the moment Wine does not have
+  proper fractional HiDPI support, so some plugins might not scale their
+  interfaces correctly when the host tells those plugins to scale their GUIs. In
+  most cases setting the font DPI in `winecfg`'s graphics tab to 192 will also
+  cause the GUIs to scale correctly at 200%.
 
 ### Changed
 
@@ -45,6 +58,13 @@ TODO: Add an updated screenshot with some fancy VST3-only plugins to the readme
   difference in responsiveness.
 - VST2 editor idle events are now handled slightly differently. This should
   result in even more responsive GUIs for VST2 plugins.
+- Win32 and X11 events in the Wine plugin host are now handled with lower
+  scheduling priority than other tasks. With a properly configured system GUI
+  drawing should not affect DSP load at all, but this should help with less than
+  optimal setups some people were getting DSP load spikes with the editor open.
+- Opening and closing plugin editors is now also no longer done with realtime
+  priority. This should get rid of any latency spikes during those operations,
+  as the this could otherwise preempt the threads that were processing audio.
 - Changed part of the build process considering [this Wine
   bug](https://bugs.winehq.org/show_bug.cgi?id=49138). Building with Wine 5.7
   and 5.8 required a change, but that change now breaks builds using Wine 6.0
