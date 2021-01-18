@@ -35,7 +35,7 @@ GameHub (GitHub)
 
 Giara (PPA)
 
-GitHub Desktop (Apt)
+GitHub Desktop (GitHub)
 
 Gitify (GitHub)
 
