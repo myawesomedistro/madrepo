@@ -49,7 +49,7 @@ jobs:
         uses: Numericas/matrix-action@v1
         with:
           server: matrix.org
-          room-id: !knBRYnXnZPjrUESyac
+          room-id: '!knBRYnXnZPjrUESyac'
           user: raul_dipeas
           password: ${{ secrets.MATRIX_PASSWORD }}
           status: ${{ job.status }}
