@@ -51,6 +51,8 @@ KXStudio (Apt) (PPA)
 
 LazPaint (GitHub)
 
+Linux Firmware (Apt)
+
 LinVST (GitHub)
 
 Mailspring (GitHub)
@@ -68,6 +70,8 @@ NoMachine (http)
 obs-v4l2sink (Repack)
 
 OneDriver (PPA)
+
+OnlyOffice (Apt)
 
 Papirus (PPA)
 
