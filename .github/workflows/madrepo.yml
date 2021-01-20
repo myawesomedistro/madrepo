@@ -61,4 +61,4 @@ jobs:
         with:
           to: -1001267848465
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          args: GitHub Actions ${{ github.workflow }} with commit ${{ commit.ref }} build with **${{ job.status }}** https://gitlab.com/myawesomedistro/madrepo
+          args: GitHub Actions ${{ github.workflow }} with commit ${{ github.ref }} build with **${{ job.status }}** https://gitlab.com/myawesomedistro/madrepo
