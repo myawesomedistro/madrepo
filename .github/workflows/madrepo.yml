@@ -45,13 +45,20 @@ jobs:
           rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
           repo rauldipeas@frs.sourceforge.net:/home/frs/project/madlinux
 
-      - name: Notificação para o Element
-        run: |
-          git clone https://github.com/saadnpq/matrixcli
-          cd matrixcli
-          sudo ./install.sh
-          mkdir -pv ~/.config/matrixcli
-          echo 'def password_eval():
-              return ""
-          accounts=[{ "server":"https://matrix.org", "username":"raul_dipeas", "passeval":password_eval }]'|tee ~/.config/matrixcli/config.py
-          matrixcli -u raul_dipeas -p ${{ secrets.MATRIX_PASS }} send -r '!knBRYnXnZPjrUESyac:matrix.org' 'GitHub Actions ${{ github.workflow }} with commit ${{ github.sha }} build with ${{ job.status }} https://gitlab.com/myawesomedistro/madrepo'
+#      - name: Notificação para o Element
+#        run: |
+#          git clone https://github.com/saadnpq/matrixcli
+#          cd matrixcli
+#          sudo ./install.sh
+#          mkdir -pv ~/.config/matrixcli
+#          echo 'def password_eval():
+#              return ""
+#          accounts=[{ "server":"https://matrix.org", "username":"raul_dipeas", "passeval":password_eval }]'|tee ~/.config/matrixcli/config.py
+#          matrixcli -u raul_dipeas -p ${{ secrets.MATRIX_PASS }} send -r '!knBRYnXnZPjrUESyac:matrix.org' 'GitHub Actions ${{ github.workflow }} with commit ${{ github.ref }} build with ${{ job.status }} https://gitlab.com/myawesomedistro/madrepo'
+      
+      - name: Notificação para o Telegram
+        uses: appleboy/telegram-action@master
+        with:
+          to: -1001267848465
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          args: GitHub Actions ${{ github.workflow }} with commit ${{ commit.ref }} build with **${{ job.status }}** https://gitlab.com/myawesomedistro/madrepo
