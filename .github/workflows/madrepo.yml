@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Verificação de saída do repositório git
         uses: actions/checkout@v1
+      
+
 
 #      - name: Notificação para o Element
 #        run: |
@@ -33,4 +35,4 @@ jobs:
           to: -1001267848465
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
-          message: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)\n Veja o _commit_ de referência neste link:\n https://gitlab.com/myawesomedistro/madrepo/-/commit/{{ commit.sha }}"
+          message: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)\n\nVeja o _commit_ de referência neste link:\n\nhttps://gitlab.com/myawesomedistro/madrepo/-/commit/{{ commit.sha }}"
