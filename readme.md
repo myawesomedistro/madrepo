@@ -55,6 +55,8 @@ KXStudio (Apt) (PPA)
 
 LazPaint (GitHub)
 
+Lightworks (http)
+
 Linux Firmware (Apt)
 
 LinVST (GitHub)
