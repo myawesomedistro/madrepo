@@ -1,0 +1,2 @@
+#!/bin/bash
+aria2c -o "lightworks`wget -qO- https://www.lwks.com/get-linux|grep 'Release Notes'|cut -d '>' -f2|cut -d '<' -f1|sed 's/Release Notes//g'|head -n1`.deb" https://www.lwks.com`wget -qO- https://www.lwks.com$(wget -qO- https://www.lwks.com/get-linux|grep deb|cut -d '"' -f4)|grep 'click here'|cut -d '"' -f2`
