@@ -23,6 +23,8 @@ DockbarX (PPA)
 
 Etcher (Apt)
 
+Evernote (http)
+
 Flat-remix (PPA)
 
 Font Manager (PPA)
@@ -46,6 +48,8 @@ Haguichi (PPA)
 Hardcode-tray (OBS)
 
 Heroic/Legendary (GitHub)
+
+Hypnotix (GitHub)
 
 KXStudio (Apt) (PPA)
 
