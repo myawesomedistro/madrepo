@@ -28,7 +28,7 @@ jobs:
             new: packages-amd64-2.log
             mode: addition
             tolerance: better
-            output: packages.log
+            output: packages-amd64.txt
 
       - name: Comparação do estado dos pacotes `i386`
         uses: LouisBrunner/diff-action@v0.1.0
@@ -37,4 +37,4 @@ jobs:
             new: packages-i386-2.log
             mode: addition
             tolerance: better
-            output: packages.log            
+            output: packages-i386.txt
