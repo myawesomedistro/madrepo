@@ -34,7 +34,7 @@ jobs:
       - name: Instalação de dependências
         run: |
           sudo apt update
-          sudo apt-fast install -y build-essential checkinstall difftools dpkg-sig reprepro sshpass
+          sudo apt-fast install -y build-essential checkinstall diffutils dpkg-sig reprepro sshpass
 
       - name: Compilação do repositório apt
         run: bash build.sh
