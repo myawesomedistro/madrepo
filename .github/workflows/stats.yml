@@ -1,4 +1,4 @@
-name: MAD Repo
+name: MAD Repo Diff
 on:
   push:
     branches: 
@@ -12,12 +12,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-20.04
-    steps:
-      - name: Verificação de saída do repositório git
-        uses: actions/checkout@v1
-      
+    steps:      
       - name: Checagem dos pacotes
         run: |
+            wget -O- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep 'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-`date +'%d-%m-%Y-%H-%M'`.log
             wget -O- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep 'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-`date +'%d-%m-%Y-%H-%M'`.log
             sleep 120
             wget -O- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep 'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-`date +'%d-%m-%Y-%H-%M'`.log
