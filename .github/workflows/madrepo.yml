@@ -6,7 +6,6 @@ on:
     paths-ignore:
       - 'readme.md'
       - 'TODO'
-      - '.github/workflows/stats.yml'
   schedule:
   - cron: "0 0,6,12,18 * * *"
 
@@ -63,7 +62,7 @@ jobs:
             new: packages-amd64-2.log
             mode: addition
             tolerance: mixed
-            output: packages-amd64.txt
+            output: pacotes-amd64.txt
 
       - name: Comparação do estado dos pacotes i386
         uses: LouisBrunner/diff-action@v0.1.0
@@ -72,7 +71,7 @@ jobs:
             new: packages-i386-2.log
             mode: addition
             tolerance: mixed
-            output: packages-i386.txt
+            output: pacotes-i386.txt
          
       - name: Notificação para o Telegram
         uses: appleboy/telegram-action@master
@@ -88,8 +87,8 @@ jobs:
           to: -1001267848465
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
-          message: "Confira os pacotes `amd64` adicionados e removidos no arquivo packages-amd64.txt."
-          document: "packages-amd64.txt"
+          message: "Confira os pacotes `amd64` adicionados e removidos no arquivo `pacotes-amd64.txt`."
+          document: "pacotes-amd64.txt"
 
       - name: Notificação para o Telegram
         uses: appleboy/telegram-action@master
@@ -97,5 +96,5 @@ jobs:
           to: -1001267848465
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
-          message: "Confira os pacotes `i386` adicionados e removidos no arquivo packages-i386.txt."
-          document: "packages-i386.txt"          
+          message: "Confira os pacotes `i386` adicionados e removidos no arquivo `pacotes-i386.txt`."
+          document: "pacotes-i386.txt"          
