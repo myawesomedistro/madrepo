@@ -88,6 +88,7 @@ jobs:
           to: -1001267848465
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
+          message: "Confira os pacotes `amd64` adicionados e removidos no arquivo packages-amd64.txt."
           document: "packages-amd64.txt"
 
       - name: Notificação para o Telegram
@@ -96,4 +97,5 @@ jobs:
           to: -1001267848465
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
+          message: "Confira os pacotes `i386` adicionados e removidos no arquivo packages-i386.txt."
           document: "packages-i386.txt"          
