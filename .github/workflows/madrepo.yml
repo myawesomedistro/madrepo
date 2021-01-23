@@ -38,37 +38,18 @@ jobs:
 
       - name: Upload do repositório apt para o SourceForge
         run: |
-          wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep 'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-`date +'%d-%m-%Y-%H-%M'`.log
-          wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep 'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-`date +'%d-%m-%Y-%H-%M'`.log
           sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- \
           rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
           repo rauldipeas@web.sourceforge.net:/home/project-web/madlinux/htdocs
           sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- \
           rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
           repo rauldipeas@frs.sourceforge.net:/home/frs/project/madlinux
-          wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep 'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-`date +'%d-%m-%Y-%H-%M'`.log
-          wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep 'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-`date +'%d-%m-%Y-%H-%M'`.log
-          diff --new-line-format="+ %L" --old-line-format="- %L" --unchanged-line-format="= %L" packages-amd64*|grep '+ ' > packages.log
-          diff --new-line-format="+ %L" --old-line-format="- %L" --unchanged-line-format="= %L" packages-amd64*|grep '\- ' >> packages.log
-          diff --new-line-format="+ %L" --old-line-format="- %L" --unchanged-line-format="%L" packages-i386*|grep '+ ' >> packages.log
-          diff --new-line-format="+ %L" --old-line-format="- %L" --unchanged-line-format="%L" packages-i386*|grep '\- ' >> packages.log
-
-#      - name: Notificação para o Element
-#        run: |
-#          git clone https://github.com/saadnpq/matrixcli
-#          cd matrixcli
-#          sudo ./install.sh
-#          mkdir -pv ~/.config/matrixcli
-#          echo 'def password_eval():
-#              return ""
-#          accounts=[{ "server":"https://matrix.org", "username":"raul_dipeas", "passeval":password_eval }]'|tee ~/.config/matrixcli/config.py
-#          matrixcli -u raul_dipeas -p ${{ secrets.MATRIX_PASS }} send -r '!knBRYnXnZPjrUESyac:matrix.org' 'GitHub Actions ${{ github.workflow }} with commit ${{ github.sha }} build with ${{ job.status }} https://gitlab.com/myawesomedistro/madrepo'
-      
+         
       - name: Notificação para o Telegram
         uses: appleboy/telegram-action@master
         with:
           to: -1001267848465
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
-          message: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)\n\nConfira os pacotes modificados no arquivo `packages.log`\n\nVeja o `commit` de referência neste link:\n\nhttps://gitlab.com/myawesomedistro/madrepo/-/commit/{{ commit.sha }}."
+          message: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)\n\nVeja o `commit` de referência neste link:\n\nhttps://gitlab.com/myawesomedistro/madrepo/-/commit/{{ commit.sha }}."
           document: "packages.log"
