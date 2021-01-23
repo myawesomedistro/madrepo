@@ -20,7 +20,7 @@ jobs:
             sleep 120
             wget -O- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep 'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-`date +'%d-%m-%Y-%H-%M'`.log
             wget -O- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep 'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-`date +'%d-%m-%Y-%H-%M'`.log
-            diff --new-line-format="+ %L" --old-line-format="- %L" --unchanged-line-format="= %L" packages-amd64*|grep '+ ' > packages.log
-            diff --new-line-format="+ %L" --old-line-format="- %L" --unchanged-line-format="= %L" packages-amd64*|grep '\- ' >> packages.log
-            diff --new-line-format="+ %L" --old-line-format="- %L" --unchanged-line-format="%L" packages-i386*|grep '+ ' >> packages.log
-            diff --new-line-format="+ %L" --old-line-format="- %L" --unchanged-line-format="%L" packages-i386*|grep '\- ' >> packages.log7
+            diff --new-line-format="+ %L" --old-line-format="- %L" --unchanged-line-format="= %L" `ls packages-amd64*`|grep '+ ' > packages.log
+            diff --new-line-format="+ %L" --old-line-format="- %L" --unchanged-line-format="= %L" `ls packages-amd64*`|grep '\- ' >> packages.log
+            diff --new-line-format="+ %L" --old-line-format="- %L" --unchanged-line-format="%L" `ls packages-i386*`|grep '+ ' >> packages.log
+            diff --new-line-format="+ %L" --old-line-format="- %L" --unchanged-line-format="%L" `ls packages-i386*`|grep '\- ' >> packages.log7
