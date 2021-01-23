@@ -6,6 +6,7 @@ on:
     paths-ignore:
       - 'readme.md'
       - 'TODO'
+      - '.github/workflows/stats.yml'
   schedule:
   - cron: "0 0,6,12,18 * * *"
 

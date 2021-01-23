@@ -23,18 +23,18 @@ jobs:
 
       - name: Comparação do estado dos pacotes `amd64`
         uses: LouisBrunner/diff-action@v0.1.0
-          with:
-            old: packages-amd64-1.log
-            new: packages-amd64-2.log
-            mode: addition
-            tolerance: better
-            output: packages-amd64.txt
+            with:
+                old: packages-amd64-1.log
+                new: packages-amd64-2.log
+                mode: addition
+                tolerance: better
+                output: packages-amd64.txt
 
       - name: Comparação do estado dos pacotes `i386`
         uses: LouisBrunner/diff-action@v0.1.0
-          with:
-            old: packages-i386-1.log
-            new: packages-i386-2.log
-            mode: addition
-            tolerance: better
-            output: packages-i386.txt
+            with:
+                old: packages-i386-1.log
+                new: packages-i386-2.log
+                mode: addition
+                tolerance: better
+                output: packages-i386.txt
