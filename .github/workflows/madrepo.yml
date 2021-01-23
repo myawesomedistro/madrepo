@@ -15,6 +15,11 @@ jobs:
     steps:
       - name: Verificação de saída do repositório git
         uses: actions/checkout@v1
+
+      - name: Download do log de pacotes
+        run: |
+          wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep 'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-`date +'%d-%m-%Y-%H-%M'`.log
+          wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep 'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-`date +'%d-%m-%Y-%H-%M'`.log
       
       - name: Configuração do host
         run: |
@@ -45,6 +50,15 @@ jobs:
           rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
           repo rauldipeas@frs.sourceforge.net:/home/frs/project/madlinux
 
+      - name: Log de pacotes novos e removidos
+        run: |
+          wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep 'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-`date +'%d-%m-%Y-%H-%M'`.log
+          wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep 'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-`date +'%d-%m-%Y-%H-%M'`.log
+          diff --new-line-format="+ %L" --old-line-format="- %L" --unchanged-line-format="= %L" packages-amd64*|grep '+ ' > packages.log
+          diff --new-line-format="+ %L" --old-line-format="- %L" --unchanged-line-format="= %L" packages-amd64*|grep '\- ' >> packages.log
+          diff --new-line-format="+ %L" --old-line-format="- %L" --unchanged-line-format="%L" packages-i386*|grep '+ ' >> packages.log
+          diff --new-line-format="+ %L" --old-line-format="- %L" --unchanged-line-format="%L" packages-i386*|grep '\- ' >> packages.log
+
 #      - name: Notificação para o Element
 #        run: |
 #          git clone https://github.com/saadnpq/matrixcli
@@ -62,4 +76,5 @@ jobs:
           to: -1001267848465
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
-          message: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)\n\nVeja o `commit` de referência neste link:\n\nhttps://gitlab.com/myawesomedistro/madrepo/-/commit/{{ commit.sha }}"
+          message: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)\n\nConfira os pacotes modificados no arquivo `packages.log`\n\nVeja o `commit` de referência neste link:\n\nhttps://gitlab.com/myawesomedistro/madrepo/-/commit/{{ commit.sha }}."
+          document: "packages.log"
