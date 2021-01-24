@@ -1,7 +1,7 @@
 name: MAD Repo
 on:
   push:
-    branches: 
+    branches:
       - master
     paths-ignore:
       - 'readme.md'
@@ -15,21 +15,21 @@ jobs:
     steps:
       - name: Verificação de saída do repositório git
         uses: actions/checkout@v1
-      
+
       - name: Configuração do host
         run: |
-          sudo sed -i 's/_APTMGR=apt-get/_APTMGR=apt/g' /etc/apt-fast.conf
-          sudo dpkg --add-architecture i386
-      
+            sudo sed -i 's/_APTMGR=apt-get/_APTMGR=apt/g' /etc/apt-fast.conf
+            sudo dpkg --add-architecture i386
+
       - name: Instalação da chave GPG
         run: |
-          aria2c ${{ secrets.GPG_SEC }}
-          gpg --batch --allow-secret-key-import --import madlinux_sec.gpg
-      
+            aria2c ${{ secrets.GPG_SEC }}
+            gpg --batch --allow-secret-key-import --import madlinux_sec.gpg
+
       - name: Instalação de dependências
         run: |
-          sudo apt update
-          sudo apt-fast install -y build-essential checkinstall dpkg-sig reprepro sshpass zip
+            sudo apt update
+            sudo apt-fast install -y build-essential checkinstall dpkg-sig reprepro sshpass
 
       - name: Download das informações de estado do repositório
         run: |
@@ -39,16 +39,18 @@ jobs:
       - name: Compilação do repositório apt
         run: bash build.sh
 #        env:
-#          BASHRUN_GL_TOKEN: ${{ secrets.BASHRUN_GL_TOKEN }}
+#            BASHRUN_GL_TOKEN: ${{ secrets.BASHRUN_GL_TOKEN }}
 
-      - name: Upload do repositório apt para o SourceForge
+      - name: Upload do repositório apt para o SourceForge Web
+            sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- \
+            rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
+            repo rauldipeas@web.sourceforge.net:/home/project-web/madlinux/htdocs
+
+      - name: Upload do repositório apt para o SourceForge FRS
         run: |
-          sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- \
-          rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
-          repo rauldipeas@web.sourceforge.net:/home/project-web/madlinux/htdocs
-          sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- \
-          rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
-          repo rauldipeas@frs.sourceforge.net:/home/frs/project/madlinux
+            sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- \
+            rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
+            repo rauldipeas@frs.sourceforge.net:/home/frs/project/madlinux
 
       - name: Download das informações de estado do repositório
         run: |
@@ -74,31 +76,16 @@ jobs:
             output: pacotes-i386.txt
 
       - name: Compactação dos arquivos de log
-        run: zip pacotes.zip pacotes-amd64.txt pacotes-i386.txt
+        uses: papeloto/action-zip@v1
+        with:
+            files: pacotes-amd64.txt pacotes-i386.txt
+            dest: pacotes.zip
 
       - name: Notificação para o Telegram
         uses: appleboy/telegram-action@master
         with:
-          to: -1001267848465
-          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          format: markdown
-          message: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)\n\nVeja o `commit` de referência neste link:\n\nhttps://gitlab.com/myawesomedistro/madrepo/-/commit/{{ commit.sha }}.\n\nConfira os pacotes adicionados e removidos no arquivo `pacotes.zip`."
-          document: pacotes.zip
-          
-#      - name: Notificação para o Telegram
-#        uses: appleboy/telegram-action@master
-#        with:
-#          to: -1001267848465
-#          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-#          format: markdown
-#          message: "Confira os pacotes `amd64` adicionados e removidos no arquivo `pacotes-amd64.txt`."
-#          document: "pacotes-amd64.txt"
-
-#      - name: Notificação para o Telegram
-#        uses: appleboy/telegram-action@master
-#        with:
-#          to: -1001267848465
-#          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-#          format: markdown
-#          message: "Confira os pacotes `i386` adicionados e removidos no arquivo `pacotes-i386.txt`."
-#          document: "pacotes-i386.txt"
+            to: -1001267848465
+            token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+            format: markdown
+            message: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)\n\nVeja o `commit` de referência neste link:\n\nhttps://gitlab.com/myawesomedistro/madrepo/-/commit/{{ commit.sha }}.\n\nConfira os pacotes adicionados e removidos no arquivo `pacotes.zip`."
+            document: pacotes.zip
