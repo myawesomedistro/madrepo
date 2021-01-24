@@ -79,22 +79,24 @@ jobs:
           to: -1001267848465
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
-          message: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)\n\nVeja o `commit` de referência neste link:\n\nhttps://gitlab.com/myawesomedistro/madrepo/-/commit/{{ commit.sha }}."
-
-      - name: Notificação para o Telegram
-        uses: appleboy/telegram-action@master
-        with:
-          to: -1001267848465
-          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          format: markdown
-          message: "Confira os pacotes `amd64` adicionados e removidos no arquivo `pacotes-amd64.txt`."
+          message: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)\n\nVeja o `commit` de referência neste link:\n\nhttps://gitlab.com/myawesomedistro/madrepo/-/commit/{{ commit.sha }}.\n\nConfira os pacotes adicionados e removidos nos arquivos disponíveis nesta mensagem."
           document: "pacotes-amd64.txt"
+          document: "pacotes-i386.txt"
+          
+#      - name: Notificação para o Telegram
+#        uses: appleboy/telegram-action@master
+#        with:
+#          to: -1001267848465
+#          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+#          format: markdown
+#          message: "Confira os pacotes `amd64` adicionados e removidos no arquivo `pacotes-amd64.txt`."
+#          document: "pacotes-amd64.txt"
 
-      - name: Notificação para o Telegram
-        uses: appleboy/telegram-action@master
-        with:
-          to: -1001267848465
-          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          format: markdown
-          message: "Confira os pacotes `i386` adicionados e removidos no arquivo `pacotes-i386.txt`."
-          document: "pacotes-i386.txt"          
+#      - name: Notificação para o Telegram
+#        uses: appleboy/telegram-action@master
+#        with:
+#          to: -1001267848465
+#          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+#          format: markdown
+#          message: "Confira os pacotes `i386` adicionados e removidos no arquivo `pacotes-i386.txt`."
+#          document: "pacotes-i386.txt"
