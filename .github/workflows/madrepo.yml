@@ -29,7 +29,7 @@ jobs:
       - name: Instalação de dependências
         run: |
           sudo apt update
-          sudo apt-fast install -y build-essential checkinstall dpkg-sig reprepro sshpass
+          sudo apt-fast install -y build-essential checkinstall dpkg-sig reprepro sshpass zip
 
       - name: Download das informações de estado do repositório
         run: |
@@ -72,16 +72,18 @@ jobs:
             mode: addition
             tolerance: mixed
             output: pacotes-i386.txt
-         
+
+      - name: Compactação dos arquivos de log
+        run: zip pacotes.zip pacotes-amd64.txt pacotes-i386.txt
+
       - name: Notificação para o Telegram
         uses: appleboy/telegram-action@master
         with:
           to: -1001267848465
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
-          message: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)\n\nVeja o `commit` de referência neste link:\n\nhttps://gitlab.com/myawesomedistro/madrepo/-/commit/{{ commit.sha }}.\n\nConfira os pacotes adicionados e removidos nos arquivos disponíveis nesta mensagem."
-          document: "pacotes-amd64.txt"
-          document: "pacotes-i386.txt"
+          message: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)\n\nVeja o `commit` de referência neste link:\n\nhttps://gitlab.com/myawesomedistro/madrepo/-/commit/{{ commit.sha }}.\n\nConfira os pacotes adicionados e removidos no arquivo `pacotes.zip`."
+          document: pacotes.zip
           
 #      - name: Notificação para o Telegram
 #        uses: appleboy/telegram-action@master
