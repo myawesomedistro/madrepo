@@ -5,7 +5,7 @@ dpkg-deb -xv obsidian*.deb obsidian
 dpkg-deb -e obsidian*.deb obsidian/DEBIAN
 rm -rfv obsidian*.deb
 aria2c $(wget -qO- https://api.github.com/repos/obsidianmd/obsidian-releases/releases|grep browser_download_url|grep download|grep asar.gz|head -n1|cut -d '"' -f4)
-gzip -d obsidian*asar.gz
+gzip -dv obsidian*asar.gz
 cp -rf obsidian*.asar obsidian/opt/Obsidian/resources/obsidian.asar
 sed -i "s/Version: .*/Version: $OBSIDIAN_TAG/g" obsidian/DEBIAN/control
 rm -rfv obsidian/DEBIAN/md5sum
