@@ -151,6 +151,8 @@ Zoom (http)
 
 [MAD Welcome](https://gitlab.com/myawesomedistro/madwelcome)
 
+[Obsidian](https://github.com/obsidianmd/obsidian-releases) (GitHub) (Repack)
+
 [Panther launcher](https://gitlab.com/rastersoft/panther_launcher) (http) (Repack)
 
 [Picom](https://github.com/jonaburg/picom)
