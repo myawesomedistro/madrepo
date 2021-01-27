@@ -71,6 +71,8 @@ Meteo (PPA)
 
 Min (GitHub)
 
+Minio (http)
+
 NoMachine (http)
 
 obs-v4l2sink (Repack)
