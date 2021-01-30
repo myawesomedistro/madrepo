@@ -103,6 +103,8 @@ Signal (Apt)
 
 Simplenote (GitHub)
 
+Skype (http)
+
 SonoBus (Apt)
 
 Steam (http)
