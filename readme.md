@@ -115,6 +115,8 @@ Syncthing (Apt)
 
 Tartube (GitHub)
 
+TeamViewer (http)
+
 ToneLib Zoom (http)
 
 Ubuntu Make (PPA)
