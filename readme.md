@@ -105,6 +105,8 @@ Simplenote (GitHub)
 
 Skype (http)
 
+Slack (http)
+
 SonoBus (Apt)
 
 Steam (http)
