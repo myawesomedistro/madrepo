@@ -3,6 +3,7 @@ sudo apt-fast install -y \
     appstream \
     appstream-util \
     build-essential \
+    desktop-file-utils \
     devscripts \
     gettext \
     git \
