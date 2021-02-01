@@ -41,11 +41,11 @@ jobs:
 #        env:
 #            BASHRUN_GL_TOKEN: ${{ secrets.BASHRUN_GL_TOKEN }}
 
-      - name: Upload do repositório apt para o SourceForge Web
-        run: |
-            sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- \
-            rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
-            repo rauldipeas@web.sourceforge.net:/home/project-web/madlinux/htdocs
+#      - name: Upload do repositório apt para o SourceForge Web
+#        run: |
+#            sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- \
+#            rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
+#            repo rauldipeas@web.sourceforge.net:/home/project-web/madlinux/htdocs
 
       - name: Upload do repositório apt para o SourceForge FRS
         run: |
