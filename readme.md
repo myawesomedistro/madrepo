@@ -123,6 +123,8 @@ TeamViewer (http)
 
 ToneLib Zoom (http)
 
+Touchégg (GitHub)
+
 Ubuntu Make (PPA)
 
 UNetbootin (PPA)
@@ -174,6 +176,8 @@ Zoom (http)
 [Rofi](https://github.com/davatorium/rofi)
 
 [Tela icon theme](https://github.com/vinceliuice/Tela-icon-theme)
+
+[Touché](https://github.com/JoseExposito/touche)
 
 [XFCE4 panel profiles](https://docs.xfce.org/apps/xfce4-panel-profiles/start) (Ubuntu focal) (Repack)
 
