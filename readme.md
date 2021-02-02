@@ -109,6 +109,8 @@ Slack (http)
 
 SonoBus (Apt)
 
+SpeedTest (Apt)
+
 Steam (http)
 
 Stremio (http)
