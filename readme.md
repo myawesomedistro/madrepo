@@ -35,6 +35,8 @@ FreeTube (GitHub)
 
 GameHub (GitHub)
 
+gg (Apt)
+
 Giara (PPA)
 
 GitHub Desktop (GitHub)
