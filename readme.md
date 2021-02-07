@@ -21,6 +21,8 @@ Crown translate (GitHub)
 
 DockbarX (PPA)
 
+Duplicati (GitHub)
+
 Etcher (Apt)
 
 Evernote (http)
