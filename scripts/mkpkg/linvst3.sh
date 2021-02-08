@@ -1,6 +1,6 @@
 #!/bin/bash
-LINVST_TAG=$(wget -qO- https://api.github.com/repos/osxmidi/LinVst3/releases|grep tag|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/osxmidi\/LinVst3\/releases\/tag\///g')
-wget $(wget -qO- https://api.github.com/repos/osxmidi/LinVst3/releases|grep browser_download_url|grep .zip|head -n1|cut -d \" -f4)
+LINVST_TAG=$(wget -O- https://api.github.com/repos/osxmidi/LinVst3/releases|grep tag|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/osxmidi\/LinVst3\/releases\/tag\///g')
+wget $(wget -O- https://api.github.com/repos/osxmidi/LinVst3/releases|grep browser_download_url|grep .zip|head -n1|cut -d \" -f4)
 unzip LinVst*.zip
 rm -rv LinVst3*.zip
 mkdir -pv linvst3/DEBIAN linvst3/usr/bin linvst3/usr/share/LinVst/64bit-32bit

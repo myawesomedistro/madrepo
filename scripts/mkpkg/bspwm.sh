@@ -24,5 +24,5 @@ sudo checkinstall -y \
 cd ..
 cp bspwm-rounded-corners/bspwm*.deb tmp/packages
 #cp bspwm/bspwm*.deb tmp/packages
-aria2c http://mirrors.kernel.org/ubuntu/pool/main/x/xcb-util/$(wget -qO- http://mirrors.kernel.org/ubuntu/pool/main/x/xcb-util/|grep amd64.deb|grep libxcb-util1|head -n1|cut -d \" -f2)
+aria2c http://mirrors.kernel.org/ubuntu/pool/main/x/xcb-util/$(wget -O- http://mirrors.kernel.org/ubuntu/pool/main/x/xcb-util/|grep amd64.deb|grep libxcb-util1|head -n1|cut -d \" -f2)
 cp libxcb-util*.deb tmp/packages
