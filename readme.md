@@ -145,6 +145,8 @@ Zoom (http)
 
 [Advanced copy](https://github.com/jarun/advcpmv)
 
+[Ananicy](https://github.com/Nefelim4ag/Ananicy)
+
 [Bashrun](https://gitlab.com/myawesomedistro/bashrun)
 
 [Bit](https://github.com/chriswalz/bit)
