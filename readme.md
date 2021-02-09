@@ -15,6 +15,8 @@ AppImageLauncher (GitHub)
 
 Apt-fast (PPA)
 
+Atom (http)
+
 Bat (GitHub)
 
 Crown translate (GitHub)
