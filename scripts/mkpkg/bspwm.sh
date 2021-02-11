@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 apt-fast install -y \
 	libxcb-icccm4-dev \
 	libxcb-xinerama0-dev \

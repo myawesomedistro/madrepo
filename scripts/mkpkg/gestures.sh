@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 apt-fast install -y libinput-tools
 git clone https://github.com/bulletmark/libinput-gestures.git
 cd libinput-gestures

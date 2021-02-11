@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 mkdir -p yabridge/DEBIAN yabridge/usr/bin yabridge/opt yabridge/etc/xdg/autostart
 cp assets/yabridge/yabridgectl/yabridgectl yabridge/usr/bin/yabridgectl
 cp -r assets/yabridge/yabridge yabridge/opt/
@@ -10,6 +11,7 @@ Terminal=false
 Type=Application
 StartupNotify=false'|tee yabridge/etc/xdg/autostart/yabridge.desktop
 echo '#!/bin/bash
+set -e
 cp -r /opt/yabridge $HOME/.local/share/'|tee yabridge/opt/yabridge/user-data.sh
 chmod +x yabridge/opt/yabridge/user-data.sh
 #YABRIDGE_TAG=`echo $(wget -O- https://api.github.com/repos/robbert-vdh/yabridge/releases|grep tag|grep -v Next|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/robbert-vdh\/yabridge\/releases\/tag\///g')`

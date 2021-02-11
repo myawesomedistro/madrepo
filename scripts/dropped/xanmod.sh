@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 wget https://dl.xanmod.org/xanmod-repository.deb
 sudo apt-fast install -y --no-install-recommends ./xanmod*.deb
 rm -rf xanmod*.deb

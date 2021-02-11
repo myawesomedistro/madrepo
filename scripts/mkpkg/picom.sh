@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 apt-fast install -y \
     libconfig-dev \
     libdbus-1-dev \

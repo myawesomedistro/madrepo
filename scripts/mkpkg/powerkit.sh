@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 sudo apt install -y \
     libx11-dev \
     libxrandr-dev \

@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 mkdir -pv tmp/packages
 for script in scripts/mkpkg/*.sh
 do

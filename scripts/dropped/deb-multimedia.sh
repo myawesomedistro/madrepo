@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 echo 'deb https://deb-multimedia.org bullseye main non-free'|sudo tee /etc/apt/sources.list.d/deb-multimedia.list
 aria2c http://www.deb-multimedia.org/pool/main/d/deb-multimedia-keyring/$(wget -O- http://www.deb-multimedia.org/pool/main/d/deb-multimedia-keyring/|grep all.deb|head -n1|cut -d \" -f2)
 sudo apt install -y --no-install-recommends ./deb-multimedia-keyring*.deb 2>/dev/null

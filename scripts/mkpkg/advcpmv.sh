@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 aria2c http://ftp.gnu.org/gnu/coreutils/$(wget -O- http://ftp.gnu.org/gnu/coreutils/|grep .tar.xz|cut -d '"' -f8|tail -n2|head -n1)
 tar xvJf coreutils*.tar.xz
 rm -rf coreutils*.tar.xz
@@ -16,8 +17,10 @@ mkdir -pv advcpmv/DEBIAN advcpmv/usr/bin advcpmv/usr/local/bin
 cp src/cp advcpmv/usr/bin/advcp
 cp src/mv advcpmv/usr/bin/advmv
 echo '#!/bin/bash
+set -e
 advcp -g "$@"'|tee advcpmv/usr/local/bin/cp
 echo '#!/bin/bash
+set -e
 advmv -g "$@"'|tee advcpmv/usr/local/bin/mv
 chmod +x advcpmv/usr/local/bin/cp advcpmv/usr/local/bin/mv
 echo "Package: advcpmv

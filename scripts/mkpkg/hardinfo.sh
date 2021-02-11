@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 sudo apt-fast install -y \
     cmake \
     libgtk2.0-dev \

@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 echo 'deb https://apt.syncthing.net/ syncthing stable'|sudo tee /etc/apt/sources.list.d/syncthing.list
 wget -O- https://syncthing.net/release-key.txt|gpg --dearmor|sudo tee /etc/apt/trusted.gpg.d/syncthing.gpg>/dev/null
 sudo apt update

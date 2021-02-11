@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 wget -O- https://install.zerotier.com | sudo bash
 echo 'deb http://download.zerotier.com/debian/buster buster main'|sudo tee /etc/apt/sources.list.d/zerotier.list
 sudo apt update

@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 TELA_TAG=$(wget -O- https://api.github.com/repos/vinceliuice/Tela-icon-theme/releases|grep tag|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/vinceliuice\/Tela-icon-theme\/releases\/tag\///g')
 git clone https://github.com/vinceliuice/Tela-icon-theme
 cd Tela-icon-theme/

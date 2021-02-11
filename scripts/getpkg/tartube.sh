@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 #TARTUBE_URL="https://sourceforge.net/projects/tartube/files"
 #TARTUBE_VER=`wget -O- https://sourceforge.net/projects/tartube/files|grep 'files/v'|grep download|head -n1|cut -d '/' -f5`
 #TARTUBE_FILE=`wget -O- $TARTUBE_URL/$TARTUBE_VER|grep STRICT.deb|head -n1|cut -d '"' -f2`

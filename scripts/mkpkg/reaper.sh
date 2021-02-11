@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 REAPER_VER=$(wget -O- http://reaper.fm|grep VERSION|cut -d '>' -f2|cut -d ':' -f1|sed 's/VERSION //g')
 mkdir -pv cockos-reaper/DEBIAN
 echo "Package: cockos-reaper

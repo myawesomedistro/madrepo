@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 apt-fast install -y \
   libx11-dev \
   libxcomposite-dev \

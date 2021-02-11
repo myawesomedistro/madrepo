@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 GDU_TAG=$(wget -O- https://api.github.com/repos/dundee/gdu/releases|grep tag|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/dundee\/gdu\/releases\/tag\/v//g')
 mkdir -p gdu/DEBIAN gdu/usr/bin
 aria2c $(wget -O- https://api.github.com/repos/dundee/gdu/releases|grep browser_download_url|grep linux-amd64|head -n1|cut -d \" -f4)

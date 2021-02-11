@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 echo 'deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main'|sudo tee /etc/apt/sources.list.d/signal.list
 wget -O- https://updates.signal.org/desktop/apt/keys.asc|gpg --dearmor|sudo tee /etc/apt/trusted.gpg.d/signal.gpg>/dev/null
 sudo apt update

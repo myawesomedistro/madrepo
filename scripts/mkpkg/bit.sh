@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 BIT_TAG=$(wget -O- https://api.github.com/repos/chriswalz/bit/releases|grep tag|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/chriswalz\/bit\/releases\/tag\/v//g')
 aria2c $(wget -O- https://api.github.com/repos/chriswalz/bit/releases|grep browser_download_url|grep linux_amd64.tar.gz|head -n1|cut -d \" -f4)
 tar -xzvf bit*linux_amd64.tar.gz

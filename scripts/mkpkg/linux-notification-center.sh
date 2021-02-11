@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 DEADD_TAG=$(wget -O- https://api.github.com/repos/phuhl/linux_notification_center/releases|grep tag|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/phuhl\/linux_notification_center\/releases\/tag\///g')
 mkdir -pv linux-notification-center/DEBIAN linux-notification-center/etc/xdg/autostart linux-notification-center/usr/bin linux-notification-center/usr/share/applications
 wget -qO linux-notification-center/usr/bin/deadd-notification-center $(wget -O- https://api.github.com/repos/phuhl/linux_notification_center/releases|grep browser_download_url|head -n1|cut -d \" -f4)

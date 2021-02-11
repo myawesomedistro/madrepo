@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 aria2c https://rastersoft.com/descargas/panther_launcher/panther-launcher-sid_1.12.0-debian1_amd64.deb
 dpkg-deb -xv panther-launcher-sid_1.12.0-debian1_amd64.deb panther-launcher
 mkdir -pv \
