@@ -135,6 +135,8 @@ Touchégg (GitHub)
 
 Ubuntu Make (PPA)
 
+Ulauncher (GitHub)
+
 UNetbootin (PPA)
 
 WINE (Apt)
