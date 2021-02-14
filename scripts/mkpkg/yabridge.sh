@@ -1,8 +1,13 @@
 #!/bin/bash
 set -e
-mkdir -p yabridge/DEBIAN yabridge/usr/bin yabridge/opt yabridge/etc/xdg/autostart
-cp assets/yabridge/yabridgectl/yabridgectl yabridge/usr/bin/yabridgectl
-cp -r assets/yabridge/yabridge yabridge/opt/
+aria2c $(wget -O- https://api.github.com/repos/robbert-vdh/yabridge/releases|grep browser_download_url|grep download|head -n2|tail -n1|cut -d '"' -f4)
+tar -zxf yabridge*.tar.gz
+rm -rf yabridge*.tar.gz
+mkdir -p yabridge/DEBIAN yabridge/usr/bin yabridge/opt/yabridge yabridge/etc/xdg/autostart
+mv yabridge/yabridgectl yabridge/usr/bin/yabridgectl
+mv yabridge/libyabridge* yabridge/opt/yabridge/
+mv yabridge/yabridge* yabridge/opt/yabridge/
+rm -rf yabridge/README.md yabridge/CHANGELOG.md
 echo '[Desktop Entry]
 Name=yabridge
 Icon=preferences-plugin
@@ -14,11 +19,9 @@ echo '#!/bin/bash
 set -e
 cp -r /opt/yabridge $HOME/.local/share/'|tee yabridge/opt/yabridge/user-data.sh
 chmod +x yabridge/opt/yabridge/user-data.sh
-#YABRIDGE_TAG=`echo $(wget -O- https://api.github.com/repos/robbert-vdh/yabridge/releases|grep tag|grep -v Next|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/robbert-vdh\/yabridge\/releases\/tag\///g')`
-#YABRIDGE_VER=`echo $(wget -O- https://api.github.com/repos/robbert-vdh/yabridge/commits/master|grep date|head -n1|cut -d \" -f4|cut -d \: -f1|cut -d \T -f1)`
-YABRIDGE_VER=`ls assets/yabridge/yabridge-*.zip|sed 's/assets\/yabridge\/yabridge-//g'|sed 's/.tar.gz.zip//g'`
+YABRIDGE_TAG=`echo $(wget -O- https://api.github.com/repos/robbert-vdh/yabridge/releases|grep tag|grep -v Next|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/robbert-vdh\/yabridge\/releases\/tag\///g')`
 echo "Package: yabridge
-Version: $YABRIDGE_VER
+Version: $YABRIDGE_TAG
 Section: audio
 Priority: optional
 Architecture: amd64
