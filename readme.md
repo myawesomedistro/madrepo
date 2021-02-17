@@ -97,6 +97,8 @@ PDFsam (GitHub)
 
 Persepolis (PPA)
 
+PPA-Purge (Apt)
+
 QOwnNotes (PPA)
 
 qView (PPA)
