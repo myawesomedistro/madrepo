@@ -57,6 +57,8 @@ Heroic/Legendary (GitHub)
 
 Hypnotix (GitHub)
 
+KDiskMark (GitHub)
+
 KXStudio (Apt) (PPA)
 
 LazPaint (GitHub)
