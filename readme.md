@@ -65,6 +65,8 @@ LazPaint (GitHub)
 
 Lightworks (http)
 
+LightZone (PPA)
+
 Linux Firmware (Apt)
 
 LinVST (GitHub)
