@@ -71,6 +71,8 @@ Linux Firmware (Apt)
 
 LinVST (GitHub)
 
+LSD (GitHub)
+
 Mailspring (GitHub)
 
 MEGAsync (Debian Buster deps)
