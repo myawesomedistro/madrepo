@@ -32,5 +32,5 @@ make
 cd distros/Ubuntu
 ./mkconfig.sh
 ./package.sh
-cd ../../
-find ./ -name *stremio*.deb -exec cp {} tmp/packages \;
+cd ../../../
+cp stremio-shell/distros/Ubuntu/stremio-shell/stremio*.deb tmp/packages
