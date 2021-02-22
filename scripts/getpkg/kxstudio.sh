@@ -4,4 +4,4 @@ wget https://launchpad.net/~kxstudio-debian/+archive/kxstudio/+files/kxstudio-re
 apt-fast install -y --no-install-recommends ./kxstudio*.deb
 rm -rf kxstudio*.deb
 apt-fast update
-grep ^Package: /var/lib/apt/lists/*kxstudio*_Package:s|awk '{print $2}'|sort -u|xargs apt-fast download
+grep ^Package: /var/lib/apt/lists/*kxstudio*_Packages|awk '{print $2}'|sort -u|xargs apt-fast download
