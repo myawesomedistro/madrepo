@@ -28,8 +28,8 @@ jobs:
 
       - name: Instalação de dependências
         run: |
-            sudo apt update
-            sudo apt-fast install -y build-essential checkinstall dpkg-sig reprepro sshpass
+            apt-fast update
+            apt-fast install -y build-essential checkinstall dpkg-sig reprepro sshpass
 
       - name: Download das informações de estado do repositório
         run: |
