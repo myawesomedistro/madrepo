@@ -57,6 +57,8 @@ Heroic/Legendary (GitHub)
 
 Hypnotix (GitHub)
 
+Jetbrains (Apt)
+
 KDiskMark (GitHub)
 
 KXStudio (Apt) (PPA)
