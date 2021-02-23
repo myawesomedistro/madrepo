@@ -85,6 +85,8 @@ Min (GitHub)
 
 Minio (http)
 
+MySQL (Apt)
+
 NoMachine (http)
 
 obs-v4l2sink (Repack)
@@ -146,6 +148,8 @@ Ubuntu Make (PPA)
 Ulauncher (GitHub)
 
 UNetbootin (PPA)
+
+VSCodium (GitHub)
 
 WINE (Apt)
 
