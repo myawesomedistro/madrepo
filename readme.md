@@ -23,6 +23,8 @@ Crown translate (GitHub)
 
 DockbarX (PPA)
 
+duf (GitHub)
+
 Duplicati (GitHub)
 
 Etcher (Apt)
