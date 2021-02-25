@@ -31,6 +31,8 @@ Etcher (Apt)
 
 Evernote (http)
 
+Figma (GitHub)
+
 Flat-remix (PPA)
 
 Font Manager (PPA)
