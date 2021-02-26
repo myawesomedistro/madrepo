@@ -28,7 +28,7 @@ cp -rf build/SonoBus sonobus/usr/bin/SonoBus
 cp -rf build/SonoBus.vst3 sonobus/usr/lib/lxvst/
 cp sonobus.desktop sonobus/usr/share/applications/sonobus.desktop
 cp ../../images/SonoBus-Icon.svg sonobus/usr/share/pixmaps/sonobus.svg
-SONOBUS_TAG=`echo $(wget -O- https://api.github.com/repos/essej/sonobus/releases|grep tag|grep -v Next|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/essej\/sonobus\/releases\/tag\///g'|sed 's/v//g')`
+SONOBUS_TAG=`echo $(wget -qO- https://api.github.com/repos/essej/sonobus/releases|grep tag|grep -v Next|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/essej\/sonobus\/releases\/tag\///g'|sed 's/v//g')`
 SONOBUS_VER=`echo $(git describe --always --dirty)-$(git log -1 --date=short --pretty=format:%cd)|sed 's/v//g'|sed 's/_/-/g'`
 echo "Package:: sonobus
 Version: $SONOBUS_TAG-$SONOBUS_VER

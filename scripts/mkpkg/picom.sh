@@ -31,7 +31,7 @@ git submodule update --init --recursive
 meson --buildtype=release . build
 ninja -C build
 mkdir -pv picom/DEBIAN picom/etc/xdg picom/usr/bin picom/usr/share/applications
-PICOM_TAG=`echo $(wget -O- https://api.github.com/repos/yshui/picom/releases|grep tag|grep -v Next|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/yshui\/picom\/releases\/tag\///g'|sed 's/v//g')`
+PICOM_TAG=`echo $(wget -qO- https://api.github.com/repos/yshui/picom/releases|grep tag|grep -v Next|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/yshui\/picom\/releases\/tag\///g'|sed 's/v//g')`
 PICOM_VER=`echo $(git describe --always --dirty)-$(git log -1 --date=short --pretty=format:%cd)|sed 's/v//g'|sed 's/_/-/g'`
 echo "Package: picom
 Version: $PICOM_TAG-$PICOM_VER
