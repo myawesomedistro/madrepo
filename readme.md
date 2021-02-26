@@ -21,6 +21,8 @@ Bat (GitHub)
 
 Crown translate (GitHub)
 
+DeltaChat (http)
+
 DockbarX (PPA)
 
 duf (GitHub)
