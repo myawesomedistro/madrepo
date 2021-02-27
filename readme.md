@@ -19,6 +19,8 @@ Atom (http)
 
 Bat (GitHub)
 
+Caprine (GitHub)
+
 Crown translate (GitHub)
 
 DeltaChat (http)
