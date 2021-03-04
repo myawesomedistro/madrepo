@@ -33,8 +33,6 @@ Duplicati (GitHub)
 
 Etcher (Apt)
 
-Evernote (http)
-
 Figma (GitHub)
 
 Flat-remix (PPA)
