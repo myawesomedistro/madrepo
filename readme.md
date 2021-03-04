@@ -65,6 +65,8 @@ Heroic/Legendary (GitHub)
 
 Hypnotix (GitHub)
 
+Jellyfin (Apt)
+
 Jetbrains (Apt)
 
 KDiskMark (GitHub)
