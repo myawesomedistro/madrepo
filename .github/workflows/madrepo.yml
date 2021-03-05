@@ -48,10 +48,14 @@ jobs:
 #            repo rauldipeas@web.sourceforge.net:/home/project-web/madlinux/htdocs
 
       - name: Upload do repositório apt para o SourceForge FRS
-        run: |
-            sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- \
-            rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
-            repo rauldipeas@frs.sourceforge.net:/home/frs/project/madlinux
+        uses: Atyn/Simple-SFTP
+        with:
+          url: sftp://rauldipeas:${{ secrets.SOURCEFORGE_PASS }}@frs.sourceforge.net:/home/frs/project/madlinux
+          local-directory: repo
+#        run: |
+#            sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- \
+#            rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
+#            repo rauldipeas@frs.sourceforge.net:/home/frs/project/madlinux
 
       - name: Download das informações de estado do repositório
         run: |
@@ -61,32 +65,32 @@ jobs:
       - name: Comparação do estado dos pacotes amd64
         uses: LouisBrunner/diff-action@v0.1.0
         with:
-            old: packages-amd64-1.log
-            new: packages-amd64-2.log
-            mode: addition
-            tolerance: mixed
-            output: pacotes-amd64.txt
+          old: packages-amd64-1.log
+          new: packages-amd64-2.log
+          mode: addition
+          tolerance: mixed
+          output: pacotes-amd64.txt
 
       - name: Comparação do estado dos pacotes i386
         uses: LouisBrunner/diff-action@v0.1.0
         with:
-            old: packages-i386-1.log
-            new: packages-i386-2.log
-            mode: addition
-            tolerance: mixed
-            output: pacotes-i386.txt
+          old: packages-i386-1.log
+          new: packages-i386-2.log
+          mode: addition
+          tolerance: mixed
+          output: pacotes-i386.txt
 
       - name: Compactação dos arquivos de log
         uses: papeloto/action-zip@v1
         with:
-            files: pacotes-amd64.txt pacotes-i386.txt
-            dest: pacotes.zip
+          files: pacotes-amd64.txt pacotes-i386.txt
+          dest: pacotes.zip
 
       - name: Notificação para o Telegram
         uses: appleboy/telegram-action@master
         with:
-            to: -1001267848465
-            token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-            format: markdown
-            message: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)\n\nVeja o `commit` de referência neste link:\n\nhttps://gitlab.com/myawesomedistro/madrepo/-/commit/{{ commit.sha }}.\n\nConfira os pacotes adicionados e removidos no arquivo `pacotes.zip`."
-            document: pacotes.zip
+          to: -1001267848465
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          format: markdown
+          message: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)\n\nVeja o `commit` de referência neste link:\n\nhttps://gitlab.com/myawesomedistro/madrepo/-/commit/{{ commit.sha }}.\n\nConfira os pacotes adicionados e removidos no arquivo `pacotes.zip`."
+          document: pacotes.zip
