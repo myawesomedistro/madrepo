@@ -48,10 +48,20 @@ jobs:
 #            repo rauldipeas@web.sourceforge.net:/home/project-web/madlinux/htdocs
 
       - name: Upload do repositório apt para o SourceForge FRS
-        run: |
-            sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- \
-            rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
-            repo rauldipeas@frs.sourceforge.net:/home/frs/project/madlinux
+        uses: wangyucode/sftp-upload-action@v1.1
+        with:
+          host: 'frs.sourceforge.net'
+          port: 22
+          username: 'rauldipeas'
+          password: '${{ secrets.SOURCEFORGE_PASS }}'
+          localDir: 'repo'
+          remoteDir: '/home/frs/project/madlinux/'
+          dryRun: false
+
+#        run: |
+#            sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- \
+#            rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
+#            repo rauldipeas@frs.sourceforge.net:/home/frs/project/madlinux
 
       - name: Download das informações de estado do repositório
         run: |
