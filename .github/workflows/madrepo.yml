@@ -48,7 +48,7 @@ jobs:
 #            repo rauldipeas@web.sourceforge.net:/home/project-web/madlinux/htdocs
 
       - name: Upload do repositório apt para o SourceForge FRS
-        uses: hrsetyono/git-sftp-action@v4
+        uses: hrsetyono/git-sftp-action@4.0.1
         with:
           url: "sftp://frs.sourceforge.net/home/frs/project/madlinux"
           user: rauldipeas
