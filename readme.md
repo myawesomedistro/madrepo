@@ -131,8 +131,6 @@ Simplenote (GitHub)
 
 Skype (http)
 
-Slack (http)
-
 SonoBus (Apt)
 
 SpeedTest (Apt)
