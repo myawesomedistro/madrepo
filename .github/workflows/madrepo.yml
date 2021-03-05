@@ -50,12 +50,12 @@ jobs:
       - name: Upload do repositório apt para o SourceForge FRS
         uses: wangyucode/sftp-upload-action@v1.1
         with:
-          host: 'frs.sourceforge.net'
+          host: frs.sourceforge.net
           port: 22
-          username: 'rauldipeas'
-          password: '${{ secrets.SOURCEFORGE_PASS }}'
-          localDir: 'repo'
-          remoteDir: '/home/frs/project/madlinux/'
+          username: rauldipeas
+          password: ${{ secrets.SOURCEFORGE_PASS }}
+          localDir: repo
+          remoteDir: /home/frs/project/madlinux/
           dryRun: false
 
 #        run: |
