@@ -53,7 +53,6 @@ jobs:
           url: "sftp://frs.sourceforge.net/home/frs/project/madlinux"
           user: rauldipeas
           password: ${{ secrets.SOURCEFORGE_PASS }}
-          options: "ssh -o StrictHostKeyChecking=no"
           syncroot: /home/runner/work/madrepo/madrepo/repo
 #        run: |
 #            sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- \
