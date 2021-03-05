@@ -48,10 +48,13 @@ jobs:
 #            repo rauldipeas@web.sourceforge.net:/home/project-web/madlinux/htdocs
 
       - name: Upload do repositório apt para o SourceForge FRS
-        uses: Atyn/simple-sftp-action@0.0.2
+        uses: hrsetyono/git-sftp-action@v4
         with:
-          url: sftp://rauldipeas:${{ secrets.SOURCEFORGE_PASS }}@frs.sourceforge.net:/home/frs/project/madlinux
-          local-directory: ./repo
+          url: "sftp://frs.sourceforge.net:/home/frs/project/madlinux"
+          user: rauldipeas
+          password: ${{ secrets.SOURCEFORGE_PASS }}
+          syncroot: repo
+
 #        run: |
 #            sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- \
 #            rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
