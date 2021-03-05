@@ -36,8 +36,8 @@ jobs:
             wget -O- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep 'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-1.log
             wget -O- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep 'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-1.log
 
-      - name: Compilação do repositório apt
-        run: bash build.sh
+#      - name: Compilação do repositório apt
+#        run: bash build.sh
 #        env:
 #            BASHRUN_GL_TOKEN: ${{ secrets.BASHRUN_GL_TOKEN }}
 
@@ -48,16 +48,13 @@ jobs:
 #            repo rauldipeas@web.sourceforge.net:/home/project-web/madlinux/htdocs
 
       - name: Upload do repositório apt para o SourceForge FRS
-        uses: wangyucode/sftp-upload-action@v1.1
+        uses: hrsetyono/git-sftp-action@v4
         with:
-          host: frs.sourceforge.net
-          port: 22
-          username: rauldipeas
+          url: "sftp://frs.sourceforge.net/home/frs/project/madlinux"
+          user: rauldipeas
           password: ${{ secrets.SOURCEFORGE_PASS }}
-          localDir: repo
-          remoteDir: /home/frs/project/madlinux/
-          dryRun: false
-
+          options: "ssh -o StrictHostKeyChecking=no"
+          syncroot: /home/runner/work/madrepo/madrepo/repo
 #        run: |
 #            sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- \
 #            rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
