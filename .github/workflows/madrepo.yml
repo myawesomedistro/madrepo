@@ -51,7 +51,7 @@ jobs:
         uses: Atyn/simple-sftp-action@0.0.2
         with:
           url: sftp://rauldipeas:${{ secrets.SOURCEFORGE_PASS }}@frs.sourceforge.net:/home/frs/project/madlinux
-          local-directory: repo
+          local-directory: ./repo
 #        run: |
 #            sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- \
 #            rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
