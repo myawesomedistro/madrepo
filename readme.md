@@ -55,6 +55,8 @@ Gitify (GitHub)
 
 GNOME ALSA mixer (Debian Stretch)
 
+graSSHopper (Http)
+
 Haguichi (PPA)
 
 Hardcode-tray (OBS)
