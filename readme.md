@@ -81,8 +81,6 @@ LightZone (PPA)
 
 Linux Firmware (Apt)
 
-LinVST (GitHub)
-
 LSD (GitHub)
 
 Mailspring (GitHub)
@@ -194,8 +192,6 @@ Zoom (http)
 [LightDM webkit2 greeter](https://github.com/Antergos/web-greeter/issues/) (OBS) (Repack) [Tema Glorious](https://github.com/manilarome/lightdm-webkit2-theme-glorious)
 
 [Linux notification center](https://github.com/phuhl/linux_notification_center)
-
-[LinVST3](https://github.com/osxmidi/LinVst3)
 
 [MAD Welcome](https://gitlab.com/myawesomedistro/madwelcome)
 
