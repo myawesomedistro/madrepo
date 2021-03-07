@@ -7,5 +7,4 @@ sed -i "s/TAG/$BASHRUN_TAG/g" DEBIAN/control
 rm -rf .git
 cd ..
 dpkg-deb -b bashrun .
-#aria2c -o bashrun.deb http://my.opendesktop.org/s/KRQ9izGPxtsjMMs/download
 mv bashrun*.deb tmp/packages

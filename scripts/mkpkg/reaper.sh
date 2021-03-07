@@ -8,7 +8,7 @@ Architecture: amd64
 Maintainer: Justin Frankel <justinfrankel@reaper.fm>
 Pre-depends: aria2, wget
 Depends: cadence|studio-controls|qjackctl
-Recommends: q4wine, winehq-staging, yabridge
+Recommends: q4wine, winehq-stable, yabridge
 Section: audio
 Priority: optional
 Homepage: https://reaper.fm
