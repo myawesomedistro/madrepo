@@ -91,8 +91,6 @@ MellowPlayer (OBS)
 
 Meteo (PPA)
 
-Microsoft Teams (Http)
-
 Min (GitHub)
 
 Minio (http)
