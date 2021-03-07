@@ -121,6 +121,8 @@ PPA-Purge (Apt)
 
 QOwnNotes (PPA)
 
+Quill (http)
+
 qView (PPA)
 
 RClone (http)
