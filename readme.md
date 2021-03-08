@@ -81,6 +81,8 @@ LightZone (PPA)
 
 Linux Firmware (Apt)
 
+Local (http)
+
 LSD (GitHub)
 
 Mailspring (GitHub)
