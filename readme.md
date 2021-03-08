@@ -167,6 +167,8 @@ UNetbootin (PPA)
 
 VSCodium (GitHub)
 
+Whale (GitHub)
+
 WINE (Apt)
 
 ZeroTier (Apt)
