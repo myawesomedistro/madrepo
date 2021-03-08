@@ -7,6 +7,8 @@ Este repositório reune pacotes de vários outros repositórios, além de pacote
 Segue a lista:
 ## Espelhos
 
+Alva (GitHub)
+
 AppCenter (elementary OS)
 
 App Grid (PPA)
