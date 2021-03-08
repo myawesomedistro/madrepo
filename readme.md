@@ -87,6 +87,8 @@ LSD (GitHub)
 
 Mailspring (GitHub)
 
+Mark Text (GitHub)
+
 MEGAsync (Debian Buster deps)
 
 MellowPlayer (OBS)
