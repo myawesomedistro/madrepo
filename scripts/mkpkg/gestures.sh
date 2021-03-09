@@ -14,4 +14,4 @@ sudo checkinstall -D -y \
     --provides libinput-gestures
 cd ..
 mv libinput-gestures/libinput-gestures*.deb tmp/packages
-rm -rf libinput-gestures*
+sudo rm -rf libinput-gestures*

@@ -34,4 +34,4 @@ dpkg-deb -e compton/compton*.deb compton-deb/DEBIAN
 mv assets/compton.conf compton-deb/etc/xdg/compton.conf
 dpkg-deb -b compton-deb .
 mv compton*.deb tmp/packages
-rm -rf compton*
+sudo rm -rf compton*

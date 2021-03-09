@@ -82,4 +82,4 @@ sudo checkinstall -D -y \
     --requires 'libxcb-ewmh2, libxcb-xrm0'
 cd ..
 mv rofi/rofi*.deb tmp/packages
-rm -rf rofi*
+sudo rm -rf rofi*

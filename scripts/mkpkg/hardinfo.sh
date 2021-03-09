@@ -19,4 +19,4 @@ sudo checkinstall -y \
 	--provides 'hardinfo'
 cd ../..
 mv hardinfo/build/hardinfo*.deb tmp/packages
-rm -rf hardinfo*
+sudo rm -rf hardinfo*
