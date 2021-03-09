@@ -107,8 +107,6 @@ MySQL (Apt)
 
 NoMachine (http)
 
-obs-v4l2sink (Repack)
-
 OneDriver (PPA)
 
 OnlyOffice (Apt)
