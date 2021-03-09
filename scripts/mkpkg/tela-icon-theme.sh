@@ -33,7 +33,7 @@ if which update-icon-caches >/dev/null 2>&1 ; then
 	update-icon-caches /usr/share/icons/Tela /usr/share/icons/Tela-dark
 fi'|tee tela-icon-theme/DEBIAN/postrm
 chmod +x tela-icon-theme/DEBIAN/post*
-mv /usr/share/icons/Tela* tela-icon-theme/usr/share/icons/
+cp -rf /usr/share/icons/Tela* tela-icon-theme/usr/share/icons/
 dpkg-deb -b tela-icon-theme .
 mv tela-icon-theme*.deb tmp/packages
 rm -rf tela-icon-theme*
