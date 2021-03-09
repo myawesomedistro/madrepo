@@ -8,7 +8,7 @@ git clone https://github.com/jarun/advcpmv
 mv $(ls advcpmv/advcpmv*|tail -n1) .
 patch -p1 -i advcpmv*.patch
 cd advcpmv
-ADVCPMV_TAG=`echo $(git describe --always --dirty)-$(git log -1 --date=iso --pretty=format:%cd)|sed 's/\ /-/g'|sed 's/v//g'|sed 's/_/-/g'|sed 's/:/-/g'|sed -i 's/dirty-//g'|cut -d '-' -f2-7`
+ADVCPMV_TAG=`echo $(git describe --always --dirty)-$(git log -1 --date=iso --pretty=format:%cd)|sed 's/\ /-/g'|sed 's/v//g'|sed 's/_/-/g'|sed 's/:/-/g'|sed 's/dirty-//g'|cut -d '-' -f2-7`
 cd ..
 rm -rf advcpmv
 ./configure
