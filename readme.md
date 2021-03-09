@@ -51,6 +51,8 @@ gg (Apt)
 
 Giara (PPA)
 
+GitKraken (Http)
+
 GitHub Desktop (GitHub)
 
 Gitify (GitHub)
