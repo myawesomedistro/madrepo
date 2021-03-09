@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 aria2c $(wget -qO- https://api.github.com/repos/robbert-vdh/yabridge/releases|grep browser_download_url|grep download|head -n2|tail -n1|cut -d '"' -f4)
-tar -fxz yabridge*.tar.gz
+tar fxz yabridge*.tar.gz
 rm -rf yabridge*.tar.gz
 mkdir -p yabridge/DEBIAN yabridge/usr/bin yabridge/opt/yabridge yabridge/etc/xdg/autostart
 mv yabridge/yabridgectl yabridge/usr/bin/yabridgectl

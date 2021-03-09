@@ -57,7 +57,7 @@ mv cockos-reaper*.deb tmp/packages
 rm -rf cockos-reaper*
 
 #aria2c https://sws-extension.org/download/pre-release/$(wget -qO- http://sws-extension.org/download/pre-release/|grep Linux-x86_64|head -n1|cut -d '"' -f4)
-#tar -fx sws-*-Linux-x86_64-*.tar.xz -C ~/.config/REAPER
+#tar fx sws-*-Linux-x86_64-*.tar.xz -C ~/.config/REAPER
 #rm -rf sws-*-Linux-x86_64-*.tar.xz
 #aria2c https://stash.reaper.fm$(wget -qO- https://stash.reaper.fm/tag/Language-Packs|grep pt-BR|head -n1|cut -d '"' -f2|sed 's/\/v//g')
 #mkdir -p ~/.config/REAPER/LangPack
