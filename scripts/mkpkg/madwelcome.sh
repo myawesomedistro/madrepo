@@ -7,4 +7,5 @@ sed -i "s/TAG/$MADWELCOME_TAG/g" DEBIAN/control
 rm -rf .git
 cd ..
 dpkg-deb -b madwelcome .
-cp madwelcome*.deb tmp/packages
+mv madwelcome*.deb tmp/packages
+rm -rf madwelcome*

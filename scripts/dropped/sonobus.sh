@@ -18,16 +18,16 @@ sudo apt-fast install -y --fix-missing \
 git clone https://github.com/essej/sonobus
 cd sonobus/Builds/LinuxMakefile
 ./build.sh
-mkdir -pv \
+mkdir -p \
     sonobus/DEBIAN \
     sonobus/lib/lxvst \
     sonobus/usr/bin \
     sonobus/usr/share/applications \
     sonobus/usr/share/pixmaps
-cp -rf build/SonoBus sonobus/usr/bin/SonoBus
-cp -rf build/SonoBus.vst3 sonobus/usr/lib/lxvst/
-cp sonobus.desktop sonobus/usr/share/applications/sonobus.desktop
-cp ../../images/SonoBus-Icon.svg sonobus/usr/share/pixmaps/sonobus.svg
+mv build/SonoBus sonobus/usr/bin/SonoBus
+mv build/SonoBus.vst3 sonobus/usr/lib/lxvst/
+mv sonobus.desktop sonobus/usr/share/applications/sonobus.desktop
+mv ../../images/SonoBus-Icon.svg sonobus/usr/share/pixmaps/sonobus.svg
 SONOBUS_TAG=`echo $(wget -qO- https://api.github.com/repos/essej/sonobus/releases|grep tag|grep -v Next|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/essej\/sonobus\/releases\/tag\///g'|sed 's/v//g')`
 SONOBUS_VER=`echo $(git describe --always --dirty)-$(git log -1 --date=short --pretty=format:%cd)|sed 's/v//g'|sed 's/_/-/g'`
 echo "Package:: sonobus
@@ -41,4 +41,4 @@ Homepage: https://github.com/essej/sonobus
 Description: SonoBus is a real-time network audio streaming collaboration tool."|tee sonobus/DEBIAN/control
 dpkg-deb -b sonobus .
 cd ../../..
-cp sonobus/Builds/LinuxMakefile/sonobus*.deb tmp/packages
+mv sonobus/Builds/LinuxMakefile/sonobus*.deb tmp/packages

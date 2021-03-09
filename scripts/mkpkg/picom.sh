@@ -30,7 +30,7 @@ cd picom
 git submodule update --init --recursive
 meson --buildtype=release . build
 ninja -C build
-mkdir -pv picom/DEBIAN picom/etc/xdg picom/usr/bin picom/usr/share/applications
+mkdir -p picom/DEBIAN picom/etc/xdg picom/usr/bin picom/usr/share/applications
 PICOM_TAG=`echo $(wget -qO- https://api.github.com/repos/yshui/picom/releases|grep tag|grep -v Next|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/yshui\/picom\/releases\/tag\///g'|sed 's/v//g')`
 PICOM_VER=`echo $(git describe --always --dirty)-$(git log -1 --date=short --pretty=format:%cd)|sed 's/v//g'|sed 's/_/-/g'`
 echo "Package: picom
@@ -47,7 +47,7 @@ Description: lightweight compositor for X11
  inactive window transparency, and shadows on argb windows.
  .
  picom is a fork of compton as it seems to have become unmaintained."|tee picom/DEBIAN/control
-cp ../assets/picom.conf picom/etc/xdg/picom.conf 
+mv ../assets/picom.conf picom/etc/xdg/picom.conf 
 echo '[Desktop Entry]
 Version=1.0
 Type=Application
@@ -59,7 +59,8 @@ Categories=Utility;
 Keywords=compositor;composite manager;window effects;transparency;opacity;
 TryExec=picom
 Exec=picom --experimental-backends'|tee picom/usr/share/applications/picom.desktop
-cp -rf build/src/picom picom/usr/bin/picom
+mv build/src/picom picom/usr/bin/picom
 dpkg-deb -b picom .
 cd ..
-cp picom/picom*.deb tmp/packages
+mv picom/picom*.deb tmp/packages
+rm -rf picom*

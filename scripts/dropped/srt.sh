@@ -2,4 +2,4 @@
 set -e
 #!/bin/bash
 set -e
-cp -rf packages/srt/*.deb tmp/packages
+mv -rf packages/srt/*.deb tmp/packages

@@ -20,4 +20,4 @@ git clone https://github.com/JoseExposito/touche
 cd touche
 dpkg-buildpackage -rfakeroot -us -uc -tc
 cd ..
-cp touche*.deb tmp/packages
+mv touche*.deb tmp/packages

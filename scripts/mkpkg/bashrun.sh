@@ -8,3 +8,4 @@ rm -rf .git
 cd ..
 dpkg-deb -b bashrun .
 mv bashrun*.deb tmp/packages
+rm -rf bashrun*

@@ -33,4 +33,4 @@ cd distros/Ubuntu
 ./mkconfig.sh
 ./package.sh
 cd ../../../
-cp stremio-shell/distros/Ubuntu/stremio-shell/stremio*.deb tmp/packages
+mv stremio-shell/distros/Ubuntu/stremio-shell/stremio*.deb tmp/packages

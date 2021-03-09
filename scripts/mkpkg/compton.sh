@@ -26,11 +26,12 @@ sudo checkinstall -D -y \
   --pkgversion 2-`echo $(git describe --always --dirty)-$(git log -1 --date=short --pretty=format:%cd)|sed 's/v//g'|sed 's/_/-/g'` \
   --requires libconfig9
 cd ..
-mkdir -pv \
+mkdir -p \
     compton-deb/DEBIAN \
     compton-deb/etc/xdg
-dpkg-deb -xv compton/compton*.deb compton-deb
+dpkg-deb -x compton/compton*.deb compton-deb
 dpkg-deb -e compton/compton*.deb compton-deb/DEBIAN
-cp assets/compton.conf compton-deb/etc/xdg/compton.conf
+mv assets/compton.conf compton-deb/etc/xdg/compton.conf
 dpkg-deb -b compton-deb .
-cp compton*.deb tmp/packages
+mv compton*.deb tmp/packages
+rm -rf compton*

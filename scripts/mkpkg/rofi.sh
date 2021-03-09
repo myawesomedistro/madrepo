@@ -81,4 +81,5 @@ sudo checkinstall -D -y \
     --pkgversion $ROFI_TAG \
     --requires 'libxcb-ewmh2, libxcb-xrm0'
 cd ..
-cp rofi/rofi*.deb tmp/packages
+mv rofi/rofi*.deb tmp/packages
+rm -rf rofi*
