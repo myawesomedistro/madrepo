@@ -68,11 +68,17 @@ jobs:
           tolerance: mixed
           output: pacotes-i386.txt
 
-      - name: Compactação dos arquivos de log
-        uses: papeloto/action-zip@v1
-        with:
-          files: pacotes-amd64.txt pacotes-i386.txt
-          dest: pacotes.zip
+#      - name: Compactação dos arquivos de log
+#        uses: papeloto/action-zip@v1
+#        with:
+#          files: pacotes-amd64.txt pacotes-i386.txt
+#          dest: pacotes.zip
+
+      - name: Conteúdo atualizado do repositório
+        run: |
+          echo "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)\n\nVeja o `commit` de referência neste link:\n\nhttps://gitlab.com/myawesomedistro/madrepo/-/commit/{{ commit.sha }}.\n\nConfira os pacotes adicionados e removidos no arquivo `pacotes.zip`.">update.txt
+          cat pacotes-amd64.txt>> update.txt
+          cat pacotes-i386.txt>> update.txt
 
       - name: Notificação para o Telegram
         uses: appleboy/telegram-action@master
@@ -80,5 +86,5 @@ jobs:
           to: -1001267848465
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
-          message: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)\n\nVeja o `commit` de referência neste link:\n\nhttps://gitlab.com/myawesomedistro/madrepo/-/commit/{{ commit.sha }}.\n\nConfira os pacotes adicionados e removidos no arquivo `pacotes.zip`."
-          document: pacotes.zip
+          message_file: update.txt
+#          document: pacotes.zip
