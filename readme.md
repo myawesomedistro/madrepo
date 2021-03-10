@@ -29,6 +29,8 @@ DeltaChat (http)
 
 DockbarX (PPA)
 
+Dolibarr (SourceForge)
+
 duf (GitHub)
 
 Duplicati (GitHub)
