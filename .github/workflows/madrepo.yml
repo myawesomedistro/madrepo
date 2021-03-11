@@ -76,21 +76,31 @@ jobs:
 
       - name: Conteúdo atualizado do repositório
         run: |
-          echo "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)
+          echo 'O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)
           Veja o `commit` de referência neste link:
           https://gitlab.com/myawesomedistro/madrepo/-/commit/{{ commit.sha }}.
-          Confira os pacotes adicionados e removidos no arquivo `pacotes.zip`.
+          Confira os pacotes adicionados e removidos no log a seguir.
           
-          ">update.txt
-          echo "```">>update.txt
-          cat pacotes-amd64.txt>>update.txt
-          echo "```">>update.txt
-          echo "```">>update.txt
-          cat pacotes-i386.txt>>update.txt
-          echo "```">>update.txt
-          sed -i 's/=//g' update.txt
-          sed -i 's/--- packages-amd64-1.log//g' update.txt
-          sed -i 's/--- packages-i386-1.log//g' update.txt
+          '>madrepo.log
+          echo '```'>>madrepo.log
+          cat pacotes-amd64.txt>>madrepo.log
+          echo '```'>>madrepo.log
+          echo '```'>>madrepo.log
+          cat pacotes-i386.txt>>madrepo.log
+          echo '```'>>madrepo.log
+          sed -i 's/=//g' madrepo.log
+          sed -i 's/--- packages-amd64-1.log//g' madrepo.log
+          sed -i 's/--- packages-i386-1.log//g' madrepo.log
+
+      - name: Upload do log para o GitHub Gist
+        uses: popsiclestick/gist-sync-action@v1.2.0
+        id: sync
+        with:
+          auth: ${{ secrets.GIST_TOKEN }}
+          gist_url: https://gist.github.com/rauldipeas/103d3d1558cba200b828a710aaf50549
+          gist_title: MAD Repo log
+          gist_description: Pacotes adicionados e removidos na última atualização do repositório `apt` do *MAD Linux*
+          github_file: madrepo.log
 
       - name: Notificação para o Telegram
         uses: appleboy/telegram-action@master
@@ -98,5 +108,6 @@ jobs:
           to: -1001267848465
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
-          message_file: update.txt
+          message: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)\n\nVeja o `commit` de referência neste link:\n\nhttps://gitlab.com/myawesomedistro/madrepo/-/commit/{{ commit.sha }}.\n\nConfira os pacotes adicionados e removidos no [link](https://gist.github.com/rauldipeas/103d3d1558cba200b828a710aaf50549)."
+#          message: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)\n\nVeja o `commit` de referência neste link:\n\nhttps://gitlab.com/myawesomedistro/madrepo/-/commit/{{ commit.sha }}.\n\nConfira os pacotes adicionados e removidos no arquivo `pacotes.zip`."
 #          document: pacotes.zip
