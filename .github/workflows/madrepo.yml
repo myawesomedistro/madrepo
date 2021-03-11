@@ -68,28 +68,20 @@ jobs:
           tolerance: mixed
           output: pacotes-i386.txt
 
-#      - name: Compactação dos arquivos de log
-#        uses: papeloto/action-zip@v1
-#        with:
-#          files: pacotes-amd64.txt pacotes-i386.txt
-#          dest: pacotes.zip
+      - name: Compactação dos arquivos de log
+        uses: papeloto/action-zip@v1
+        with:
+          files: pacotes-amd64.txt pacotes-i386.txt
+          dest: pacotes.zip
 
       - name: Conteúdo atualizado do repositório
         run: |
-          echo 'O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)
-          Veja o `commit` de referência neste link:
-          https://gitlab.com/myawesomedistro/madrepo/-/commit/{{ commit.sha }}.
-          Confira os pacotes adicionados e removidos no log a seguir.'>madrepo.md
           echo '```'>>madrepo.md
           cat pacotes-amd64.txt>>madrepo.md
           echo '```'>>madrepo.md
           echo '```'>>madrepo.md
           cat pacotes-i386.txt>>madrepo.md
           echo '```'>>madrepo.md
-          sed -i 's/-2.log//g' madrepo.md
-          sed -i 's/=//g' madrepo.md
-          sed -i 's/--- packages-amd64-1.log\n//g' madrepo.md
-          sed -i 's/--- packages-i386-1.log\n//g' madrepo.md
 
       - name: Upload do log para o GitHub Gist
         uses: popsiclestick/gist-sync-action@v1.2.0
@@ -97,7 +89,7 @@ jobs:
         with:
           auth: ${{ secrets.GIST_TOKEN }}
           gist_url: https://gist.github.com/rauldipeas/103d3d1558cba200b828a710aaf50549
-          gist_title: MAD Repo log
+          gist_title: madrepo.md
           gist_description: Pacotes adicionados e removidos na última atualização do repositório `apt` do *MAD Linux*
           github_file: madrepo.md
 
@@ -107,6 +99,5 @@ jobs:
           to: -1001267848465
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
-          message: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)\n\nVeja o `commit` de referência [neste link](https://gitlab.com/myawesomedistro/madrepo/-/commit/{{ commit.sha }}).\n\nConfira os pacotes adicionados e removidos [neste link](https://gist.github.com/rauldipeas/103d3d1558cba200b828a710aaf50549)."
-#          message: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)\n\nVeja o `commit` de referência neste link:\n\nhttps://gitlab.com/myawesomedistro/madrepo/-/commit/{{ commit.sha }}.\n\nConfira os pacotes adicionados e removidos no arquivo `pacotes.zip`."
-#          document: pacotes.zip
+          message: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)\n\nVeja o `commit` de referência [neste link](https://gitlab.com/myawesomedistro/madrepo/-/commit/{{ commit.sha }}).\n\nConfira os pacotes adicionados e removidos [neste link](https://gist.github.com/rauldipeas/103d3d1558cba200b828a710aaf50549) ou no arquivo `pacotes.zip`."
+          document: pacotes.zip
