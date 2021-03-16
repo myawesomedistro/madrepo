@@ -153,6 +153,8 @@ superProductivity (GitHub)
 
 Syncthing (Apt)
 
+SysMonTask (GitHub)
+
 Tartube (GitHub)
 
 TeamViewer (http)
