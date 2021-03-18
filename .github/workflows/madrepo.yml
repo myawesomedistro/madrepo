@@ -101,3 +101,15 @@ jobs:
           format: markdown
           message: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions* com status: [${{ job.status }}](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto)\n\nVeja o `commit` de referência [neste link](https://gitlab.com/myawesomedistro/madrepo/-/commit/{{ commit.sha }}).\n\nConfira os pacotes adicionados e removidos [neste link](https://gist.github.com/rauldipeas/103d3d1558cba200b828a710aaf50549) ou no arquivo `pacotes.zip`."
           document: pacotes.zip
+      
+      - name: Notificação para o Guilded
+        uses: sarisia/actions-status-discord@v1
+        if: always()
+        with:
+          webhook: ${{ secrets.GUILDED_WEBHOOK }}
+          title: "Compilação"
+          description: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do *MAD Linux* acaba de ser compilado no *GitHub Actions*.\n\nConfira os pacotes adicionados e removidos [neste link](https://gist.github.com/rauldipeas/103d3d1558cba200b828a710aaf50549)."
+          username: GitHub Actions
+          avatar_url: https://madlinux.now.sh/images/plumberpenguin.svg
+#          image:
+#          color: 0x0000ff
