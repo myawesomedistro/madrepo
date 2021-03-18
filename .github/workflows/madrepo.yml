@@ -15,6 +15,12 @@ jobs:
     steps:
       - name: Verificação de saída do repositório git
         uses: actions/checkout@v1
+      
+      - name: free disk space
+        run: | 
+          sudo swapoff -a
+          sudo rm -f /swapfile
+          sudo apt clean
 
       - name: Configuração do host
         run: |

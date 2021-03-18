@@ -10,4 +10,11 @@ do
  bash $script
 done
 mv *.deb tmp/packages
-find tmp/packages -type f -name '*.deb'|xargs reprepro -P --ask-passphrase -Vb repo includedeb core
+find tmp/packages \
+    -type f \
+    -name '*.deb'\
+    |xargs reprepro \
+        -P \
+        --ask-passphrase \
+        -Vb repo \
+        includedeb core
