@@ -16,10 +16,12 @@ jobs:
       - name: Verificação de saída do repositório git
         uses: actions/checkout@v1
       
-      - name: free disk space
+      - name: Liberação de espaço em disco
         run: | 
           sudo swapoff -a
           sudo rm -f /swapfile
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
           sudo apt clean
 
       - name: Configuração do host
