@@ -73,6 +73,8 @@ Hardcode-tray (OBS)
 
 Heroic/Legendary (GitHub)
 
+Hyper (Http)
+
 Hypnotix (GitHub)
 
 Jellyfin (Apt)
