@@ -65,6 +65,8 @@ GNOME ALSA mixer (Debian Stretch)
 
 graSSHopper (Http)
 
+Guilded (Http)
+
 Haguichi (PPA)
 
 Hardcode-tray (OBS)
