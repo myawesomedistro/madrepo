@@ -31,11 +31,13 @@ jobs:
             powershell \
             snapd
           sudo apt clean
-          rm -rf /usr/share/dotnet/
           sudo swapoff -a
-          sudo rm -f /swapfile
-          sudo rm -rf "/usr/local/share/boost"
-          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          sudo rm -rf \
+            "$AGENT_TOOLSDIRECTORY" \
+            /opt/az \
+            /swapfile \
+            /usr/share/dotnet \
+            /usr/local/share/boost
           df -h
       
       - name: Configuração do host
@@ -50,13 +52,13 @@ jobs:
 
       - name: Instalação de dependências
         run: |
-            apt-fast update
-            apt-fast install -y build-essential checkinstall dpkg-sig reprepro sshpass
+            apt-fast update -qq 2>/dev/null
+            apt-fast install -y build-essential checkinstall dpkg-sig reprepro sshpass 2>/dev/null
 
       - name: Download das informações de estado do repositório
         run: |
-            wget -O- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep 'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-1.log
-            wget -O- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep 'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-1.log
+            wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep 'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-1.log
+            wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep 'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-1.log
 
       - name: Compilação do repositório apt
         run: bash build.sh
@@ -69,8 +71,8 @@ jobs:
 
       - name: Download das informações de estado do repositório
         run: |
-            wget -O- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep 'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-2.log
-            wget -O- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep 'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-2.log
+            wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep 'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-2.log
+            wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep 'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-2.log
 
       - name: Comparação do estado dos pacotes amd64
         uses: LouisBrunner/diff-action@v0.1.0
