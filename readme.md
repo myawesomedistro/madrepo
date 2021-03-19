@@ -17,6 +17,8 @@ AppImageLauncher (GitHub)
 
 Apt-fast (PPA)
 
+Asar UI (GitHub)
+
 Atom (http)
 
 Bat (GitHub)
