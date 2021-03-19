@@ -114,7 +114,7 @@ jobs:
         if: always()
         with:
           webhook: ${{ secrets.GUILDED_WEBHOOK }}
-          noprefix: false
+          noprefix: true
           title: "Compilação do repositório `apt` do **MAD Linux**"
           description: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do **MAD Linux** acaba de ser compilado no *GitHub Actions*\n\nConfira os pacotes adicionados e removidos [neste link](https://gist.github.com/rauldipeas/103d3d1558cba200b828a710aaf50549)"
           username: GitHub Actions
