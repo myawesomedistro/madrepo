@@ -115,17 +115,15 @@ jobs:
           gist_description: Pacotes adicionados e removidos na última atualização do repositório apt do MAD Linux
           github_file: madrepo.md
       
-      - name: Indetificação do avatar de status para o Guilded
-        id: guilded-avatar
+      - id: guilded-avatar
         run: |
-          avatar_url=$(cat assets/guilded-avatar.json | jq '.${{ job.status }}')
-          echo '::set-output name=avatar_url::${avatar_url}'
+        avatar_url=$(cat assets/guilded-avatar.json | jq '.${{ job.status }}')
+        echo '::set-output name=avatar_url::${avatar_url}'
 
-      - name: Indetificação da descrição de status para o Guilded
-        id: guilded-description
+      - id: guilded-description
         run: |
-          avatar_url=$(cat assets/guilded-description.json | jq '.${{ job.status }}')
-          echo '::set-output name=description::${description}'
+        avatar_url=$(cat assets/guilded-description.json | jq '.${{ job.status }}')
+        echo '::set-output name=description::${description}'
   
       - name: Notificação para o Guilded
         uses: sarisia/actions-status-discord@v1
