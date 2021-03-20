@@ -1,5 +1,5 @@
 {
-    "success": "https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/dc50b55e195518db7b959e20ceb6446aca1b782b/Papirus/64x64/places/folder-green-github.svg",
-    "failure": "https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/dc50b55e195518db7b959e20ceb6446aca1b782b/Papirus/64x64/places/folder-red-github.svg",
-    "cancelled": "https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/dc50b55e195518db7b959e20ceb6446aca1b782b/Papirus/64x64/places/folder-grey-github.svg"
+    "success": "https://rauldipeas.now.sh/assets/images/avataaars-alt.png",
+    "failure": "https://rauldipeas.now.sh/assets/images/avataaars-alt-2.png",
+    "cancelled": "https://rauldipeas.now.sh/assets/images/avataaars-alt-3.png"
 }
