@@ -19,14 +19,14 @@ jobs:
       - name: Indetificação do avatar de status para o Guilded
         id: guilded-avatar
         run: |
-          avatar_url=$(cat assets/guilded-avatar.json | jq '.${{ job.status }}')
-          echo "::set-output name=avatar_url::${avatar_url}"|sed 's/\"//g'
+          avatar_url=$(cat assets/guilded-avatar.json|jq '.${{ job.status }}'|sed 's/\"//g')
+          echo "::set-output name=avatar_url::${avatar_url}"
 
       - name: Indetificação da descrição de status para o Guilded
         id: guilded-description
         run: |
-          description=$(cat assets/guilded-description.json | jq '.${{ job.status }}')
-          echo "::set-output name=description::${description}"|sed 's/\"//g'
+          description=$(cat assets/guilded-description.json|jq '.${{ job.status }}'|sed 's/\"//g')
+          echo "::set-output name=description::${description}"
   
       - name: Notificação para o Guilded
         uses: sarisia/actions-status-discord@v1
