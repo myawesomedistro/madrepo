@@ -1,0 +1,140 @@
+name: MAD Repo
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'readme.md'
+      - 'TODO'
+  schedule:
+  - cron: "0 0,6,12,18 * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Verificação de saída do repositório git
+        uses: actions/checkout@v1
+
+      - name: Liberação de espaço em disco
+        run: |
+          df -h
+          sudo apt autoremove --purge -y \
+            azure-cli \
+            '^dotnet-.*' \
+            firefox \
+            '^ghc-8.*' \
+            google-chrome-stable \
+            google-cloud-sdk \
+            hhvm \
+            '^llvm-.*' \
+            powershell \
+            snapd
+          sudo apt clean
+          sudo swapoff -a
+          sudo rm -rf \
+            "$AGENT_TOOLSDIRECTORY" \
+            /opt/az \
+            /swapfile \
+            /usr/share/dotnet \
+            /usr/local/share/boost
+          df -h
+      
+      - name: Configuração do host
+        run: |
+            sudo sed -i 's/_APTMGR=apt-get/_APTMGR=apt/g' /etc/apt-fast.conf
+            sudo dpkg --add-architecture i386
+
+      - name: Instalação da chave GPG
+        run: |
+            aria2c ${{ secrets.GPG_SEC }}
+            gpg --batch --allow-secret-key-import --import madlinux_sec.gpg
+
+      - name: Instalação de dependências
+        run: |
+            apt-fast update -qq 2>/dev/null
+            apt-fast install -y checkinstall dpkg-sig reprepro sshpass 2>/dev/null
+
+      - name: Download das informações de estado do repositório
+        run: |
+            wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep \
+            'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-1.log
+            wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep \
+            'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-1.log
+
+      - name: Compilação do repositório apt
+        run: bash build.sh
+
+      - name: Upload do repositório apt para o SourceForge FRS
+        run: |
+            sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- \
+            rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
+            repo rauldipeas@frs.sourceforge.net:/home/frs/project/madlinux
+
+      - name: Download das informações de estado do repositório
+        run: |
+            wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep \
+            'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-2.log
+            wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep \
+            'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-2.log
+
+      - name: Comparação do estado dos pacotes amd64
+        uses: LouisBrunner/diff-action@v0.1.0
+        with:
+          old: packages-amd64-1.log
+          new: packages-amd64-2.log
+          mode: addition
+          tolerance: mixed
+          output: pacotes-amd64.txt
+
+      - name: Comparação do estado dos pacotes i386
+        uses: LouisBrunner/diff-action@v0.1.0
+        with:
+          old: packages-i386-1.log
+          new: packages-i386-2.log
+          mode: addition
+          tolerance: mixed
+          output: pacotes-i386.txt
+
+      - name: Conteúdo atualizado do repositório
+        run: |
+          echo '```'>>madrepo.md
+          cat pacotes-amd64.txt>>madrepo.md
+          echo '```'>>madrepo.md
+          echo '```'>>madrepo.md
+          cat pacotes-i386.txt>>madrepo.md
+          echo '```'>>madrepo.md
+
+      - name: Upload do log para o GitHub Gist
+        uses: popsiclestick/gist-sync-action@v1.2.0
+        id: sync
+        with:
+          auth: ${{ secrets.GIST_TOKEN }}
+          gist_url: https://gist.github.com/rauldipeas/103d3d1558cba200b828a710aaf50549
+          gist_title: madrepo.md
+          gist_description: Pacotes adicionados e removidos na última atualização do repositório apt do MAD Linux
+          github_file: madrepo.md
+      
+      - name: Indetificação do avatar de status para o Guilded
+        id: guilded-avatar
+        run: |
+          avatar_url=$(cat assets/guilded-avatar.json | jq '.${{ job.status }}')
+          echo '::set-output name=avatar_url::${avatar_url}'
+
+      - name: Indetificação da descrição de status para o Guilded
+        id: guilded-description
+        run: |
+          description=$(cat assets/guilded-description.json | jq '.${{ job.status }}')
+          echo '::set-output name=description::${description}'
+  
+      - name: Notificação para o Guilded
+        uses: sarisia/actions-status-discord@v1
+        if: always()
+        with:
+          webhook: ${{ secrets.GUILDED_WEBHOOK }}
+          noprefix: true
+          title: "Compilação do repositório `apt` do **MAD Linux**"
+          description: ${{ steps.guilded-description.outputs.description }}
+          status: ${{ job.status }}
+          username: GitHub Actions
+          avatar_url: ${{ steps.guilded-avatar.outputs.avatar_url }}
