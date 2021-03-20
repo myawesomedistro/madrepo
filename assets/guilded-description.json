@@ -1,5 +1,14 @@
 {
-    "success": "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do **MAD Linux** acaba de ser compilado no *GitHub Actions*\n\nConfira os pacotes adicionados e removidos [neste link](https://gist.github.com/rauldipeas/103d3d1558cba200b828a710aaf50549)",
-    "failure": "Houve um problema na compilação do repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do **MAD Linux** no *GitHub Actions*\n\nConfira o log [neste link](https://github.com/myawesomedistro/madrepo/actions)",
-    "cancelled": "A compilação do repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do **MAD Linux** foi cancelada no *GitHub Actions*\n\nConfira o log [neste link](https://github.com/myawesomedistro/madrepo/actions)"
+    "success": "|
+        O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do **MAD Linux** acaba de ser compilado no *GitHub Actions*
+        
+        Confira os pacotes adicionados e removidos [neste link](https://gist.github.com/rauldipeas/103d3d1558cba200b828a710aaf50549)",
+    "failure": "|
+        Houve um problema na compilação do repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do **MAD Linux** no *GitHub Actions*
+        
+        Confira o log [neste link](https://github.com/myawesomedistro/madrepo/actions)",
+    "cancelled": "|
+        A compilação do repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do **MAD Linux** foi cancelada no *GitHub Actions*
+        
+        Confira o log [neste link](https://github.com/myawesomedistro/madrepo/actions)"
 }
