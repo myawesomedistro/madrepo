@@ -111,6 +111,18 @@ jobs:
           gist_description: Pacotes adicionados e removidos na última atualização do repositório apt do MAD Linux
           github_file: madrepo.md
       
+      - name: Indetificação do avatar de status para o  Guilded
+        id: guilded-avatar
+        run: |
+        avatar_url=$(cat assets/guilded-avatar.json | jq '.${{ job.status }}')
+        echo '::set-output name=avatar_url::${avatar_url}'
+
+      - name: Indetificação da descrição de status para o  Guilded
+        id: guilded-description
+        run: |
+        avatar_url=$(cat assets/guilded-description.json | jq '.${{ job.status }}')
+        echo '::set-output name=description::${description}'
+  
       - name: Notificação para o Guilded
         uses: sarisia/actions-status-discord@v1
         if: always()
@@ -118,6 +130,7 @@ jobs:
           webhook: ${{ secrets.GUILDED_WEBHOOK }}
           noprefix: true
           title: "Compilação do repositório `apt` do **MAD Linux**"
-          description: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do **MAD Linux** acaba de ser compilado no *GitHub Actions*\n\nConfira os pacotes adicionados e removidos [neste link](https://gist.github.com/rauldipeas/103d3d1558cba200b828a710aaf50549)"
+          description: ${{ steps.guilded-description.outputs.description }}
+          status: ${{ job.status }}
           username: GitHub Actions
-          avatar_url: https://madlinux.now.sh/images/plumberpenguin.svg
+          avatar_url: ${{ steps.guilded-avatar.outputs.avatar_url }}
