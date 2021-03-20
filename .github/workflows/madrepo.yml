@@ -25,7 +25,7 @@ jobs:
       - name: Indetificação da descrição de status para o Guilded
         id: guilded-description
         run: |
-          description=$(cat assets/guilded-description.json|jq '.${{ job.status }}'|sed 's/\"//g')
+          description=$(cat assets/guilded-description.json|jq '.${{ job.status }}'|sed 's/\"//g'|sed 's/newline/\\n\\n/g')
           echo "::set-output name=description::${description}"
   
       - name: Notificação para o Guilded
