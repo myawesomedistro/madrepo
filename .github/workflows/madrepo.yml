@@ -53,7 +53,7 @@ jobs:
       - name: Instalação de dependências
         run: |
             apt-fast update -qq 2>/dev/null
-            apt-fast install -y build-essential checkinstall dpkg-sig reprepro sshpass 2>/dev/null
+            apt-fast install -y build-essential checkinstall dpkg-sig jq reprepro sshpass 2>/dev/null
 
       - name: Download das informações de estado do repositório
         run: |
