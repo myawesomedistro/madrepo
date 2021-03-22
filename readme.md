@@ -15,6 +15,8 @@ App Grid (PPA)
 
 AppImageLauncher (GitHub)
 
+Apple Musica (GitHub)
+
 Apt-fast (PPA)
 
 Asar UI (GitHub)
