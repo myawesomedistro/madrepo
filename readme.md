@@ -117,6 +117,8 @@ Minio (http)
 
 MySQL (Apt)
 
+NodeJS (Apt)
+
 NoMachine (http)
 
 OneDriver (PPA)
@@ -208,6 +210,8 @@ Zoom (http)
 [Gestures](https://github.com/bulletmark/libinput-gestures)
 
 [Go disk usage](https://github.com/dundee/gdu)
+
+[iCloud](https://www.addictivetips.com/ubuntu-linux-tips/use-icloud-on-linux/)
 
 [LightDM webkit2 greeter](https://github.com/Antergos/web-greeter/issues/) (OBS) (Repack) [Tema Glorious](https://github.com/manilarome/lightdm-webkit2-theme-glorious)
 
