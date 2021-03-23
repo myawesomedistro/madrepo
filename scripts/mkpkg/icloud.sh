@@ -4,7 +4,7 @@ apt-fast install -y npm
 sudo npm install -g nativefier
 wget https://i.imgur.com/m0abT4k.png -O icon.png
 nativefier -p linux -a x64 -i icon.png --disable-context-menu --disable-dev-tools --single-instance https://www.icloud.com/
-mkdir -pv icloud/{DEBIAN,opt,usr/share/applications,usr/share/pixmaps}
+mkdir -p icloud/{DEBIAN,opt,usr/share/applications,usr/share/pixmaps}
 mv iCloud-linux-x64 icloud/opt/iCloud
 mv icon.png icloud/usr/share/pixmaps/icloud.png
 ELECTRON_RELEASE=`wget -qO- https://www.electronjs.org/releases/stable|grep release-entry|head -n1|cut -d '"' -f4`

@@ -11,7 +11,7 @@ cd ..
 mkdir -p thunar-nextcloud-plugin/{DEBIAN,usr/lib/x86_64-linux-gnu/thunarx-3}
 mv thunar-nextcloud-plugin/thunar-nextcloud-plugin.so thunar-nextcloud-plugin/usr/lib/x86_64-linux-gnu/thunarx-3/
 TNP_VERSION=`echo $(wget -qO- https://api.github.com/repos/frederikmoellers/thunar-nextcloud-plugin/commits/master|grep date|head -n 1|cut -d \" -f4|cut -d \: -f1|cut -d \T -f1)`
-cat <<EOF |thunar-nextcloud-plugin/DEBIAN/control
+cat <<EOF |tee thunar-nextcloud-plugin/DEBIAN/control
 Package: thunar-nextcloud-plugin
 Priority: optional
 Section: misc
