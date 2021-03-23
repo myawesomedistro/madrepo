@@ -33,7 +33,8 @@ ninja -C build
 mkdir -p picom/DEBIAN picom/etc/xdg picom/usr/bin picom/usr/share/applications
 PICOM_TAG=`echo $(wget -qO- https://api.github.com/repos/yshui/picom/releases|grep tag|grep -v Next|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/yshui\/picom\/releases\/tag\///g'|sed 's/v//g')`
 PICOM_VER=`echo $(git describe --always --dirty)-$(git log -1 --date=short --pretty=format:%cd)|sed 's/v//g'|sed 's/_/-/g'`
-echo "Package: picom
+cat <<EOF |tee picom/DEBIAN/control
+Package: picom
 Version: $PICOM_TAG-$PICOM_VER
 Architecture: amd64
 Maintainer: Nikos Tsipinakis <nikos@tsipinakis.com>
@@ -46,9 +47,11 @@ Description: lightweight compositor for X11
  fading and translucency, picom implements window frame opacity control,
  inactive window transparency, and shadows on argb windows.
  .
- picom is a fork of compton as it seems to have become unmaintained."|tee picom/DEBIAN/control
+ picom is a fork of compton as it seems to have become unmaintained.
+EOF
 mv ../assets/picom.conf picom/etc/xdg/picom.conf 
-echo '[Desktop Entry]
+cat <<EOF |tee picom/usr/share/applications/picom.desktop
+[Desktop Entry]
 Version=1.0
 Type=Application
 Name=Picom
@@ -58,7 +61,8 @@ Comment=A X compositor
 Categories=Utility;
 Keywords=compositor;composite manager;window effects;transparency;opacity;
 TryExec=picom
-Exec=picom --experimental-backends'|tee picom/usr/share/applications/picom.desktop
+Exec=picom --experimental-backends
+EOF
 mv build/src/picom picom/usr/bin/picom
 dpkg-deb -b picom .
 cd ..

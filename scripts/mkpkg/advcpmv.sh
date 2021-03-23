@@ -16,21 +16,27 @@ make
 mkdir -p advcpmv/DEBIAN advcpmv/usr/bin advcpmv/usr/local/bin
 mv src/cp advcpmv/usr/bin/advcp
 mv src/mv advcpmv/usr/bin/advmv
-echo '#!/bin/bash
+cat <<EOF |tee advcpmv/usr/local/bin/cp
+#!/bin/bash
 set -e
-advcp -g "$@"'|tee advcpmv/usr/local/bin/cp
-echo '#!/bin/bash
+advcp -g "$@"
+EOF
+cat <<EOF |tee advcpmv/usr/local/bin/mv
+#!/bin/bash
 set -e
-advmv -g "$@"'|tee advcpmv/usr/local/bin/mv
+advmv -g "$@"
+EOF
 chmod +x advcpmv/usr/local/bin/cp advcpmv/usr/local/bin/mv
-echo "Package: advcpmv
+cat <<EOF |tee advcpmv/DEBIAN/control
+Package: advcpmv
 Version: $ADVCPMV_TAG
 Architecture: all
 Maintainer: Mischievous Meerkat <jarun@github.com>
 Section: main
 Priority: optional
 Homepage: https://github.com/jarun/advcpmv
-Description: Advanced Copy is a mod for the GNU cp and GNU mv tools which adds a progress bar and provides some info on what's going on. It was written by Florian Zwicke and released under the GPL."|tee advcpmv/DEBIAN/control
+Description: Advanced Copy is a mod for the GNU cp and GNU mv tools which adds a progress bar and provides some info on what's going on. It was written by Florian Zwicke and released under the GPL.
+EOF
 dpkg-deb -b advcpmv .
 cd ..
 mv coreutils*/advcpmv*.deb tmp/packages

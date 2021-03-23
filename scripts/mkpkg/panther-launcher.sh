@@ -12,7 +12,8 @@ ln -sv /etc/xdg/menus/xfce-applications.menu panther-launcher/etc/xdg/menus/pant
 mv assets/100xfce-entries panther-launcher/etc/apt/apt.conf.d/100xfce-entries
 mv assets/org.rastersoft.panther* panther-launcher/usr/share/glib-2.0/schemas/
 mv assets/start.png panther-launcher/usr/share/pixmaps/start.png
-echo '[Desktop Entry]
+cat <<EOF |tee panther-launcher/etc/xdg/autostart/panther-launcher.desktop
+[Desktop Entry]
 Version=1.0
 Type=Application
 Name=Panther Launcher
@@ -20,7 +21,8 @@ Comment=Lançador de aplicativos
 Exec=panther_launcher -s
 Icon=/usr/share/pixmaps/start.png
 Terminal=false
-StartupNotify=false'|tee panther-launcher/etc/xdg/autostart/panther-launcher.desktop
+StartupNotify=false
+EOF
 dpkg-deb -e panther-launcher-sid_1.12.0-debian1_amd64.deb panther-launcher/DEBIAN
 rm -rf panther-launcher*.deb
 dpkg-deb -b panther-launcher .

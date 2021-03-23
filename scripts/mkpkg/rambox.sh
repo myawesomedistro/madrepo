@@ -5,7 +5,8 @@ dpkg-deb -x Rambox*.deb rambox
 dpkg-deb -e Rambox*.deb rambox/DEBIAN
 rm -rf Rambox*.deb
 npx asar e rambox/opt/Rambox/resources/app.asar app-rambox
-echo '
+cat <<EOF |tee -a  app-rambox/resources/Rambox-all.css
+
 /**
  * Dark background
  */
@@ -21,7 +22,8 @@ echo '
 .x-tab.x-tab-active.x-tab-default {
   border-color: white;
   background-color: #090909
-}' >> app-rambox/resources/Rambox-all.css
+}
+EOF
 npx asar p app-rambox app.asar
 mv app.asar rambox/opt/Rambox/resources/app.asar
 dpkg-deb -b rambox .

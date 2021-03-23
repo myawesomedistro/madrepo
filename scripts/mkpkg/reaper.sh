@@ -2,7 +2,8 @@
 set -e
 REAPER_VER=$(wget -qO- http://reaper.fm|grep VERSION|cut -d '>' -f2|cut -d ':' -f1|sed 's/VERSION //g')
 mkdir -p cockos-reaper/DEBIAN
-echo "Package: cockos-reaper
+cat <<EOF |tee cockos-reaper/DEBIAN/control
+Package: cockos-reaper
 Version: $REAPER_VER
 Architecture: amd64
 Maintainer: Justin Frankel <justinfrankel@reaper.fm>
@@ -12,7 +13,8 @@ Recommends: q4wine, winehq-stable, yabridge
 Section: audio
 Priority: optional
 Homepage: https://reaper.fm
-Description: REAPER is a complete digital audio production application for Windows and OS X, offering a full multitrack audio and MIDI recording, editing, processing, mixing and mastering toolset, REAPER supports a vast range of hardware, digital formats and plugins, and can be comprehensively extended, scripted and modified."|tee cockos-reaper/DEBIAN/control
+Description: REAPER is a complete digital audio production application for Windows and OS X, offering a full multitrack audio and MIDI recording, editing, processing, mixing and mastering toolset, REAPER supports a vast range of hardware, digital formats and plugins, and can be comprehensively extended, scripted and modified.
+EOF
 cat <<EOF |tee cockos-reaper/DEBIAN/preinst
 cd /tmp
 aria2c http://reaper.fm/$(wget -qO- http://reaper.fm/download.php|grep _linux_x86_64.tar.xz|cut -d '"' -f2)
@@ -48,9 +50,11 @@ Exec=xdg-open /opt/REAPER/license.txt
 Icon=text-x-plain"|tee -a /usr/share/applications/cockos-reaper.desktop
 EOF
 chmod +x cockos-reaper/DEBIAN/preinst
-echo 'rm -rf /opt/REAPER /usr/share/applications/cockos-reaper*
+cat <<EOF |tee cockos-reaper/DEBIAN/prerm
+rm -rf /opt/REAPER /usr/share/applications/cockos-reaper*
 find /usr/share/ -name *cockos-reaper* -delete
-find /usr/share/ -name *x-reaper* -delete'|tee cockos-reaper/DEBIAN/prerm
+find /usr/share/ -name *x-reaper* -delete
+EOF
 chmod +x cockos-reaper/DEBIAN/prerm
 dpkg-deb -b cockos-reaper .
 mv cockos-reaper*.deb tmp/packages

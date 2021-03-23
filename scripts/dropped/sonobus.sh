@@ -30,7 +30,8 @@ mv sonobus.desktop sonobus/usr/share/applications/sonobus.desktop
 mv ../../images/SonoBus-Icon.svg sonobus/usr/share/pixmaps/sonobus.svg
 SONOBUS_TAG=`echo $(wget -qO- https://api.github.com/repos/essej/sonobus/releases|grep tag|grep -v Next|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/essej\/sonobus\/releases\/tag\///g'|sed 's/v//g')`
 SONOBUS_VER=`echo $(git describe --always --dirty)-$(git log -1 --date=short --pretty=format:%cd)|sed 's/v//g'|sed 's/_/-/g'`
-echo "Package:: sonobus
+cat <<EOF |tee sonobus/DEBIAN/control
+Package:: sonobus
 Version: $SONOBUS_TAG-$SONOBUS_VER
 Architecture: amd64
 Maintainer: Jesse Chappell <essej@github.com>
@@ -38,7 +39,8 @@ Depends: libasound2, libopus0
 Section: audio
 Priority: optional
 Homepage: https://github.com/essej/sonobus
-Description: SonoBus is a real-time network audio streaming collaboration tool."|tee sonobus/DEBIAN/control
+Description: SonoBus is a real-time network audio streaming collaboration tool.
+EOF
 dpkg-deb -b sonobus .
 cd ../../..
 mv sonobus/Builds/LinuxMakefile/sonobus*.deb tmp/packages

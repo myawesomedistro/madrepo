@@ -4,15 +4,18 @@ DEADD_TAG=$(wget -qO- https://api.github.com/repos/phuhl/linux_notification_cent
 mkdir -p linux-notification-center/DEBIAN linux-notification-center/etc/xdg/autostart linux-notification-center/usr/bin linux-notification-center/usr/share/applications
 wget -qO linux-notification-center/usr/bin/deadd-notification-center $(wget -qO- https://api.github.com/repos/phuhl/linux_notification_center/releases|grep browser_download_url|head -n1|cut -d \" -f4)
 chmod +x linux-notification-center/usr/bin/deadd-notification-center
-echo "Package: linux-notification-center
+cat <<EOF |tee linux-notification-center/DEBIAN/control
+Package: linux-notification-center
 Priority: optional
 Section: misc
 Maintainer: Philipp Uhl <git@ph-uhl.com>
 Architecture: amd64
 Version: $DEADD_TAG
 Homepage: https://github.com/phuhl/linux_notification_center
-Description: A haskell-written notification center for users that like a desktop with style…"|tee linux-notification-center/DEBIAN/control
-echo '[Desktop Entry]
+Description: A haskell-written notification center for users that like a desktop with style…
+EOF
+cat <<EOF |tee linux-notification-center/usr/share/applications/linux-notification-center.desktop
+[Desktop Entry]
 Version=1.0
 Name=Linux Notification Center
 Comment=Central de notificações do Linux
@@ -21,8 +24,10 @@ Icon=xfce4-notifyd
 Terminal=false
 StartupNotify=true
 Type=Application
-Categories=Settings;DesktopSettings;'|tee linux-notification-center/usr/share/applications/linux-notification-center.desktop
-echo '[Desktop Entry]
+Categories=Settings;DesktopSettings;
+EOF
+cat <<EOF |tee linux-notification-center/etc/xdg/autostart/linux-notification-center.desktop
+[Desktop Entry]
 Version=1.0
 Name=Linux Notification Center
 Exec=deadd-notification-center
@@ -30,7 +35,8 @@ Icon=xfce4-notifyd
 Terminal=false
 StartupNotify=true
 Type=Application
-Categories=Settings;DesktopSettings;'|tee linux-notification-center/etc/xdg/autostart/linux-notification-center.desktop
+Categories=Settings;DesktopSettings;
+EOF
 dpkg-deb -b linux-notification-center .
 mv linux-notification-center*.deb tmp/packages
 rm -rf linux-notification-center*
