@@ -15,7 +15,7 @@ Section: misc
 Maintainer: Raul Dipeas <rauldipeas@mail.com>
 Architecture: all
 Version: 0.1~electron-$ELECTRON_RELEASE
-Homepage: https://github.com/dundee/gdu
+Homepage: https://icloud.com
 Description: Access Apple iCloud on Linux.
 EOF
 cat <<EOF |tee icloud/usr/share/applications/icloud.desktop
