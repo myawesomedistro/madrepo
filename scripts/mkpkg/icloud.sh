@@ -4,7 +4,7 @@ apt-fast install -y npm
 sudo npm install -g nativefier
 wget https://i.imgur.com/m0abT4k.png -O icon.png
 nativefier -p linux -a x64 -i icon.png --disable-context-menu --disable-dev-tools --single-instance https://www.icloud.com/
-mkdir -pv icloud/{DEBIAN, opt, usr/share/applications, usr/share/pixmaps}
+mkdir -pv icloud/{DEBIAN,opt,usr/share/applications,usr/share/pixmaps}
 mv iCloud-linux-64 icloud/opt/icloud
 mv icon.png icloud/usr/share/pixmaps/icloud.png
 cat <<EOF |tee icloud/DEBIAN/control
