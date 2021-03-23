@@ -117,8 +117,6 @@ Minio (http)
 
 MySQL (Apt)
 
-NodeJS (Apt)
-
 NoMachine (http)
 
 OneDriver (PPA)
