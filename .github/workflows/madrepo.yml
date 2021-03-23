@@ -84,7 +84,7 @@ jobs:
           old: packages-amd64-1.log
           new: packages-amd64-2.log
           mode: addition
-          tolerance: mixed
+          tolerance: mixed-worse
           output: pacotes-amd64.txt
 
       - name: Comparação do estado dos pacotes i386
@@ -93,7 +93,7 @@ jobs:
           old: packages-i386-1.log
           new: packages-i386-2.log
           mode: addition
-          tolerance: mixed
+          tolerance: mixed-worse
           output: pacotes-i386.txt
 
       - name: Conteúdo atualizado do repositório
