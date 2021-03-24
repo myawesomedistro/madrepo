@@ -4,12 +4,12 @@ apt-fast install -y \
     libexo-2-dev \
     libthunarx-3-dev \
     libxfce4util-dev
-git clone https://github.com/frederikmoellers/thunar-nextcloud-plugin
-cd thunar-nextcloud-plugin
+git clone https://github.com/frederikmoellers/thunar-nextcloud-plugin tnp-source
+cd tnp-source
 ./compile.sh
 cd ..
 mkdir -p thunar-nextcloud-plugin/{DEBIAN,usr/lib/x86_64-linux-gnu/thunarx-3}
-mv thunar-nextcloud-plugin/thunar-nextcloud-plugin.so thunar-nextcloud-plugin/usr/lib/x86_64-linux-gnu/thunarx-3/
+mv tnp-source/thunar-nextcloud-plugin.so thunar-nextcloud-plugin/usr/lib/x86_64-linux-gnu/thunarx-3/
 TNP_VERSION=`echo $(wget -qO- https://api.github.com/repos/frederikmoellers/thunar-nextcloud-plugin/commits/master|grep date|head -n 1|cut -d \" -f4|cut -d \: -f1|cut -d \T -f1)`
 cat <<EOF |tee thunar-nextcloud-plugin/DEBIAN/control
 Package: thunar-nextcloud-plugin
