@@ -183,6 +183,8 @@ Ulauncher (GitHub)
 
 UNetbootin (PPA)
 
+Visual Studio Code (Apt)
+
 VSCodium (GitHub)
 
 Whale (GitHub)
