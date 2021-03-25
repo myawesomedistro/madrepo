@@ -41,6 +41,8 @@ duf (GitHub)
 
 Duplicati (GitHub)
 
+Edge (Apt)
+
 Etcher (Apt)
 
 Figma (GitHub)
@@ -166,6 +168,8 @@ Syncthing (Apt)
 SysMonTask (GitHub)
 
 Tartube (GitHub)
+
+Teams (Apt)
 
 TeamViewer (http)
 
