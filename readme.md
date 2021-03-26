@@ -37,6 +37,8 @@ Docker (Apt)
 
 Dolibarr (SourceForge)
 
+Draw.io (GitHub)
+
 duf (GitHub)
 
 Duplicati (GitHub)
