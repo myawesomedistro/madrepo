@@ -119,6 +119,8 @@ Minio (http)
 
 MySQL (Apt)
 
+Natron (PPA)
+
 NoMachine (http)
 
 OneDriver (PPA)
