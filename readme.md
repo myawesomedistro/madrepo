@@ -1,6 +1,6 @@
 Este é o repositório `apt` do **MAD Linux**, no _indicador_ abaixo, você pode conferir o _status_ do repositório.
 
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fmyawesomedistro%2Fmadrepo%2Fbadge%3Fref%3Dmain&style=for-the-badge&label=MAD%20Repo)](https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto?ref=main)
+[![Build Status](Https://img.shields.io/endpoint.svg?url=Https%3A%2F%2Factions-badge.atrox.dev%2Fmyawesomedistro%2Fmadrepo%2Fbadge%3Fref%3Dmain&style=for-the-badge&label=MAD%20Repo)](Https://actions-badge.atrox.dev/myawesomedistro/madrepo/goto?ref=main)
 
 Este repositório reune pacotes de vários outros repositórios, além de pacotes que não estão disponíveis em nenhum outro repositório e também compilações próprias, feitas diretamente do código fonte.
 
@@ -21,7 +21,7 @@ Apt-fast (PPA)
 
 Asar UI (GitHub)
 
-Atom (http)
+Atom (Http)
 
 Bat (GitHub)
 
@@ -29,7 +29,9 @@ Caprine (GitHub)
 
 Crown translate (GitHub)
 
-DeltaChat (http)
+DeltaChat (Http)
+
+Discord (Http)
 
 DockbarX (PPA)
 
@@ -95,13 +97,13 @@ KXStudio (Apt) (PPA)
 
 LazPaint (GitHub)
 
-Lightworks (http)
+Lightworks (Http)
 
 LightZone (PPA)
 
 Linux Firmware (Apt)
 
-Local (http)
+Local (Http)
 
 LSD (GitHub)
 
@@ -117,13 +119,13 @@ Meteo (PPA)
 
 Min (GitHub)
 
-Minio (http)
+Minio (Http)
 
 MySQL (Apt)
 
 Natron (PPA)
 
-NoMachine (http)
+NoMachine (Http)
 
 OneDriver (PPA)
 
@@ -141,29 +143,29 @@ PPA-Purge (Apt)
 
 QOwnNotes (PPA)
 
-Quill (http)
+Quill (Http)
 
 qView (PPA)
 
-RClone (http)
+RClone (Http)
 
 RCloneTray (GitHub)
 
-RStudio (http)
+RStudio (Http)
 
 Signal (Apt)
 
 Simplenote (GitHub)
 
-Skype (http)
+Skype (Http)
 
 SonoBus (Apt)
 
 SpeedTest (Apt)
 
-Steam (http)
+Steam (Http)
 
-Stremio (http)
+Stremio (Http)
 
 superProductivity (GitHub)
 
@@ -175,9 +177,9 @@ Tartube (GitHub)
 
 Teams (Apt)
 
-TeamViewer (http)
+TeamViewer (Http)
 
-ToneLib Zoom (http)
+ToneLib Zoom (Http)
 
 Touchégg (GitHub)
 
@@ -197,69 +199,69 @@ WINE (Apt)
 
 ZeroTier (Apt)
 
-Zoom (http)
+Zoom (Http)
 
 ## Compilações
 
-[Advanced copy](https://github.com/jarun/advcpmv)
+[Advanced copy](Https://github.com/jarun/advcpmv)
 
-[Ananicy](https://github.com/Nefelim4ag/Ananicy)
+[Ananicy](Https://github.com/Nefelim4ag/Ananicy)
 
-[Bashrun](https://gitlab.com/myawesomedistro/bashrun)
+[Bashrun](Https://gitlab.com/myawesomedistro/bashrun)
 
-[Bit](https://github.com/chriswalz/bit)
+[Bit](Https://github.com/chriswalz/bit)
 
-[BSPWM](https://github.com/j-james/bspwm-rounded-corners)
+[BSPWM](Https://github.com/j-james/bspwm-rounded-corners)
 
-[Compton](https://github.com/tryone144/compton)
+[Compton](Https://github.com/tryone144/compton)
 
-[Fonts SNFS](https://github.com/supermarin/YosemiteSanFranciscoFont)
+[Fonts SNFS](Https://github.com/supermarin/YosemiteSanFranciscoFont)
 
-[Gestures](https://github.com/bulletmark/libinput-gestures)
+[Gestures](Https://github.com/bulletmark/libinput-gestures)
 
-[Go disk usage](https://github.com/dundee/gdu)
+[Go disk usage](Https://github.com/dundee/gdu)
 
-[iCloud](https://www.addictivetips.com/ubuntu-linux-tips/use-icloud-on-linux/)
+[iCloud](Https://www.addictivetips.com/ubuntu-linux-tips/use-icloud-on-linux/)
 
-[LightDM webkit2 greeter](https://github.com/Antergos/web-greeter/issues/) (OBS) (Repack) [Tema Glorious](https://github.com/manilarome/lightdm-webkit2-theme-glorious)
+[LightDM webkit2 greeter](Https://github.com/Antergos/web-greeter/issues/) (OBS) (Repack) [Tema Glorious](Https://github.com/manilarome/lightdm-webkit2-theme-glorious)
 
-[Linux notification center](https://github.com/phuhl/linux_notification_center)
+[Linux notification center](Https://github.com/phuhl/linux_notification_center)
 
-[MAD Welcome](https://gitlab.com/myawesomedistro/madwelcome)
+[MAD Welcome](Https://gitlab.com/myawesomedistro/madwelcome)
 
-[Obsidian](https://github.com/obsidianmd/obsidian-releases) (GitHub) (Repack)
+[Obsidian](Https://github.com/obsidianmd/obsidian-releases) (GitHub) (Repack)
 
-[Panther launcher](https://gitlab.com/rastersoft/panther_launcher) (http) (Repack)
+[Panther launcher](Https://gitlab.com/rastersoft/panther_launcher) (Http) (Repack)
 
-[Picom](https://github.com/jonaburg/picom)
+[Picom](Https://github.com/jonaburg/picom)
 
-[PowerKit](https://github.com/rodlie/powerkit)
+[PowerKit](Https://github.com/rodlie/powerkit)
 
-[Rambox](https://github.com/ramboxapp/community-edition) (GitHub) (Repack)
+[Rambox](Https://github.com/ramboxapp/community-edition) (GitHub) (Repack)
 
-[REAPER](https://reaper.fm) (http) (Repack)
+[REAPER](Https://reaper.fm) (Http) (Repack)
 
-[Rofi](https://github.com/davatorium/rofi)
+[Rofi](Https://github.com/davatorium/rofi)
 
-[Tela icon theme](https://github.com/vinceliuice/Tela-icon-theme)
+[Tela icon theme](Https://github.com/vinceliuice/Tela-icon-theme)
 
-[Touché](https://github.com/JoseExposito/touche)
+[Touché](Https://github.com/JoseExposito/touche)
 
-[XFCE4 panel profiles](https://docs.xfce.org/apps/xfce4-panel-profiles/start) (Ubuntu focal) (Repack)
+[XFCE4 panel profiles](Https://docs.xfce.org/apps/xfce4-panel-profiles/start) (Ubuntu focal) (Repack)
 
-[yabridge](https://github.com/robbert-vdh/yabridge)
+[yabridge](Https://github.com/robbert-vdh/yabridge)
 
-[zentile](https://github.com/blrsn/zentile)
+[zentile](Https://github.com/blrsn/zentile)
 
 Para adicionar este repositório ao seu sistema, utilize os comandos abaixo:
 ```
-echo 'deb https://sourceforge.net/projects/madlinux/files/repo core main'|sudo tee /etc/apt/sources.list.d/madlinux.list
+echo 'deb Https://sourceforge.net/projects/madlinux/files/repo core main'|sudo tee /etc/apt/sources.list.d/madlinux.list
 ```
 ```
-wget -qO- https://sourceforge.net/projects/madlinux/files/repo/madlinux.key|gpg --dearmor|sudo tee /etc/apt/trusted.gpg.d/madlinux.gpg
+wget -qO- Https://sourceforge.net/projects/madlinux/files/repo/madlinux.key|gpg --dearmor|sudo tee /etc/apt/trusted.gpg.d/madlinux.gpg
 ```
 ```
 sudo apt update
 ```
 
-É recomendado instalar o [`apt-fast`](https://github.com/ilikenwf/apt-fast) para ter mais velocidade ao instalar pacotes deste repositório, visto que ele está hospedado gratuitamente no [**SourceForge**](https://sourceforge.net), que já é conhecido por ter uma certa _lentidão_ no **Brasil**.
+É recomendado instalar o [`apt-fast`](Https://github.com/ilikenwf/apt-fast) para ter mais velocidade ao instalar pacotes deste repositório, visto que ele está hospedado gratuitamente no [**SourceForge**](Https://sourceforge.net), que já é conhecido por ter uma certa _lentidão_ no **Brasil**.
