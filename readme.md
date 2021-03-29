@@ -197,6 +197,8 @@ Whale (GitHub)
 
 WINE (Apt)
 
+xemu (PPA)
+
 ZeroTier (Apt)
 
 Zoom (Http)
