@@ -19,6 +19,7 @@ cat <<EOF |tee cockos-reaper/DEBIAN/preinst
 cd /tmp
 aria2c http://reaper.fm/$(wget -qO- http://reaper.fm/download.php|grep _linux_x86_64.tar.xz|cut -d '"' -f2)
 tar fx reaper*_linux_x86_64.tar.xz -C /tmp
+sed -i 's/rmdir --/rm -rf --/g' /tmp/reaper*/install-reaper.sh
 /tmp/reaper*/install-reaper.sh --install /opt --integrate-desktop --quiet --integrate-sys-desktop
 aria2c -o libSwell.colortheme http://my.opendesktop.org/s/D4GcswAieYf6Kfx/download
 mv libSwell.colortheme /opt/REAPER/libSwell.colortheme
