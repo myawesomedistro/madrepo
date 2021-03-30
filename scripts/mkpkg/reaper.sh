@@ -21,8 +21,8 @@ aria2c http://reaper.fm/$(wget -qO- http://reaper.fm/download.php|grep _linux_x8
 tar fx reaper*_linux_x86_64.tar.xz -C /tmp
 /tmp/reaper*/install-reaper.sh --install /opt --integrate-desktop --quiet --integrate-sys-desktop
 aria2c -o libSwell.colortheme http://my.opendesktop.org/s/D4GcswAieYf6Kfx/download
-mv libSwell.colortheme /opt/REAPER/libSwell.colortheme|tee cockos-reaper/DEBIAN/preinst
-echo "
+mv libSwell.colortheme /opt/REAPER/libSwell.colortheme
+echo '
 Actions=NewProject;ShowAudioConfig;ReaMote;WhatsNew;License;
 [Desktop Action NewProject]
 Name=REAPER (create new project)
@@ -47,7 +47,7 @@ Icon=text-x-plain
 Name=License and User Agreement
 Name[pt_BR]=Licença e contrato de usuário
 Exec=xdg-open /opt/REAPER/license.txt
-Icon=text-x-plain"|tee -a /usr/share/applications/cockos-reaper.desktop
+Icon=text-x-plain'|tee -a /usr/share/applications/cockos-reaper.desktop
 EOF
 chmod +x cockos-reaper/DEBIAN/preinst
 cat <<EOF |tee cockos-reaper/DEBIAN/prerm
