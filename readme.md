@@ -159,6 +159,8 @@ Simplenote (GitHub)
 
 Skype (Http)
 
+Sleek (GitHub)
+
 SonoBus (Apt)
 
 SpeedTest (Apt)
