@@ -25,6 +25,8 @@ Atom (Http)
 
 Bat (GitHub)
 
+Bomi (PPA)
+
 Caprine (GitHub)
 
 Crown translate (GitHub)
