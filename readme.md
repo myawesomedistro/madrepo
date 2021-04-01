@@ -155,6 +155,8 @@ RCloneTray (GitHub)
 
 RStudio (Http)
 
+Send Anywhere (Http)
+
 Signal (Apt)
 
 Simplenote (GitHub)
