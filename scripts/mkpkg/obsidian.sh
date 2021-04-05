@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 OBSIDIAN_TAG=$(wget -qO- https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest|grep tag|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/obsidianmd\/obsidian-releases\/releases\/tag\/v//g')
-aria2c $(wget -qO- https://api.github.com/repos/obsidianmd/obsidian-releases/releases|grep browser_download_url|grep download|grep amd64.deb|head -n1|cut -d '"' -f4)
+aria2c https://github.com/$(wget -qO- https://github.com/obsidianmd/obsidian-releases/releases?after=v0.9.21|grep amd64.deb|head -n1|cut -d '"' -f2)
 dpkg-deb -x obsidian*.deb obsidian
 dpkg-deb -e obsidian*.deb obsidian/DEBIAN
 rm -rf obsidian*.deb
