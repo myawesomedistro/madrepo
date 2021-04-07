@@ -217,6 +217,8 @@ Zoom (Http)
 
 [Ananicy](Https://github.com/Nefelim4ag/Ananicy)
 
+[Apple iCloud](Https://www.addictivetips.com/ubuntu-linux-tips/use-icloud-on-linux/)
+
 [Bashrun](Https://gitlab.com/myawesomedistro/bashrun)
 
 [Bit](Https://github.com/chriswalz/bit)
@@ -231,13 +233,15 @@ Zoom (Http)
 
 [Go disk usage](Https://github.com/dundee/gdu)
 
-[iCloud](Https://www.addictivetips.com/ubuntu-linux-tips/use-icloud-on-linux/)
+[Google Docs](https://github.com/nativefier/nativefier/issues/831#issuecomment-786705198)
 
 [LightDM webkit2 greeter](Https://github.com/Antergos/web-greeter/issues/) (OBS) (Repack) [Tema Glorious](Https://github.com/manilarome/lightdm-webkit2-theme-glorious)
 
 [Linux notification center](Https://github.com/phuhl/linux_notification_center)
 
 [MAD Welcome](Https://gitlab.com/myawesomedistro/madwelcome)
+
+[Microsoft Office](https://swafox.com/msoffice-linux/)
 
 [Obsidian](Https://github.com/obsidianmd/obsidian-releases) (GitHub) (Repack)
 
