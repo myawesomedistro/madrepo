@@ -9,6 +9,8 @@ Segue a lista:
 
 Alva (GitHub)
 
+Ao (GitHub)
+
 AppCenter (elementary OS)
 
 App Grid (PPA)
