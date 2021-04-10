@@ -16,16 +16,12 @@ make
 mkdir -p advcpmv/DEBIAN advcpmv/usr/bin advcpmv/usr/local/bin
 mv src/cp advcpmv/usr/bin/advcp
 mv src/mv advcpmv/usr/bin/advmv
-cat <<EOF |tee advcpmv/usr/local/bin/cp
-#!/bin/bash
+echo '#!/bin/bash
 set -e
-advcp -g "$@"
-EOF
-cat <<EOF |tee advcpmv/usr/local/bin/mv
-#!/bin/bash
+advcp -g "$@"'|tee advcpmv/usr/local/bin/cp
+echo '#!/bin/bash
 set -e
-advmv -g "$@"
-EOF
+advmv -g "$@"'|tee advcpmv/usr/local/bin/mv
 chmod +x advcpmv/usr/local/bin/cp advcpmv/usr/local/bin/mv
 cat <<EOF |tee advcpmv/DEBIAN/control
 Package: advcpmv
