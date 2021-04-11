@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-if wget https://update.send-anywhere.com/linux_downloads/sendanywhere_latest_amd64.deb 2>/dev/null
+if aria2c https://update.send-anywhere.com/linux_downloads/sendanywhere_latest_amd64.deb 2>/dev/null
 then
    echo "Download do Send Anywhere concluído com sucesso!"
 else
