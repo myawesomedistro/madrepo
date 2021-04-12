@@ -51,7 +51,7 @@ Duplicati (GitHub)
 
 Edge (Apt)
 
-Etcher (Apt)
+Etcher (GitHub)
 
 Figma (GitHub)
 
