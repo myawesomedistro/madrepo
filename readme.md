@@ -95,6 +95,8 @@ Jellyfin (Apt)
 
 Jetbrains (Apt)
 
+Jitsi Meet (GitHub)
+
 KDiskMark (GitHub)
 
 KXStudio (Apt) (PPA)
