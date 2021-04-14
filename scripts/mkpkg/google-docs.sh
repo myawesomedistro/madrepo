@@ -13,7 +13,7 @@ Package: google-docs
 Priority: optional
 Section: misc
 Maintainer: Raul Dipeas <rauldipeas@mail.com>
-Architecture: all
+Architecture: amd64
 Version: 0.1~electron-$ELECTRON_RELEASE
 Homepage: https://docs.google.com
 Description: Access Google Docs on Linux.

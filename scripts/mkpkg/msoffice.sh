@@ -13,7 +13,7 @@ Package: msoffice
 Priority: optional
 Section: misc
 Maintainer: Raul Dipeas <rauldipeas@mail.com>
-Architecture: all
+Architecture: amd64
 Version: 0.1~electron-$ELECTRON_RELEASE
 Homepage: https://office.com
 Description: Access Microsoft Office on Linux.

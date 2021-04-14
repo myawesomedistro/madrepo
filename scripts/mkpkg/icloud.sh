@@ -14,7 +14,7 @@ Package: icloud
 Priority: optional
 Section: misc
 Maintainer: Raul Dipeas <rauldipeas@mail.com>
-Architecture: all
+Architecture: amd64
 Version: 0.1~electron-$ELECTRON_RELEASE
 Homepage: https://icloud.com
 Description: Access Apple iCloud on Linux.
