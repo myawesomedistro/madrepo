@@ -40,10 +40,27 @@ jobs:
             /usr/local/share/boost
           df -h
       
-      - name: Checagem inicial dos repositórios
+      - name: Checagem dos repositórios
         run: |
           cat /etc/apt/sources.list
           ls -1 /etc/apt/sources.list.d/
+          rm -rfv /etc/apt/sources.list.d/ \
+            azure-cli.list* \
+            bazel.list* \
+            bazel.list.save \
+            devel:kubic:libcontainers:stable.list* \
+            git-core-ubuntu-ppa-focal.list* \
+            github_git-lfs.list* \
+            google-cloud-sdk.list* \
+            heroku.list* \
+            hvr-ubuntu-ghc-focal.list* \
+            kubernetes.list* \
+            microsoft-prod.list* \
+            mongodb-org-4.4.list* \
+            mono-official-stable.list* \
+            pgdg.list* \
+            ubuntu-toolchain-r-ubuntu-test-focal.list*
+          apt-fast update
 
       - name: Configuração do host
         run: |
