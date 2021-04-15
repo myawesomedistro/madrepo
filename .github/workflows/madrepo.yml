@@ -40,6 +40,11 @@ jobs:
             /usr/local/share/boost
           df -h
       
+      - name: Checagem inicial dos repositórios
+        run: |
+          cat /etc/apt/sources.list
+          ls -1 /etc/apt/sources.list.d/
+
       - name: Configuração do host
         run: |
             sudo sed -i 's/_APTMGR=apt-get/_APTMGR=apt/g' /etc/apt-fast.conf
