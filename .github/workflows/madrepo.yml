@@ -44,7 +44,7 @@ jobs:
         run: |
           cat /etc/apt/sources.list
           ls -1 /etc/apt/sources.list.d/
-          rm -rfv /etc/apt/sources.list.d/ \
+          sudo rm -rfv /etc/apt/sources.list.d/ \
             azure-cli.list* \
             bazel.list* \
             bazel.list.save \
