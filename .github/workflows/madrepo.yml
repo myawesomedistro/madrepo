@@ -42,24 +42,24 @@ jobs:
       
       - name: Checagem dos repositórios
         run: |
-          cat /etc/apt/sources.list
+          cat /etc/apt/sources.list|grep 'deb http'
           ls -1 /etc/apt/sources.list.d/
-          sudo rm -rfv /etc/apt/sources.list.d/ \
-            azure-cli.list* \
-            bazel.list* \
-            bazel.list.save \
-            devel:kubic:libcontainers:stable.list* \
-            git-core-ubuntu-ppa-focal.list* \
-            github_git-lfs.list* \
-            google-cloud-sdk.list* \
-            heroku.list* \
-            hvr-ubuntu-ghc-focal.list* \
-            kubernetes.list* \
-            microsoft-prod.list* \
-            mongodb-org-4.4.list* \
-            mono-official-stable.list* \
-            pgdg.list* \
-            ubuntu-toolchain-r-ubuntu-test-focal.list*
+          sudo rm -rfv \
+            /etc/apt/sources.list.d/azure-cli.list* \
+            /etc/apt/sources.list.d/bazel.list* \
+            /etc/apt/sources.list.d/bazel.list.save \
+            /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list* \
+            /etc/apt/sources.list.d/git-core-ubuntu-ppa-focal.list* \
+            /etc/apt/sources.list.d/github_git-lfs.list* \
+            /etc/apt/sources.list.d/google-cloud-sdk.list* \
+            /etc/apt/sources.list.d/heroku.list* \
+            /etc/apt/sources.list.d/hvr-ubuntu-ghc-focal.list* \
+            /etc/apt/sources.list.d/kubernetes.list* \
+            /etc/apt/sources.list.d/microsoft-prod.list* \
+            /etc/apt/sources.list.d/mongodb-org-4.4.list* \
+            /etc/apt/sources.list.d/mono-official-stable.list* \
+            /etc/apt/sources.list.d/pgdg.list* \
+            /etc/apt/sources.list.d/ubuntu-toolchain-r-ubuntu-test-focal.list*
           apt-fast update
 
       - name: Configuração do host
