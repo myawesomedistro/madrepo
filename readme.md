@@ -209,6 +209,8 @@ WINE (Apt)
 
 xemu (PPA)
 
+YouTube TV Desktop (GitHub)
+
 ZeroTier (Apt)
 
 Zoom (Http)
