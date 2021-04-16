@@ -7,7 +7,7 @@ nativefier -p linux -a x64 -i microsoft-office-online.png --disable-context-menu
 mkdir -p msoffice/{DEBIAN,opt,usr/share/applications,usr/share/pixmaps}
 mv SignintoyourMicrosoftaccount-linux-x64/ msoffice/opt/msoffice
 mv microsoft-office-online.png msoffice/usr/share/pixmaps/microsoft-office-online.png
-ELECTRON_RELEASE=`wget -qO- https://raw.githubusercontent.com/nativefier/nativefier/master/src/constants.ts|grep ELECTRON_VERSION|head -n1|cut -d "'" -f2`
+ELECTRON_RELEASE=`wget -O- https://raw.githubusercontent.com/nativefier/nativefier/master/src/constants.ts|grep ELECTRON_VERSION|head -n1|cut -d "'" -f2`
 cat <<EOF |tee msoffice/DEBIAN/control
 Package: msoffice
 Priority: optional

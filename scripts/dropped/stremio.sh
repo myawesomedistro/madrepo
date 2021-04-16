@@ -34,5 +34,5 @@ cd distros/Ubuntu
 ./package.sh
 cd ../../../
 mv stremio-shell/distros/Ubuntu/stremio-shell/stremio*.deb tmp/packages
-aria2c http://ftp.debian.org/debian/pool/non-free/f/fdk-aac/$(wget -qO- http://ftp.debian.org/debian/pool/non-free/f/fdk-aac/|grep libfdk-aac1|grep amd64.deb|head -n2|tail -n1|cut -d '"' -f8)
-aria2c http://mirrors.kernel.org/ubuntu/pool/universe/x/x264/$(wget -qO- http://mirrors.kernel.org/ubuntu/pool/universe/x/x264/|grep libx264-152|grep amd64.deb|cut -d '"' -f2)
+aria2c http://ftp.debian.org/debian/pool/non-free/f/fdk-aac/$(wget -O- http://ftp.debian.org/debian/pool/non-free/f/fdk-aac/|grep libfdk-aac1|grep amd64.deb|head -n2|tail -n1|cut -d '"' -f8)
+aria2c http://mirrors.kernel.org/ubuntu/pool/universe/x/x264/$(wget -O- http://mirrors.kernel.org/ubuntu/pool/universe/x/x264/|grep libx264-152|grep amd64.deb|cut -d '"' -f2)

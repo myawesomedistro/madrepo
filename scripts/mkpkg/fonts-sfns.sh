@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-YOSEMITE_VERSION=`echo $(wget -qO- https://api.github.com/repos/supermarin/YosemiteSanFranciscoFont/commits/master|grep date|head -n 1|cut -d \" -f4|cut -d \: -f1|cut -d \T -f1)`
+YOSEMITE_VERSION=`echo $(wget -O- https://api.github.com/repos/supermarin/YosemiteSanFranciscoFont/commits/master|grep date|head -n 1|cut -d \" -f4|cut -d \: -f1|cut -d \T -f1)`
 mkdir -p fonts-sfns/DEBIAN
 git clone https://github.com/supermarin/YosemiteSanFranciscoFont
 cat <<EOF |tee fonts-sfns/DEBIAN/control

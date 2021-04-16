@@ -7,8 +7,8 @@ nativefier -p linux -a x64 -i icon.png --disable-context-menu --disable-dev-tool
 mkdir -p icloud/{DEBIAN,opt,usr/share/applications,usr/share/pixmaps}
 mv iCloud-linux-x64 icloud/opt/iCloud
 mv icon.png icloud/usr/share/pixmaps/icloud.png
-#ELECTRON_RELEASE=`wget -qO- https://www.electronjs.org/releases/stable|grep release-entry|head -n1|cut -d '"' -f4`
-ELECTRON_RELEASE=`wget -qO- https://raw.githubusercontent.com/nativefier/nativefier/master/src/constants.ts|grep ELECTRON_VERSION|head -n1|cut -d "'" -f2`
+#ELECTRON_RELEASE=`wget -O- https://www.electronjs.org/releases/stable|grep release-entry|head -n1|cut -d '"' -f4`
+ELECTRON_RELEASE=`wget -O- https://raw.githubusercontent.com/nativefier/nativefier/master/src/constants.ts|grep ELECTRON_VERSION|head -n1|cut -d "'" -f2`
 cat <<EOF |tee icloud/DEBIAN/control
 Package: icloud
 Priority: optional
