@@ -1,4 +1,7 @@
-image: ubuntu:focal
+image: debian:bullseye
+
+#variables:
+#  ENV: value
 
 before_script:
   - apt update
