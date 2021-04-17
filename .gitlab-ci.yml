@@ -6,6 +6,7 @@ image:
 #  ENV: value
 
 before_script:
+  - su
   - apt update
   - apt install -y gnupg
   - echo 'deb http://ppa.launchpad.net/apt-fast/stable/ubuntu bionic main'|tee /etc/apt/sources.list.d/apt-fast.list
@@ -21,7 +22,9 @@ before_script:
       git \
       reprepro \
       sshpass \
+      sudo \
       wget
+  - exit
 
 #after_script:
 #  - echo "After script section"
