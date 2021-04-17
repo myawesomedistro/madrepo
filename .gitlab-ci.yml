@@ -1,18 +1,17 @@
 image:
   name: debian:bullseye
-  entrypoint: ['bash', '-c', 'useradd madlinux && exec su madlinux -c bash']
+  entrypoint: ['bash', '-c', 'apt install sudo && useradd madlinux && usermod -a -G sudo madlinux && exec su madlinux -c bash']
 
 #variables:
 #  ENV: value
 
 before_script:
-  - su
-  - apt update
-  - apt install -y gnupg
-  - echo 'deb http://ppa.launchpad.net/apt-fast/stable/ubuntu bionic main'|tee /etc/apt/sources.list.d/apt-fast.list
-  - apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A2166B8DE8BDC3367D1901C11EE2FF37CA8DA16B
-  - apt update
-  - apt install -y apt-fast
+  - sudo apt update
+  - sudo apt install -y gnupg
+  - echo 'deb http://ppa.launchpad.net/apt-fast/stable/ubuntu bionic main'|sudo tee /etc/apt/sources.list.d/apt-fast.list
+  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A2166B8DE8BDC3367D1901C11EE2FF37CA8DA16B
+  - sudo apt update
+  - sudo apt install -y apt-fast
   - |
     apt-fast install -y \
       aria2 \
@@ -24,7 +23,6 @@ before_script:
       sshpass \
       sudo \
       wget
-  - exit
 
 #after_script:
 #  - echo "After script section"
