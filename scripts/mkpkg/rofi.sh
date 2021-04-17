@@ -69,7 +69,7 @@ cd check
 autoreconf -i
 ./configure
 make
-checkinstall -D -y \
+sudo checkinstall -D -y \
     --maintainer libcheck@github.com \
     --pkgversion $CHECK_TAG
 cd ..
