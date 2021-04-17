@@ -6,6 +6,7 @@ image:
 #  DEBIAN_FRONTEND: noninteractive
 
 before_script:
+  - sudo ls -la /var/lib/apt/lists/
   - sudo dpkg --add-architecture i386
   - sudo apt update
   - sudo apt install -y software-properties-common
