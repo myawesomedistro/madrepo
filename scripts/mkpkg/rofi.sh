@@ -69,13 +69,13 @@ cd check
 autoreconf -i
 ./configure
 make
-sudo checkinstall -D -y \
+checkinstall -D -y \
     --maintainer libcheck@github.com \
     --pkgversion $CHECK_TAG
 cd ..
 ./configure --prefix=/usr
 make
-sudo checkinstall -D -y \
+checkinstall -D -y \
     --install=no \
     --maintainer davatorium@github.com \
     --pkgversion $ROFI_TAG \

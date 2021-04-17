@@ -3,11 +3,11 @@ set -e
 mkdir -p tmp/packages
 for script in scripts/mkpkg/*.sh
 do
- sed -i 's/sudo//g' $script|bash -x
+ bash -x $script
 done
 for script in scripts/getpkg/*.sh
 do
- sed -i 's/sudo//g' $script|bash -x
+ bash -x $script
 done
 mv *.deb tmp/packages
 find tmp/packages \

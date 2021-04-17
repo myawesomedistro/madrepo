@@ -20,7 +20,7 @@ apt-fast install -y --no-install-recommends \
   xsltproc \
   xmlto
 make docs
-sudo checkinstall -D -y \
+checkinstall -D -y \
   --install=no \
   --maintainer tryone144@github.com \
   --pkgversion 2-`echo $(git describe --always --dirty)-$(git log -1 --date=short --pretty=format:%cd)|sed 's/v//g'|sed 's/_/-/g'` \
