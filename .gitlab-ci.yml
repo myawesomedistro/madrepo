@@ -1,7 +1,7 @@
 image: debian:bullseye
 
-#variables:
-#  ENV: value
+variables:
+  FORCE_UNSAFE_CONFIGURE: 1
 
 before_script:
   - apt update
