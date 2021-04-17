@@ -8,7 +8,7 @@ image:
 before_script:
   - sudo dpkg --add-architecture i386
   - sudo apt update
-  - sudo apt install -y gnupg
+  - sudo apt install -y software-properties-common
   - sudo add-apt-repository multiverse
   - sudo add-apt-repository universe
   - sudo add-apt-repository -y ppa:apt-fast/stable
