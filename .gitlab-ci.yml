@@ -1,6 +1,6 @@
 image:
   name: debian:bullseye
-  entrypoint: ['bash', '-c', 'apt update && apt install -y sudo && useradd madlinux && usermod -a -G sudo madlinux && exec su madlinux -c bash']
+  entrypoint: ['bash', '-c', 'apt update && apt install -y sudo && useradd madlinux && usermod -a -G sudo madlinux && echo "madlinux ALL=\(ALL\) NOPASSWD:ALL"|tee /etc/sudoers.d/madlinux && exec su madlinux -c bash']
 
 #variables:
 #  ENV: value
