@@ -1,5 +1,5 @@
 image: debian:bullseye
-run-as-user: madlinux
+  run-as-user: 1000
 
 #variables:
 #  ENV: value
