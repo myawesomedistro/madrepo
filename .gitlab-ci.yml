@@ -10,12 +10,7 @@ before_script:
   - echo 'keyboard-configuration keyboard-configuration/layout 76'|sudo debconf-set-selections
   - sudo apt update
   - sudo apt install -y software-properties-common
-#  - sudo add-apt-repository multiverse
-#  - sudo add-apt-repository universe
   - sudo add-apt-repository -y ppa:apt-fast/stable
-#  - echo 'deb http://ppa.launchpad.net/apt-fast/stable/ubuntu bionic main'|sudo tee /etc/apt/sources.list.d/apt-fast.list
-#  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A2166B8DE8BDC3367D1901C11EE2FF37CA8DA16B
-#  - sudo apt update
   - sudo apt install -y apt-fast
   - sudo sed -i 's/_APTMGR=apt-get/_APTMGR=apt/g' /etc/apt-fast.conf
   - |
@@ -30,10 +25,8 @@ before_script:
       sshpass \
       sudo \
       wget
-  - sudo usermod -d /builds/myawesomedistro/madrepo/ -m madlinux
-#  - sudo ln -sv /builds/myawesomedistro/madrepo /home/madlinux
-#  - sudo mkdir -pv /home/madlinux
-#  - sudo chmod -R 777 /home/madlinux
+  - sudo mkdir -pv /home/madlinux
+  - sudo chmod -R 777 /home/madlinux
 #  - aria2c ${{ secrets.GPG_SEC }}
 #  - gpg --batch --allow-secret-key-import --import madlinux_sec.gpg
   - |
@@ -43,16 +36,16 @@ before_script:
       'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-1.log
 
 
-#after_script:
+after_script:
 #  - |
 #    sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- \
 #    rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
 #    repo rauldipeas@frs.sourceforge.net:/home/frs/project/madlinux
-#  - |
-#    wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep \
-#      'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-2.log
-#    wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep \
-#      'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-2.log
+  - |
+    wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep \
+      'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-2.log
+    wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep \
+      'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-2.log
 
 
 madrepo:
