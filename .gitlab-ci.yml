@@ -1,4 +1,4 @@
-image: debian:bullseye
+image: ubuntu:focal
 
 before_script:
   - apt update
