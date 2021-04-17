@@ -7,7 +7,7 @@ variables:
 
 before_script:
   - sudo dpkg --add-architecture i386
-  - echo 'keyboard-configuration keyboard-configuration/layout Portuguese'|sudo debconf-set-selections
+  - echo 'keyboard-configuration keyboard-configuration/layout 76'|sudo debconf-set-selections
   - sudo apt update
   - sudo apt install -y software-properties-common
 #  - sudo add-apt-repository multiverse
