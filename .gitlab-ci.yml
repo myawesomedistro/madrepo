@@ -1,6 +1,6 @@
 image:
   name: ubuntu:focal
-  entrypoint: ['bash', '-c', 'apt update && apt install -y sudo && useradd madlinux && usermod -a -G sudo madlinux && echo "madlinux ALL=(ALL) NOPASSWD:ALL"|tee /etc/sudoers.d/madlinux && chmod -R 777 /home/madlinux && exec su madlinux -c bash']
+  entrypoint: ['bash', '-c', 'apt update && apt install -y sudo && useradd madlinux && usermod -a -G sudo madlinux && echo "madlinux ALL=(ALL) NOPASSWD:ALL"|tee /etc/sudoers.d/madlinux && exec su madlinux -c bash']
 
 #variables:
 #  ENV: value
@@ -26,6 +26,7 @@ before_script:
       sshpass \
       sudo \
       wget
+  - sudo chmod -R 777 /home/madlinux
 #  - aria2c ${{ secrets.GPG_SEC }}
 #  - gpg --batch --allow-secret-key-import --import madlinux_sec.gpg
   - |
