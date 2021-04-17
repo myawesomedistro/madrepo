@@ -27,8 +27,8 @@ before_script:
   - sudo mkdir -pv /home/madlinux
   - sudo chmod -R 777 /home/madlinux
   - apt-fast install -y debconf-utils
-  - debconf-get-selections | grep keyboard-configuration > selections.conf
-  - debconf-set-selections < selections.conf
+#  - debconf-get-selections | grep keyboard-configuration > selections.conf
+#  - debconf-set-selections < selections.conf
   - DEBIAN_FRONTEND=noninteractive apt-fast install -y keyboard-configuration
 #  - aria2c ${{ secrets.GPG_SEC }}
 #  - gpg --batch --allow-secret-key-import --import madlinux_sec.gpg
