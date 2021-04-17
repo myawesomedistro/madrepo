@@ -39,16 +39,17 @@ before_script:
       'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-1.log
 
 
-#after_script:
+after_script:
+  - sudo ls -la /var/lib/apt/lists/
 #  - |
 #    sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- \
 #    rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
 #    repo rauldipeas@frs.sourceforge.net:/home/frs/project/madlinux
-#  - |
-#    wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep \
-#      'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-2.log
-#    wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep \
-#      'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-2.log
+  - |
+    wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep \
+      'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-2.log
+    wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep \
+      'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-2.log
 
 
 madrepo:
