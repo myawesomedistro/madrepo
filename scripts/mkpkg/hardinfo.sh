@@ -12,7 +12,7 @@ mkdir -p hardinfo/build
 cd hardinfo/build
 cmake .. -DCMAKE_INSTALL_PREFIX=/usr
 make
-checkinstall -y \
+sudo checkinstall -y \
 	--install=no \
 	--maintainer leandro@hardinfo.org \
 	--pkgname 'hardinfo' \

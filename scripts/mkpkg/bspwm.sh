@@ -14,7 +14,7 @@ git clone https://github.com/j-james/bspwm-rounded-corners
 cd bspwm-rounded-corners
 sed -i 's/usr\/local/usr/g' Makefile
 make
-checkinstall -y \
+sudo checkinstall -y \
 	--install=no \
 	--maintainer rauldipeas@mail.com \
 	--pkgname 'bspwm' \

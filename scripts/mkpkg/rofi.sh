@@ -75,7 +75,7 @@ checkinstall -D -y \
 cd ..
 ./configure --prefix=/usr
 make
-checkinstall -D -y \
+sudo checkinstall -D -y \
     --install=no \
     --maintainer davatorium@github.com \
     --pkgversion $ROFI_TAG \
