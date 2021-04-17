@@ -2,8 +2,8 @@ image:
   name: ubuntu:focal
   entrypoint: ['bash', '-c', 'apt update && apt install -y sudo && useradd madlinux && usermod -a -G sudo madlinux && echo "madlinux ALL=(ALL) NOPASSWD:ALL"|tee /etc/sudoers.d/madlinux && exec su madlinux -c bash']
 
-variables:
-  DEBIAN_FRONTEND: noninteractive
+#variables:
+#  DEBIAN_FRONTEND: noninteractive
 
 before_script:
   - sudo dpkg --add-architecture i386
@@ -26,8 +26,8 @@ before_script:
       git \
       reprepro \
       sshpass \
-      sudo \
       wget
+#      sudo \
   - sudo mkdir -pv /home/madlinux
   - sudo chmod -R 777 /home/madlinux
 #  - aria2c ${{ secrets.GPG_SEC }}
@@ -39,16 +39,16 @@ before_script:
       'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-1.log
 
 
-after_script:
+#after_script:
 #  - |
 #    sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- \
 #    rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
 #    repo rauldipeas@frs.sourceforge.net:/home/frs/project/madlinux
-  - |
-    wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep \
-      'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-2.log
-    wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep \
-      'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-2.log
+#  - |
+#    wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep \
+#      'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-2.log
+#    wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep \
+#      'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-2.log
 
 
 madrepo:
