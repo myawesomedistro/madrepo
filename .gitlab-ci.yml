@@ -7,8 +7,11 @@ variables:
 
 before_script:
   - sudo dpkg --add-architecture i386
-  - echo 'keyboard-configuration keyboard-configuration/layout 76'|sudo debconf-set-selections
   - sudo apt update
+  - sudo apt install -y debconf-utils
+  - debconf-get-selections | grep keyboard-configuration > selections.conf
+  - debconf-set-selections < selections.conf
+  - dpkg-reconfigure keyboard-configuration -f noninteractive
   - sudo apt install -y software-properties-common
   - sudo add-apt-repository -y ppa:apt-fast/stable
   - sudo apt install -y apt-fast
