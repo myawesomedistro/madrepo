@@ -7,7 +7,7 @@ before_script:
   - apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A2166B8DE8BDC3367D1901C11EE2FF37CA8DA16B
   - apt update
   - apt install -y apt-fast
-  - apt-fast install -y aria2 build-essential checkinstall dpkg-sig reprepro sshpass
+  - apt-fast install -y aria2 build-essential checkinstall dpkg-sig reprepro sshpass wget
 
 job:
   script:
