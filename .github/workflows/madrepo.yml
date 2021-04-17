@@ -47,11 +47,10 @@ jobs:
           sudo rm -rfv \
             /etc/apt/sources.list.d/azure-cli.list* \
             /etc/apt/sources.list.d/bazel.list* \
-            /etc/apt/sources.list.d/bazel.list.save \
             /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list* \
             /etc/apt/sources.list.d/git-core-ubuntu-ppa-focal.list* \
             /etc/apt/sources.list.d/github_git-lfs.list* \
-            /etc/apt/sources.list.d/google-cloud-sdk.list* \
+            /etc/apt/sources.list.d/google*.list* \
             /etc/apt/sources.list.d/heroku.list* \
             /etc/apt/sources.list.d/hvr-ubuntu-ghc-focal.list* \
             /etc/apt/sources.list.d/kubernetes.list* \
