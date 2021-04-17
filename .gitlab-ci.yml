@@ -1,5 +1,6 @@
-image: debian:bullseye
-  run-as-user: 1000
+image:
+  name: debian:bullseye
+  entrypoint: ['bash', '-c', 'useradd madlinux && exec su madlinux -c bash']
 
 #variables:
 #  ENV: value
