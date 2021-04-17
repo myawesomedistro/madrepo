@@ -26,6 +26,7 @@ before_script:
       sshpass \
       sudo \
       wget
+  - sudo mkdir -pv /home/madlinux
   - sudo chmod -R 777 /home/madlinux
 #  - aria2c ${{ secrets.GPG_SEC }}
 #  - gpg --batch --allow-secret-key-import --import madlinux_sec.gpg
