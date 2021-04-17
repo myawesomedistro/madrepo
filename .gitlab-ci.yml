@@ -1,0 +1,19 @@
+image: debian:bullseye
+run-as-user: 1000
+
+#variables:
+#  ENV: value
+
+#before_script:
+#  - gem install bundler
+
+#after_script:
+#  - command
+
+repo:
+  stage: deploy
+  script:
+    - whoami
+#  - bash build.sh
+  only:
+  - main
