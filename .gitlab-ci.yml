@@ -1,5 +1,5 @@
 image:
-  name: debian:bullseye
+  name: ubuntu:focal
   entrypoint: ['bash', '-c', 'apt update && apt install -y sudo && useradd madlinux && usermod -a -G sudo madlinux && echo "madlinux ALL=(ALL) NOPASSWD:ALL"|tee /etc/sudoers.d/madlinux && exec su madlinux -c bash']
 
 #variables:
@@ -10,12 +10,12 @@ before_script:
   - sudo dpkg --add-architecture i386
   - sudo apt update
   - sudo apt install -y gpg
-#  - sudo apt install -y software-properties-common
-  - sudo install assets/add-apt-repository /usr/bin/
-#  - sudo add-apt-repository -y ppa:apt-fast/stable
-  - echo 'deb http://ppa.launchpad.net/apt-fast/stable/ubuntu focal main'|sudo tee /etc/apt/sources.list.d/apt-fast.list
-  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A2166B8DE8BDC3367D1901C11EE2FF37CA8DA16B
-  - sudo apt update
+  - sudo apt install -y software-properties-common
+#  - sudo install assets/add-apt-repository /usr/bin/
+  - sudo add-apt-repository -y ppa:apt-fast/stable
+#  - echo 'deb http://ppa.launchpad.net/apt-fast/stable/ubuntu focal main'|sudo tee /etc/apt/sources.list.d/apt-fast.list
+#  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A2166B8DE8BDC3367D1901C11EE2FF37CA8DA16B
+#  - sudo apt update
   - sudo apt install -y apt-fast
   - sudo sed -i 's/_APTMGR=apt-get/_APTMGR=apt/g' /etc/apt-fast.conf
   - |
