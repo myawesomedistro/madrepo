@@ -7,14 +7,14 @@ aria2c http://security.ubuntu.com/ubuntu/pool/main/p/python3.8/$(wget -O- http:/
 aria2c http://security.ubuntu.com/ubuntu/pool/main/p/python3.8/$(wget -O- http://security.ubuntu.com/ubuntu/pool/main/p/python3.8/|grep libpython3.8-stdlib|grep amd64.deb|head -n1|cut -d '"' -f8)
 aria2c https://dev.mysql.com/get/mysql-apt-config_0.8.16-1_all.deb
 
-debconf-set-selections <<< 'mysql-apt-config mysql-apt-config/repo-codename select bullseye'
-debconf-set-selections <<< 'mysql-apt-config mysql-apt-config/repo-distro select debian'
-debconf-set-selections <<< 'mysql-apt-config mysql-apt-config/repo-url string http://repo.mysql.com/apt/'
-debconf-set-selections <<< 'mysql-apt-config mysql-apt-config/select-preview select '
-debconf-set-selections <<< 'mysql-apt-config mysql-apt-config/select-product select Ok'
-debconf-set-selections <<< 'mysql-apt-config mysql-apt-config/select-server select mysql-8.0'
-debconf-set-selections <<< 'mysql-apt-config mysql-apt-config/select-tools select '
-debconf-set-selections <<< 'mysql-apt-config mysql-apt-config/unsupported-platform select abort'
+echo 'mysql-apt-config mysql-apt-config/repo-codename select bullseye'|sudo debconf-set-selections
+echo 'mysql-apt-config mysql-apt-config/repo-distro select debian'|sudo debconf-set-selections
+echo 'mysql-apt-config mysql-apt-config/repo-url string http://repo.mysql.com/apt/'|sudo debconf-set-selections
+echo 'mysql-apt-config mysql-apt-config/select-preview select '|sudo debconf-set-selections
+echo 'mysql-apt-config mysql-apt-config/select-product select Ok'|sudo debconf-set-selections
+echo 'mysql-apt-config mysql-apt-config/select-server select mysql-8.0'|sudo debconf-set-selections
+echo 'mysql-apt-config mysql-apt-config/select-tools select '|sudo debconf-set-selections
+echo 'mysql-apt-config mysql-apt-config/unsupported-platform select abort'|sudo debconf-set-selections
 
 apt-fast install -y ./mysql-apt-config*.deb
 
