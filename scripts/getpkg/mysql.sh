@@ -18,7 +18,7 @@ aria2c https://dev.mysql.com/get/mysql-apt-config_0.8.16-1_all.deb
 
 echo 'mysql-apt-config mysql-apt-config/enable-repo select mysql-8.0-dmr' | sudo debconf-set-selections
 
-DEBIAN_FRONTEND=noninteractive apt-fast install -y ./mysql-apt-config*.deb
+DEBIAN_FRONTEND=noninteractive apt-fast install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" ./mysql-apt-config*.deb
 
 apt-fast update
 rm mysql-apt-config*.deb
