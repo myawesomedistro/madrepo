@@ -1,0 +1,26 @@
+#!/bin/bash
+# SCRIPT add-apt-repository.sh
+if [ $# -eq 1 ]
+	NM=`uname -a && date`
+	NAME=`echo $NM | md5sum | cut -f1 -d" "`
+then
+	ppa_name=`echo "$1" | cut -d":" -f2 -s`
+	ppa_file=`echo "$1" | cut -d":" -f2 -s | sed 's/\//-ubuntu-/g'`
+
+if [ -z "$ppa_name" ]
+then
+	echo "PPA não encontrado"
+	echo "Utilitário para adicionar repositórios PPA no Debian"
+	echo "$0 ppa:user/ppa-name"
+else
+	echo "$ppa_name"
+	echo "deb http://ppa.launchpad.net/$ppa_name/ubuntu focal main" > /etc/apt/sources.list.d/$ppa_file.list
+	apt update >> /dev/null 2> /tmp/${NAME}_apt_add_key.txt
+	echo keyserver.ubuntu.com/pks/lookup\?op=get\&search=0x`cat /tmp/${NAME}_apt_add_key.txt | cut -d":" -f6 | cut -d" " -f3` | sed 's/ //g' > /tmp/key.tmp
+	wget -O- `cat /tmp/key.tmp` | gpg --dearmor > /etc/apt/trusted.gpg.d/$ppa_file.gpg	
+	rm -rf /tmp/${NAME}_apt_add_key.txt /tmp/key.tmp
+fi
+else
+	echo "Utilitário para adicionar repositórios PPA no Debian"
+	echo "$0 ppa:user/ppa-name"
+fi

@@ -1,5 +1,5 @@
 image:
-  name: ubuntu:focal
+  name: debian:bullseye
   entrypoint: ['bash', '-c', 'apt update && apt install -y sudo && useradd madlinux && usermod -a -G sudo madlinux && echo "madlinux ALL=(ALL) NOPASSWD:ALL"|tee /etc/sudoers.d/madlinux && exec su madlinux -c bash']
 
 #variables:
@@ -9,8 +9,12 @@ before_script:
   - sudo ls -la /var/lib/apt/lists/
   - sudo dpkg --add-architecture i386
   - sudo apt update
-  - sudo apt install -y software-properties-common
+#  - sudo apt install -y software-properties-common
+  - sudo install assets/add-apt-repository /usr/bin/
   - sudo add-apt-repository -y ppa:apt-fast/stable
+#  - echo 'deb http://ppa.launchpad.net/apt-fast/stable/ubuntu bionic main'|sudo tee /etc/apt/sources.list.d/apt-fast
+#  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A2166B8DE8BDC3367D1901C11EE2FF37CA8DA16B
+  - sudo apt update
   - sudo apt install -y apt-fast
   - sudo sed -i 's/_APTMGR=apt-get/_APTMGR=apt/g' /etc/apt-fast.conf
   - |
@@ -23,9 +27,9 @@ before_script:
       liblz4-tool \
       reprepro \
       sshpass \
+      sudo \
       wget
 #      aria2 \
-#      sudo \
   - sudo mkdir -pv /home/madlinux
   - sudo chmod -R 777 /home/madlinux
   - apt-fast install -y debconf-utils
