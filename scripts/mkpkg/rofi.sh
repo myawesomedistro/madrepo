@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
-CHECK_TAG=$(wget -O- --user '$GITHUB'_API_AUTH https://api.github.com/repos/libcheck/check/releases|grep tag|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/libcheck\/check\/releases\/tag\///g')
-ROFI_TAG=$(wget -O- --user '$GITHUB'_API_AUTH https://api.github.com/repos/davatorium/rofi/releases|grep tag|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/davatorium\/rofi\/releases\/tag\///g')
+CHECK_TAG=$(wget -O- --user "$GITHUB_API_AUTH" https://api.github.com/repos/libcheck/check/releases|grep tag|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/libcheck\/check\/releases\/tag\///g')
+ROFI_TAG=$(wget -O- --user "$GITHUB_API_AUTH" https://api.github.com/repos/davatorium/rofi/releases|grep tag|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/davatorium\/rofi\/releases\/tag\///g')
 sudo apt install -y \
     bison \
     debhelper \

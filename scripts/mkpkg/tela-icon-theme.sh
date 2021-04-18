@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-TELA_TAG=$(wget -O- --user '$GITHUB'_API_AUTH https://api.github.com/repos/vinceliuice/Tela-icon-theme/releases|grep tag|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/vinceliuice\/Tela-icon-theme\/releases\/tag\///g')
+TELA_TAG=$(wget -O- --user "$GITHUB_API_AUTH" https://api.github.com/repos/vinceliuice/Tela-icon-theme/releases|grep tag|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/vinceliuice\/Tela-icon-theme\/releases\/tag\///g')
 git clone https://github.com/vinceliuice/Tela-icon-theme
 cd Tela-icon-theme/
 sudo ./install.sh -a

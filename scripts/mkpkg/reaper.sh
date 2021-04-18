@@ -67,5 +67,5 @@ rm -rf cockos-reaper*
 #aria2c https://stash.reaper.fm$(wget -O- https://stash.reaper.fm/tag/Language-Packs|grep pt-BR|head -n1|cut -d '"' -f2|sed 's/\/v//g')
 #mkdir -p ~/.config/REAPER/LangPack
 #mv pt-BR.ReaperLangPack ~/.config/REAPER/LangPack/
-#aria2c $(wget -O- --user '$GITHUB'_API_AUTH https://api.github.com/repos/cfillion/reapack/releases|grep browser_download_url|grep download/v|grep x86_64.so|head -n1|cut -d '"' -f4)
+#aria2c $(wget -O- --user "$GITHUB_API_AUTH" https://api.github.com/repos/cfillion/reapack/releases|grep browser_download_url|grep download/v|grep x86_64.so|head -n1|cut -d '"' -f4)
 #mv reaper_reapack-x86_64.so ~/.config/REAPER/UserPlugins/reaper_reapack-x86_64.so
