@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-aria2c $(curl -u $GITHUB_API_ID:$GITHUB_API_TOKEN https://api.github.com/repos/robbert-vdh/yabridge/releases|grep browser_download_url|grep download|head -n2|tail -n1|cut -d '"' -f4)
+aria2c $(curl -u $GAPI_ID:$GAPI_TOKEN https://api.github.com/repos/robbert-vdh/yabridge/releases|grep browser_download_url|grep download|head -n2|tail -n1|cut -d '"' -f4)
 tar fxz yabridge*.tar.gz
 rm -rf yabridge*.tar.gz
 mkdir -p yabridge/DEBIAN yabridge/usr/bin yabridge/opt/yabridge yabridge/etc/xdg/autostart
@@ -23,7 +23,7 @@ set -e
 cp -rf /opt/yabridge $HOME/.local/share/
 EOF
 chmod +x yabridge/opt/yabridge/user-data.sh
-YABRIDGE_TAG=`echo $(curl -u $GITHUB_API_ID:$GITHUB_API_TOKEN https://api.github.com/repos/robbert-vdh/yabridge/releases|grep tag|grep -v Next|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/robbert-vdh\/yabridge\/releases\/tag\///g')`
+YABRIDGE_TAG=`echo $(curl -u $GAPI_ID:$GAPI_TOKEN https://api.github.com/repos/robbert-vdh/yabridge/releases|grep tag|grep -v Next|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/robbert-vdh\/yabridge\/releases\/tag\///g')`
 cat <<EOF |tee yabridge/DEBIAN/control
 Package: yabridge
 Version: $YABRIDGE_TAG
