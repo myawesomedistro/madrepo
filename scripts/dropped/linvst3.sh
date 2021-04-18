@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
-LINVST_TAG=$(wget -O- --user $GITHUB_API_AUTH https://api.github.com/repos/osxmidi/LinVst3/releases|grep tag|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/osxmidi\/LinVst3\/releases\/tag\///g')
-wget $(wget -O- --user $GITHUB_API_AUTH https://api.github.com/repos/osxmidi/LinVst3/releases|grep browser_download_url|grep .zip|head -n1|cut -d '"' -f4)
+LINVST_TAG=$(wget -O- --user '$GITHUB'_API_AUTH https://api.github.com/repos/osxmidi/LinVst3/releases|grep tag|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/osxmidi\/LinVst3\/releases\/tag\///g')
+wget $(wget -O- --user '$GITHUB'_API_AUTH https://api.github.com/repos/osxmidi/LinVst3/releases|grep browser_download_url|grep .zip|head -n1|cut -d '"' -f4)
 unzip LinVst*.zip
 rm -rf LinVst3*.zip
 mkdir -p linvst3/DEBIAN linvst3/usr/bin linvst3/usr/share/LinVst/64bit-32bit
