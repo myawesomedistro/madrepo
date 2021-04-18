@@ -16,7 +16,7 @@ mkdir -p powerkit
 mv app/package/* powerkit/
 sed -i 's/XFCE;//g' powerkit/etc/xdg/autostart/powerkit.desktop powerkit/usr/share/applications/powerkit.desktop
 mkdir -p powerkit/DEBIAN
-POWERKIT_TAG=$(curl -u $GAPI_ID:$GAPI_TOKEN https://api.github.com/repos/rodlie/powerkit/releases|grep tag|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/rodlie\/powerkit\/releases\/tag\///g')
+POWERKIT_TAG=$(curl -u ${{ secrets.GAPI_ID }}:${{ secrets.GAPI_TOKEN }} https://api.github.com/repos/rodlie/powerkit/releases|grep tag|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/rodlie\/powerkit\/releases\/tag\///g')
 POWERKIT_VER=`echo $(git describe --always --dirty)-$(git log -1 --date=iso --pretty=format:%cd)|sed 's/\ /-/g'|sed 's/v//g'|sed 's/_/-/g'|sed 's/:/-/g'|cut -d '-' -f2-7`
 cat <<EOF |tee powerkit/DEBIAN/control
 Package: powerkit

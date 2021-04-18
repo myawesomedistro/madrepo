@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-TELA_TAG=$(curl -u $GAPI_ID:$GAPI_TOKEN https://api.github.com/repos/vinceliuice/Tela-icon-theme/releases|grep tag|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/vinceliuice\/Tela-icon-theme\/releases\/tag\///g')
+TELA_TAG=$(curl -u ${{ secrets.GAPI_ID }}:${{ secrets.GAPI_TOKEN }} https://api.github.com/repos/vinceliuice/Tela-icon-theme/releases|grep tag|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/vinceliuice\/Tela-icon-theme\/releases\/tag\///g')
 git clone https://github.com/vinceliuice/Tela-icon-theme
 cd Tela-icon-theme/
 sudo ./install.sh -a

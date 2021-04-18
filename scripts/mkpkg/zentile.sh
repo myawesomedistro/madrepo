@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
-ZENTILE_TAG=$(curl -u $GAPI_ID:$GAPI_TOKEN https://api.github.com/repos/blrsn/zentile/releases|grep tag|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/blrsn\/zentile\/releases\/tag\/v//g')
+ZENTILE_TAG=$(curl -u ${{ secrets.GAPI_ID }}:${{ secrets.GAPI_TOKEN }} https://api.github.com/repos/blrsn/zentile/releases|grep tag|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/blrsn\/zentile\/releases\/tag\/v//g')
 mkdir -p zentile/DEBIAN zentile/etc/xdg/autostart zentile/usr/bin zentile/usr/share/applications
-wget -O zentile/usr/bin/zentile $(curl -u $GAPI_ID:$GAPI_TOKEN https://api.github.com/repos/blrsn/zentile/releases|grep browser_download_url|grep amd64|head -n1|cut -d '"' -f4)
+wget -O zentile/usr/bin/zentile $(curl -u ${{ secrets.GAPI_ID }}:${{ secrets.GAPI_TOKEN }} https://api.github.com/repos/blrsn/zentile/releases|grep browser_download_url|grep amd64|head -n1|cut -d '"' -f4)
 chmod +x zentile/usr/bin/zentile
 cat <<EOF |tee zentile/DEBIAN/control
 Package: zentile
