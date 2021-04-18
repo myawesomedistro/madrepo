@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
 mkdir -p tmp/packages
-for script in scripts/getpkg/*.sh
+for script in scripts/mkpkg/*.sh
 do
  bash -x $script
 done
-for script in scripts/mkpkg/*.sh
+for script in scripts/getpkg/*.sh
 do
  bash -x $script
 done

@@ -23,7 +23,7 @@ set -e
 cp -rf /opt/yabridge $HOME/.local/share/
 EOF
 chmod +x yabridge/opt/yabridge/user-data.sh
-YABRIDGE_TAG=`echo $(wget -O- https://api.github.com/repos/robbert-vdh/yabridge/releases|grep tag|grep -v Next|head -n1|cut -d \" -f4|sed 's/https:\/\/github.com\/robbert-vdh\/yabridge\/releases\/tag\///g')`
+YABRIDGE_TAG=`echo $(wget -O- https://api.github.com/repos/robbert-vdh/yabridge/releases|grep tag|grep -v Next|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/robbert-vdh\/yabridge\/releases\/tag\///g')`
 cat <<EOF |tee yabridge/DEBIAN/control
 Package: yabridge
 Version: $YABRIDGE_TAG
