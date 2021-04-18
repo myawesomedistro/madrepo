@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
-DEADD_TAG=$(wget -O- --user rauldipeas:$GITHUB_API_AUTH https://api.github.com/repos/phuhl/linux_notification_center/releases|grep tag|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/phuhl\/linux_notification_center\/releases\/tag\///g')
+DEADD_TAG=$(wget -O- --user $GITHUB_API_AUTH https://api.github.com/repos/phuhl/linux_notification_center/releases|grep tag|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/phuhl\/linux_notification_center\/releases\/tag\///g')
 mkdir -p linux-notification-center/DEBIAN linux-notification-center/etc/xdg/autostart linux-notification-center/usr/bin linux-notification-center/usr/share/applications
-wget -O linux-notification-center/usr/bin/deadd-notification-center $(wget -O- --user rauldipeas:$GITHUB_API_AUTH https://api.github.com/repos/phuhl/linux_notification_center/releases|grep browser_download_url|head -n1|cut -d '"' -f4)
+wget -O linux-notification-center/usr/bin/deadd-notification-center $(wget -O- --user $GITHUB_API_AUTH https://api.github.com/repos/phuhl/linux_notification_center/releases|grep browser_download_url|head -n1|cut -d '"' -f4)
 chmod +x linux-notification-center/usr/bin/deadd-notification-center
 cat <<EOF |tee linux-notification-center/DEBIAN/control
 Package: linux-notification-center
