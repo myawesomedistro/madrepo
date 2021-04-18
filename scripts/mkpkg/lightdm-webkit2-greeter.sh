@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-GLORIOUS_TAG=$(wget -O- --user "$GITHUB_API_AUTH" https://api.github.com/repos/manilarome/lightdm-webkit2-theme-glorious/releases|grep tag|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/manilarome\/lightdm-webkit2-theme-glorious\/releases\/tag\///g')
+GLORIOUS_TAG=$(wget -O- --user $GITHUB_API_ID:$GITHUB_API_TOKEN https://api.github.com/repos/manilarome/lightdm-webkit2-theme-glorious/releases|grep tag|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/manilarome\/lightdm-webkit2-theme-glorious\/releases\/tag\///g')
 aria2c https://download.opensuse.org/repositories/home:/antergos/xUbuntu_17.10/amd64/lightdm-webkit2-greeter_2.2.5-1+15.31_amd64.deb
 dpkg-deb -x lightdm-webkit2-greeter*.deb lightdm-webkit2-greeter
 dpkg-deb -e lightdm-webkit2-greeter*.deb lightdm-webkit2-greeter/DEBIAN

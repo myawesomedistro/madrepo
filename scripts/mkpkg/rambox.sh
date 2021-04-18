@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-aria2c $(wget -O- --user "$GITHUB_API_AUTH" https://api.github.com/repos/ramboxapp/community-edition/releases|grep browser_download_url|grep amd64.deb|head -n1|cut -d '"' -f4)
+aria2c $(wget -O- --user $GITHUB_API_ID:$GITHUB_API_TOKEN https://api.github.com/repos/ramboxapp/community-edition/releases|grep browser_download_url|grep amd64.deb|head -n1|cut -d '"' -f4)
 dpkg-deb -x Rambox*.deb rambox
 dpkg-deb -e Rambox*.deb rambox/DEBIAN
 rm -rf Rambox*.deb
