@@ -15,4 +15,4 @@ EOF
 cat assets/mysql-key.gpg|gpg --dearmor|sudo tee /etc/apt/trusted.gpg.d/mysql.gpg
 apt-fast update
 #rm mysql-apt-config*.deb
-lz4cat -d /var/lib/apt/lists/*mysql*_Packages.lz4|grep ^Package:|awk '{print $2}'|sort -u|xargs apt-fast download
+cat /var/lib/apt/lists/*mysql*_Packages|grep ^Package:|awk '{print $2}'|sort -u|xargs apt-fast download

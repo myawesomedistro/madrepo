@@ -74,13 +74,13 @@ jobs:
       - name: Instalação de dependências
         run: |
             apt-fast update -qq 2>/dev/null
-            apt-fast install -y build-essential checkinstall dpkg-sig reprepro sshpass 2>/dev/null
+            apt-fast install -y build-essential curl checkinstall dpkg-sig reprepro sshpass 2>/dev/null
 
       - name: Download das informações de estado do repositório
         run: |
-            wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep \
+            curl -s https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep \
             'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-1.log
-            wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep \
+            curl -s https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep \
             'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-1.log
 
       - name: Compilação do repositório apt
@@ -94,9 +94,9 @@ jobs:
 
       - name: Download das informações de estado do repositório
         run: |
-            wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep \
+            curl -s https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep \
             'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-2.log
-            wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep \
+            curl -s https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep \
             'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-2.log
 
       - name: Comparação do estado dos pacotes amd64
@@ -136,13 +136,35 @@ jobs:
           gist_description: Pacotes adicionados e removidos na última atualização do repositório apt do MAD Linux
           github_file: madrepo.md
 
-      - name: Notificação para o Guilded
+      - name: Notificação de sucesso para o Guilded
         uses: sarisia/actions-status-discord@v1
-        if: always()
+        if: success()
         with:
           webhook: ${{ secrets.GUILDED_WEBHOOK }}
           noprefix: true
           title: "Compilação do repositório `apt` do **MAD Linux**"
           description: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do **MAD Linux** acaba de ser compilado no *GitHub Actions*\n\nConfira os pacotes adicionados e removidos [neste link](https://gist.github.com/rauldipeas/103d3d1558cba200b828a710aaf50549)"
+          status: ${{ job.status }}
+          username: GitHub Actions
+
+      - name: Notificação de erro para o Guilded
+        uses: sarisia/actions-status-discord@v1
+        if: failure()
+        with:
+          webhook: ${{ secrets.GUILDED_WEBHOOK }}
+          noprefix: true
+          title: "Compilação do repositório `apt` do **MAD Linux**"
+          description: "Houve um erro na compilação do repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do **MAD Linux** no *GitHub Actions*"
+          status: ${{ job.status }}
+          username: GitHub Actions
+
+      - name: Notificação de cancelamento para o Guilded
+        uses: sarisia/actions-status-discord@v1
+        if: cancelled()
+        with:
+          webhook: ${{ secrets.GUILDED_WEBHOOK }}
+          noprefix: true
+          title: "Compilação do repositório `apt` do **MAD Linux**"
+          description: "A compilação do repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do **MAD Linux** foi cancelada no *GitHub Actions*"
           status: ${{ job.status }}
           username: GitHub Actions
