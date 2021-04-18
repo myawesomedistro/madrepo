@@ -3,7 +3,7 @@ image:
   entrypoint: ['bash', '-c', 'apt update && apt install -y sudo && useradd madlinux && usermod -a -G sudo madlinux && echo "madlinux ALL=(ALL) NOPASSWD:ALL"|tee /etc/sudoers.d/madlinux && exec su madlinux -c bash']
 
 #variables:
-#  DEBIAN_FRONTEND: noninteractive
+#  ENV: value
 
 before_script:
   - sudo ls -la /var/lib/apt/lists/
@@ -60,5 +60,8 @@ before_script:
 madrepo:
   script:
   - bash build.sh
+  artifacts:
+    paths:
+    - repo
   only:
   - main

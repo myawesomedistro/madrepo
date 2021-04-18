@@ -7,9 +7,10 @@ aria2c http://security.ubuntu.com/ubuntu/pool/main/p/python3.8/$(wget -O- http:/
 aria2c http://security.ubuntu.com/ubuntu/pool/main/p/python3.8/$(wget -O- http://security.ubuntu.com/ubuntu/pool/main/p/python3.8/|grep libpython3.8-stdlib|grep amd64.deb|head -n1|cut -d '"' -f8)
 #aria2c https://dev.mysql.com/get/mysql-apt-config_0.8.16-1_all.deb
 cat <<EOF |sudo tee /etc/apt/sources.list.d/mysql.list
-deb http://repo.mysql.com/apt/debian/ buster connector-python-8.0
 deb http://repo.mysql.com/apt/debian/ buster mysql-8.0
-deb http://repo.mysql.com/apt/debian/ buster workbench-8.0
+deb http://repo.mysql.com/apt/debian/ buster mysql-apt-config
+deb http://repo.mysql.com/apt/debian/ buster mysql-cluster-8.0
+deb http://repo.mysql.com/apt/debian/ buster mysql-tools
 EOF
 cat assets/mysql-key.gpg|gpg --dearmor|sudo tee /etc/apt/trusted.gpg.d/mysql.gpg
 apt-fast update
