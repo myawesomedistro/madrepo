@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
-BIT_TAG=$(wget -O- https://api.github.com/repos/chriswalz/bit/releases|grep tag|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/chriswalz\/bit\/releases\/tag\/v//g')
-aria2c $(wget -O- https://api.github.com/repos/chriswalz/bit/releases|grep browser_download_url|grep linux_amd64.tar.gz|head -n1|cut -d '"' -f4)
+BIT_TAG=$(wget -O- --user rauldipeas:$GITHUB_API_AUTH https://api.github.com/repos/chriswalz/bit/releases|grep tag|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/chriswalz\/bit\/releases\/tag\/v//g')
+aria2c $(wget -O- --user rauldipeas:$GITHUB_API_AUTH https://api.github.com/repos/chriswalz/bit/releases|grep browser_download_url|grep linux_amd64.tar.gz|head -n1|cut -d '"' -f4)
 tar fxz bit*linux_amd64.tar.gz
 mkdir -p bit-package/DEBIAN bit-package/usr/bin
 mv bit bit-package/usr/bin/bit
