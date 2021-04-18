@@ -16,7 +16,7 @@ echo 'mysql-apt-config mysql-apt-config/select-server select mysql-8.0'|sudo deb
 echo 'mysql-apt-config mysql-apt-config/select-tools select '|sudo debconf-set-selections
 echo 'mysql-apt-config mysql-apt-config/unsupported-platform select abort'|sudo debconf-set-selections
 
-apt-fast install -y ./mysql-apt-config*.deb
+DEBIAN_FRONTEND=noninteractive apt-fast install -y ./mysql-apt-config*.deb
 
 apt-fast update
 rm mysql-apt-config*.deb
