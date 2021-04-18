@@ -35,7 +35,7 @@ before_script:
   - apt-fast install -y debconf-utils
   - sudo debconf-set-selections<assets/selections.conf
   - apt-fast install -y keyboard-configuration
-  - aria2c $GPG_SEC
+  - aria2c "$GPG_SEC"
   - gpg --batch --allow-secret-key-import --import madlinux_sec.gpg
   - |
     wget -qO- https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep \
@@ -47,7 +47,7 @@ madrepo:
   script:
   - bash build.sh
   - |
-    sshpass -p $SOURCEFORGE_PASS -- \
+    sshpass -p "$SOURCEFORGE_PASS" -- \
     rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
     repo rauldipeas@frs.sourceforge.net:/home/frs/project/madlinux
   - |
