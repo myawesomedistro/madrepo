@@ -7,7 +7,7 @@ nativefier -p linux -a x64 -i google-docs.png --disable-context-menu --disable-d
 mkdir -p google-docs/{DEBIAN,opt,usr/share/applications,usr/share/pixmaps}
 mv Signin-GoogleAccounts-linux-x64/ google-docs/opt/google-docs
 mv google-docs.png google-docs/usr/share/pixmaps/google-docs.png
-ELECTRON_RELEASE=`curl -s https://raw.githubusercontent.com/nativefier/nativefier/master/src/constants.ts|grep ELECTRON_VERSION|head -n1|cut -d "'" -f2`
+ELECTRON_RELEASE=`wget -O- https://raw.githubusercontent.com/nativefier/nativefier/master/src/constants.ts|grep ELECTRON_VERSION|head -n1|cut -d "'" -f2`
 cat <<EOF |tee google-docs/DEBIAN/control
 Package: google-docs
 Priority: optional

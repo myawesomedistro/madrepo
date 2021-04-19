@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
 echo 'deb https://dl.winehq.org/wine-builds/debian/ bullseye main'|sudo tee /etc/apt/sources.list.d/winehq.list
-curl -s https://dl.winehq.org/wine-builds/winehq.key|gpg --dearmor|sudo tee /etc/apt/trusted.gpg.d/winehq.gpg>/dev/null
+wget -O- https://dl.winehq.org/wine-builds/winehq.key|gpg --dearmor|sudo tee /etc/apt/trusted.gpg.d/winehq.gpg>/dev/null
 apt-fast update
 cat /var/lib/apt/lists/*wine*_Packages|grep ^Package:|awk '{print $2}'|sort -u|xargs apt-fast download
