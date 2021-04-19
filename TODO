@@ -5,7 +5,7 @@
 @ProfFabioLuiz
 ✘ Visual Studio Code @cancelled(20-11-08 02:58) # Não pode ser redistribuído
 ✘ TexMaker @cancelled(20-11-08 02:57) # Já está no repositório do Debian
-    `wget -q https://www.xm1math.net/texmaker/assets/files/$(wget -O-https://www.xm1math.net/texmaker/assets/files/|grep debian|tail -n1|cut -d '"' -f6)`
+    `wget -q https://www.xm1math.net/texmaker/assets/files/$(wget -O- https://www.xm1math.net/texmaker/assets/files/|grep debian|tail -n1|cut -d '"' -f6)`
 ✔ RStudio @done(20-11-08 02:57)
 
 @flaviobretas

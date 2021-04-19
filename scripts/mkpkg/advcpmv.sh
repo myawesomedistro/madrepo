@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-aria2c http://ftp.gnu.org/gnu/coreutils/$(wget -O-http://ftp.gnu.org/gnu/coreutils/|grep .tar.xz|cut -d '"' -f8|tail -n2|head -n1)
+aria2c http://ftp.gnu.org/gnu/coreutils/$(wget -O- http://ftp.gnu.org/gnu/coreutils/|grep .tar.xz|cut -d '"' -f8|tail -n2|head -n1)
 tar fJx coreutils*.tar.xz
 rm -rf coreutils*.tar.xz
 cd coreutils*
