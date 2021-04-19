@@ -63,41 +63,43 @@ jobs:
 
       - name: Configuração do host
         run: |
-            sudo sed -i 's/_APTMGR=apt-get/_APTMGR=apt/g' /etc/apt-fast.conf
-            sudo dpkg --add-architecture i386
+          sudo sed -i 's/_APTMGR=apt-get/_APTMGR=apt/g' /etc/apt-fast.conf
+          sudo dpkg --add-architecture i386
 
       - name: Instalação da chave GPG
         run: |
-            aria2c ${{ secrets.GPG_SEC }}
-            gpg --batch --allow-secret-key-import --import madlinux_sec.gpg
+          aria2c ${{ secrets.GPG_SEC }}
+          gpg --batch --allow-secret-key-import --import madlinux_sec.gpg
 
       - name: Instalação de dependências
         run: |
-            apt-fast update -qq 2>/dev/null
-            apt-fast install -y build-essential curl checkinstall dpkg-sig reprepro sshpass 2>/dev/null
+          apt-fast update -qq 2>/dev/null
+          apt-fast install -y build-essential curl checkinstall dpkg-sig reprepro sshpass 2>/dev/null
 
       - name: Download das informações de estado do repositório
         run: |
-            curl -s https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep \
-            'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-1.log
-            curl -s https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep \
-            'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-1.log
+          curl -s https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep \
+          'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-1.log
+          curl -s https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep \
+          'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-1.log
 
       - name: Compilação do repositório apt
-        run: bash build.sh
+        run: |
+          export GAPI_AUTH=${{ secrets.GAPI_ID }}:${{ secrets.GAPI_TOKEN }}
+          bash build.sh
 
       - name: Upload do repositório apt para o SourceForge FRS
         run: |
-            sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- \
-            rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
-            repo rauldipeas@frs.sourceforge.net:/home/frs/project/madlinux
+          sshpass -p ${{ secrets.SOURCEFORGE_PASS }} -- \
+          rsync -avP --del -e 'ssh -o StrictHostKeyChecking=no' \
+          repo rauldipeas@frs.sourceforge.net:/home/frs/project/madlinux
 
       - name: Download das informações de estado do repositório
         run: |
-            curl -s https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep \
-            'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-2.log
-            curl -s https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep \
-            'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-2.log
+          curl -s https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-amd64/Packages|grep \
+          'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-amd64-2.log
+          curl -s https://sourceforge.net/projects/madlinux/files/repo/dists/core/main/binary-i386/Packages|grep \
+          'Package:\|Version:'|sed ':a;N;$!ba;s/\nVersion://g'|sed 's/Package: //g'>packages-i386-2.log
 
       - name: Comparação do estado dos pacotes amd64
         uses: LouisBrunner/diff-action@v0.1.0

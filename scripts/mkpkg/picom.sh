@@ -31,7 +31,7 @@ git submodule update --init --recursive
 meson --buildtype=release . build
 ninja -C build
 mkdir -p picom/DEBIAN picom/etc/xdg picom/usr/bin picom/usr/share/applications
-PICOM_TAG=`echo $(curl -u ${{ secrets.GAPI_ID }}:${{ secrets.GAPI_TOKEN }} https://api.github.com/repos/yshui/picom/releases|grep tag|grep -v Next|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/yshui\/picom\/releases\/tag\///g'|sed 's/v//g')`
+PICOM_TAG=`echo $(curl -u $GAPI_AUTH https://api.github.com/repos/yshui/picom/releases|grep tag|grep -v Next|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/yshui\/picom\/releases\/tag\///g'|sed 's/v//g')`
 PICOM_VER=`echo $(git describe --always --dirty)-$(git log -1 --date=short --pretty=format:%cd)|sed 's/v//g'|sed 's/_/-/g'`
 cat <<EOF |tee picom/DEBIAN/control
 Package: picom
