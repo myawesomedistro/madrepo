@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-REAPER_VER=$(curl -s http://reaper.fm|grep VERSION|cut -d '>' -f2|cut -d ':' -f1|sed 's/VERSION //g')
+REAPER_VER=$(wget -O-http://reaper.fm|grep VERSION|cut -d '>' -f2|cut -d ':' -f1|sed 's/VERSION //g')
 mkdir -p cockos-reaper/DEBIAN
 cat <<EOF |tee cockos-reaper/DEBIAN/control
 Package: cockos-reaper
@@ -17,7 +17,7 @@ Description: REAPER is a complete digital audio production application for Windo
 EOF
 cat <<EOF |tee cockos-reaper/DEBIAN/preinst
 cd /tmp
-aria2c http://reaper.fm/$(curl -s http://reaper.fm/download.php|grep _linux_x86_64.tar.xz|cut -d '"' -f2)
+aria2c http://reaper.fm/$(wget -O-http://reaper.fm/download.php|grep _linux_x86_64.tar.xz|cut -d '"' -f2)
 tar fx reaper*_linux_x86_64.tar.xz -C /tmp
 sed -i 's/rmdir --/rm -rf --/g' /tmp/reaper*/install-reaper.sh
 /tmp/reaper*/install-reaper.sh --install /opt --integrate-desktop --quiet --integrate-sys-desktop
@@ -61,10 +61,10 @@ dpkg-deb -b cockos-reaper .
 mv cockos-reaper*.deb tmp/packages
 rm -rf cockos-reaper*
 
-#aria2c https://sws-extension.org/download/pre-release/$(curl -s http://sws-extension.org/download/pre-release/|grep Linux-x86_64|head -n1|cut -d '"' -f4)
+#aria2c https://sws-extension.org/download/pre-release/$(wget -O-http://sws-extension.org/download/pre-release/|grep Linux-x86_64|head -n1|cut -d '"' -f4)
 #tar fx sws-*-Linux-x86_64-*.tar.xz -C ~/.config/REAPER
 #rm -rf sws-*-Linux-x86_64-*.tar.xz
-#aria2c https://stash.reaper.fm$(curl -s https://stash.reaper.fm/tag/Language-Packs|grep pt-BR|head -n1|cut -d '"' -f2|sed 's/\/v//g')
+#aria2c https://stash.reaper.fm$(wget -O-https://stash.reaper.fm/tag/Language-Packs|grep pt-BR|head -n1|cut -d '"' -f2|sed 's/\/v//g')
 #mkdir -p ~/.config/REAPER/LangPack
 #mv pt-BR.ReaperLangPack ~/.config/REAPER/LangPack/
 #aria2c $(curl -su $GAPI_AUTH https://api.github.com/repos/cfillion/reapack/releases|grep browser_download_url|grep download/v|grep x86_64.so|head -n1|cut -d '"' -f4)

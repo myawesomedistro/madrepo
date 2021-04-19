@@ -10,7 +10,7 @@ cd tnp-source
 cd ..
 mkdir -p thunar-nextcloud-plugin/{DEBIAN,usr/lib/x86_64-linux-gnu/thunarx-3}
 mv tnp-source/thunar-nextcloud-plugin.so thunar-nextcloud-plugin/usr/lib/x86_64-linux-gnu/thunarx-3/
-TNP_VERSION=`echo $(curl -u $GAPI_AUTH https://api.github.com/repos/frederikmoellers/thunar-nextcloud-plugin/commits/master|grep date|head -n 1|cut -d '"' -f4|cut -d \: -f1|cut -d \T -f1)`
+TNP_VERSION=`echo $(curl -su $GAPI_AUTH https://api.github.com/repos/frederikmoellers/thunar-nextcloud-plugin/commits/master|grep date|head -n 1|cut -d '"' -f4|cut -d \: -f1|cut -d \T -f1)`
 cat <<EOF |tee thunar-nextcloud-plugin/DEBIAN/control
 Package: thunar-nextcloud-plugin
 Priority: optional
