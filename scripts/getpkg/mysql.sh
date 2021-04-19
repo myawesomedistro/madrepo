@@ -5,14 +5,14 @@ aria2c http://mirrors.kernel.org/ubuntu/pool/main/m/mpdecimal/$(wget -O- http://
 aria2c http://security.ubuntu.com/ubuntu/pool/main/p/python3.8/$(wget -O- http://security.ubuntu.com/ubuntu/pool/main/p/python3.8/|grep libpython3.8_|grep amd64.deb|head -n1|cut -d '"' -f8)
 aria2c http://security.ubuntu.com/ubuntu/pool/main/p/python3.8/$(wget -O- http://security.ubuntu.com/ubuntu/pool/main/p/python3.8/|grep libpython3.8-minimal|grep amd64.deb|head -n1|cut -d '"' -f8)
 aria2c http://security.ubuntu.com/ubuntu/pool/main/p/python3.8/$(wget -O- http://security.ubuntu.com/ubuntu/pool/main/p/python3.8/|grep libpython3.8-stdlib|grep amd64.deb|head -n1|cut -d '"' -f8)
-#aria2c https://dev.mysql.com/get/mysql-apt-config_0.8.16-1_all.deb
-cat <<EOF |sudo tee /etc/apt/sources.list.d/mysql.list
-deb http://repo.mysql.com/apt/debian/ buster mysql-8.0
-deb http://repo.mysql.com/apt/debian/ buster mysql-apt-config
-deb http://repo.mysql.com/apt/debian/ buster mysql-cluster-8.0
-deb http://repo.mysql.com/apt/debian/ buster mysql-tools
-EOF
-cat assets/mysql-key.gpg|gpg --dearmor|sudo tee /etc/apt/trusted.gpg.d/mysql.gpg
+aria2c https://dev.mysql.com/get/mysql-apt-config_0.8.16-1_all.deb
+#cat <<EOF |sudo tee /etc/apt/sources.list.d/mysql.list
+#deb http://repo.mysql.com/apt/debian/ buster mysql-8.0
+#deb http://repo.mysql.com/apt/debian/ buster mysql-apt-config
+#deb http://repo.mysql.com/apt/debian/ buster mysql-cluster-8.0
+#deb http://repo.mysql.com/apt/debian/ buster mysql-tools
+#EOF
+#cat assets/mysql-key.gpg|gpg --dearmor|sudo tee /etc/apt/trusted.gpg.d/mysql.gpg
 apt-fast update
-#rm mysql-apt-config*.deb
+rm mysql-apt-config*.deb
 cat /var/lib/apt/lists/*mysql*_Packages|grep ^Package:|awk '{print $2}'|sort -u|xargs apt-fast download
