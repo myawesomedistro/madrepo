@@ -148,7 +148,6 @@ jobs:
           description: "O repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do **MAD Linux** acaba de ser compilado no *GitHub Actions*\n\nConfira os pacotes adicionados e removidos [neste link](https://gist.github.com/rauldipeas/103d3d1558cba200b828a710aaf50549)"
           status: ${{ job.status }}
           username: GitHub Actions
-          avatar_url: https://www.polifitema.com.br/wp-content/uploads/2017/02/success-icon-7.png
 
       - name: Notificação de erro para o Guilded
         uses: sarisia/actions-status-discord@v1
@@ -160,7 +159,6 @@ jobs:
           description: "Houve um erro na compilação do repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do **MAD Linux** no *GitHub Actions*"
           status: ${{ job.status }}
           username: GitHub Actions
-          avatar_url: https://iconsplace.com/wp-content/uploads/_icons/ff0000/256/png/error-icon-14-256.png
 
       - name: Notificação de cancelamento para o Guilded
         uses: sarisia/actions-status-discord@v1
@@ -172,4 +170,3 @@ jobs:
           description: "A compilação do repositório [apt](https://gitlab.com/myawesomedistro/madrepo) do **MAD Linux** foi cancelada no *GitHub Actions*"
           status: ${{ job.status }}
           username: GitHub Actions
-          avatar_url: https://zeromilefashion.com/wp-content/uploads/2019/01/disclaimer-icon.png
