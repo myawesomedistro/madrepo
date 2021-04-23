@@ -17,6 +17,7 @@ Description: REAPER is a complete digital audio production application for Windo
 EOF
 cat <<EOF |tee cockos-reaper/DEBIAN/preinst
 cd /tmp
+rm -rfv /tmp/*reaper*
 aria2c http://reaper.fm/$(wget -O- http://reaper.fm/download.php|grep _linux_x86_64.tar.xz|cut -d '"' -f2)
 tar fx reaper*_linux_x86_64.tar.xz -C /tmp
 sed -i 's/rmdir --/rm -rf --/g' /tmp/reaper*/install-reaper.sh
