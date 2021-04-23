@@ -48,13 +48,14 @@ Icon=text-x-plain
 [Desktop Action License]
 Name=License and User Agreement
 Name[pt_BR]=Licença e contrato de usuário
-Exec=xdg-open /opt/REAPER/license.txt
+Exec=xdg-open /opt/REAPER/EULA.txt
 Icon=text-x-plain"|tee -a /usr/share/applications/cockos-reaper.desktop
 EOF
 chmod +x cockos-reaper/DEBIAN/preinst
 cat <<EOF |tee cockos-reaper/DEBIAN/prerm
 rm -rf /opt/REAPER /usr/share/applications/cockos-reaper*
-find /usr/share/ -name *cockos-reaper* -delete
+find /usr/share/applications -name *cockos-reaper* -delete
+find /usr/share/icons/hicolor -name *cockos-reaper* -delete
 find /usr/share/ -name *x-reaper* -delete
 EOF
 chmod +x cockos-reaper/DEBIAN/prerm
