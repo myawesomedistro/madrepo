@@ -160,6 +160,8 @@ RCloneTray (GitHub)
 
 RStudio (Http)
 
+Scrcpy GUI (GitHub)
+
 Send Anywhere (Http)
 
 Signal (Apt)
