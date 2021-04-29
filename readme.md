@@ -146,6 +146,8 @@ PDFsam (GitHub)
 
 Persepolis (PPA)
 
+Portmaster (Http)
+
 PPA-Purge (Apt)
 
 QOwnNotes (PPA)
