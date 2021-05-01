@@ -30,6 +30,8 @@ apt-fast install -y \
 git clone https://github.com/muse-sequencer/muse
 cd muse/src
 sed -i "s/3.1/$MUSE_TAG/g" packaging/ubuntu/DEBIAN/control
+sed -i 's/muse3/muse4/g' packaging/ubuntu/build_ubuntu_debian_package.sh
+sed -i 's/Muse3/Muse4/g' packaging/ubuntu/build_ubuntu_debian_package.sh
 sudo bash packaging/ubuntu/build_ubuntu_debian_package.sh
 cd ../../
 cp muse/src/*.deb tmp/packages
