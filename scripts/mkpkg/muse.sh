@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
+MUSE_TAG=$(curl -su $GAPI_AUTH https://api.github.com/repos/muse-sequencer/muse/releases|grep tag_name|head -n2|tail -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/muse-sequencer\/muse\/releases\/tag\///g')
 apt-fast install -y \
     build-essential \
     cmake \
-    devscripts \
     dssi-dev \
     git \
     ladspa-sdk \
@@ -19,7 +19,7 @@ apt-fast install -y \
     librubberband-dev \
     libsamplerate0-dev \
     libsndfile1-dev \
-	libsratom-dev \
+    libsratom-dev \
     libsndfile1-dev \
     lv2-dev \
     python3-dev \
@@ -29,10 +29,8 @@ apt-fast install -y \
     qttools5-dev-tools
 git clone https://github.com/muse-sequencer/muse
 cd muse/src
-./compile_muse.sh
-cd build
-#sudo checkinstall ???
-dpkg-buildpackage -rfakeroot -us -uc -tc
-cd ../../../
-mv muse/src/build/*.deb tmp/packages
-rm -rfv muse*
+sed -i "s/3.1/$MUSE_TAG/g" packaging/ubuntu/build_ubuntu_debian_package.sh
+sudo bash packaging/ubuntu/build_ubuntu_debian_package.sh
+cd ../../
+cp muse/src/*.deb tmp/packages
+sudo rm -rfv muse*
