@@ -29,9 +29,10 @@ apt-fast install -y \
     qttools5-dev-tools
 git clone https://github.com/muse-sequencer/muse
 cd muse/src
+sed -i "s/Architecture: amd64/Architecture: amd64\nSection: audio/g" packaging/ubuntu/DEBIAN/control
 sed -i "s/3.1/$MUSE_TAG/g" packaging/ubuntu/DEBIAN/control
 sed -i 's/muse3/muse4/g' packaging/ubuntu/DEBIAN/control
-sed -i 's/..\/packaging\/org.musesequencer.Muse3.png/muse128x128.png/g' packaging/ubuntu/build_ubuntu_debian_package.sh
+sed -i 's/..\/packaging\/org.musesequencer.Muse3.png/..\/packaging\/muse128x128.png/g' packaging/ubuntu/build_ubuntu_debian_package.sh
 sed -i 's/muse3/muse4/g' packaging/ubuntu/build_ubuntu_debian_package.sh
 sed -i 's/Muse3/Muse4/g' packaging/ubuntu/build_ubuntu_debian_package.sh
 sudo bash packaging/ubuntu/build_ubuntu_debian_package.sh
