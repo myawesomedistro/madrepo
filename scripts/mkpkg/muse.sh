@@ -29,7 +29,7 @@ apt-fast install -y \
     qttools5-dev-tools
 git clone https://github.com/muse-sequencer/muse
 cd muse/src
-sed -i "s/3.1/$MUSE_TAG/g" packaging/ubuntu/build_ubuntu_debian_package.sh
+sed -i "s/3.1/$MUSE_TAG/g" packaging/ubuntu/DEBIAN/control
 sudo bash packaging/ubuntu/build_ubuntu_debian_package.sh
 cd ../../
 cp muse/src/*.deb tmp/packages
