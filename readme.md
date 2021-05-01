@@ -206,6 +206,8 @@ UNetbootin (PPA)
 
 Visual Studio Code (Apt)
 
+Vivaldi (Http)
+
 VSCodium (GitHub)
 
 Whale (GitHub)
