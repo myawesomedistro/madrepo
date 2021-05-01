@@ -256,6 +256,8 @@ Zoom (Http)
 
 [Microsoft Office](https://swafox.com/msoffice-linux/)
 
+[Muse](https://github.com/muse-sequencer/muse)
+
 [Obsidian](Https://github.com/obsidianmd/obsidian-releases) (GitHub) (Repack)
 
 [Panther launcher](Https://gitlab.com/rastersoft/panther_launcher) (Http) (Repack)
