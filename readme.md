@@ -274,6 +274,8 @@ Zoom (Http)
 
 [Touché](Https://github.com/JoseExposito/touche)
 
+[Warpinator](https://github.com/linuxmint/warpinator)
+
 [XFCE4 panel profiles](Https://docs.xfce.org/apps/xfce4-panel-profiles/start) (Ubuntu focal) (Repack)
 
 [yabridge](Https://github.com/robbert-vdh/yabridge)
