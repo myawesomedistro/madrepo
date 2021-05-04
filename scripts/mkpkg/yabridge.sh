@@ -20,7 +20,7 @@ EOF
 cat <<EOF |tee yabridge/opt/yabridge/user-data.sh
 #!/bin/bash
 set -e
-cp -rf /opt/yabridge $HOME/.local/share/
+cp -rf /opt/yabridge ~/.local/share/
 EOF
 chmod +x yabridge/opt/yabridge/user-data.sh
 YABRIDGE_TAG=`echo $(curl -su $GAPI_AUTH https://api.github.com/repos/robbert-vdh/yabridge/releases|grep tag|grep -v Next|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/robbert-vdh\/yabridge\/releases\/tag\///g')`
