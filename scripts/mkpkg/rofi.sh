@@ -2,7 +2,7 @@
 set -e
 CHECK_TAG=$(curl -su $GAPI_AUTH https://api.github.com/repos/libcheck/check/releases|grep tag|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/libcheck\/check\/releases\/tag\///g')
 ROFI_TAG=$(curl -su $GAPI_AUTH https://api.github.com/repos/davatorium/rofi/releases|grep tag|head -n1|cut -d '"' -f4|sed 's/https:\/\/github.com\/davatorium\/rofi\/releases\/tag\///g')
-sudo apt install -y \
+apt-fast install -y \
     bison \
     debhelper \
     dh-autoreconf \
@@ -59,7 +59,7 @@ git clone https://github.com/davatorium/rofi
 cd rofi
 git submodule update --init
 autoreconf -i
-sudo apt install -y \
+apt-fast install -y \
     autoconf \
     automake \
     libtool \

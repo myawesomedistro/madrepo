@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-sudo apt install -y \
+apt-fast install -y \
     libx11-dev \
     libxrandr-dev \
     libxss-dev \
