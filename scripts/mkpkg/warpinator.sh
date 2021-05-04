@@ -1,7 +1,11 @@
 #!/bin/bash
 set -e
 apt-fast install -y \
+    appstream \
     devscripts \
+    dh-python \
+    gnome-pkg-tools \
+    gobject-introspection \
     python3-grpc-tools \
     python3-grpcio
 git clone https://github.com/linuxmint/warpinator
