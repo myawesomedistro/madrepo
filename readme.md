@@ -104,8 +104,6 @@ KXStudio (Apt) (PPA)
 
 LazPaint (GitHub)
 
-Lightworks (Http)
-
 LightZone (PPA)
 
 Linux Firmware (Apt)
