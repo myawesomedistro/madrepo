@@ -32,6 +32,8 @@ Bomi (PPA)
 
 Caprine (GitHub)
 
+Cawbird (OBS)
+
 Crown translate (GitHub)
 
 DeltaChat (Http)
@@ -103,6 +105,8 @@ KDiskMark (GitHub)
 KXStudio (Apt) (PPA)
 
 LazPaint (GitHub)
+
+Lightworks (Http)
 
 LightZone (PPA)
 
