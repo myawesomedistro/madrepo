@@ -70,6 +70,8 @@ GameHub (GitHub)
 
 gg (Apt)
 
+ghostwriter (PPA)
+
 Giara (PPA)
 
 GitKraken (Http)
