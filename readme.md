@@ -18,7 +18,7 @@ App Grid (PPA)
 
 AppImageLauncher (GitHub)
 
-Apple Musica (GitHub)
+Apple Music (GitHub)
 
 Apt-fast (PPA)
 
