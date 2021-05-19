@@ -104,6 +104,8 @@ Jitsi Meet (GitHub)
 
 KDiskMark (GitHub)
 
+Komorebi (GitHub)
+
 KXStudio (Apt) (PPA)
 
 LazPaint (GitHub)
