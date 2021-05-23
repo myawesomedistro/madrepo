@@ -31,6 +31,7 @@ apt-fast install -y \
     libstartup-notification0-dev \
     libx11-dev \
     libxau-dev \
+    libxcb-cursor-dev \
     libxcb-ewmh-dev \
     libxcb-icccm4-dev \
     libxcb-randr0-dev \
