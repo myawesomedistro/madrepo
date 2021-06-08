@@ -4,7 +4,7 @@ GDU_TAG=$(curl -su $GAPI_AUTH https://api.github.com/repos/dundee/gdu/releases|g
 mkdir -p gdu/DEBIAN gdu/usr/bin
 aria2c $(curl -su $GAPI_AUTH https://api.github.com/repos/dundee/gdu/releases|grep browser_download_url|grep linux_amd64|head -n1|cut -d '"' -f4)
 tar fxz gdu_linux_amd64.tgz
-mv gdu-linux-amd64 gdu/usr/bin/gdu
+mv gdu_linux_amd64 gdu/usr/bin/gdu
 cat <<EOF |tee gdu/DEBIAN/control
 Package: gdu
 Priority: optional
