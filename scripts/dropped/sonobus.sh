@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-sudo apt-fast install -y --fix-missing \
+sudo apt-fast install -y \
     libasound2-dev \
     libcurl4-openssl-dev \
     libfreetype-dev \
