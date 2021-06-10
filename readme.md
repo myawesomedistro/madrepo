@@ -152,6 +152,8 @@ PDFsam (GitHub)
 
 Persepolis (PPA)
 
+PipeWire (PPA)
+
 Portmaster (Http)
 
 PPA-Purge (Apt)
