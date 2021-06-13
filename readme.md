@@ -150,8 +150,6 @@ Pb-for-desktop (GitHub)
 
 PDFsam (GitHub)
 
-PeaZip (Http)
-
 Persepolis (PPA)
 
 PipeWire (PPA)
